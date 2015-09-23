@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		D3A7C1EF1BB26EAD000605DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C1EE1BB26EAD000605DF /* AppDelegate.swift */; };
-		D3A7C1F11BB26EAD000605DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C1F01BB26EAD000605DF /* ViewController.swift */; };
 		D3A7C1F41BB26EAD000605DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A7C1F21BB26EAD000605DF /* Main.storyboard */; };
 		D3A7C1F61BB26EAD000605DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3A7C1F51BB26EAD000605DF /* Assets.xcassets */; };
 		D3A7C1F91BB26EAD000605DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A7C1F71BB26EAD000605DF /* LaunchScreen.storyboard */; };
+		D3A7C2081BB27589000605DF /* TBRepeatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C2071BB27589000605DF /* TBRepeatPicker.swift */; settings = {ASSET_TAGS = (); }; };
+		D3A7C20A1BB2778D000605DF /* TBRPPresetRepeatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */; settings = {ASSET_TAGS = (); }; };
+		D3A7C20C1BB277B8000605DF /* TBRPCustomRepeatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */; settings = {ASSET_TAGS = (); }; };
+		D3A7C2191BB2AAA4000605DF /* TBRP-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3A7C2181BB2AAA4000605DF /* TBRP-Checkmark@2x.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D3A7C1EB1BB26EAD000605DF /* TBRepeatPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBRepeatPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A7C1EE1BB26EAD000605DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D3A7C1F01BB26EAD000605DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D3A7C1F31BB26EAD000605DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3A7C1F51BB26EAD000605DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3A7C1F81BB26EAD000605DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3A7C1FA1BB26EAD000605DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3A7C2071BB27589000605DF /* TBRepeatPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRepeatPicker.swift; sourceTree = "<group>"; };
+		D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPPresetRepeatController.swift; sourceTree = "<group>"; };
+		D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPCustomRepeatController.swift; sourceTree = "<group>"; };
+		D3A7C2181BB2AAA4000605DF /* TBRP-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TBRP-Checkmark@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				D3A7C1EE1BB26EAD000605DF /* AppDelegate.swift */,
-				D3A7C1F01BB26EAD000605DF /* ViewController.swift */,
 				D3A7C1F21BB26EAD000605DF /* Main.storyboard */,
 				D3A7C1F51BB26EAD000605DF /* Assets.xcassets */,
 				D3A7C1F71BB26EAD000605DF /* LaunchScreen.storyboard */,
@@ -69,8 +74,20 @@
 		D3A7C2001BB26ED5000605DF /* TBRepeatPicker */ = {
 			isa = PBXGroup;
 			children = (
+				D3A7C20D1BB2A435000605DF /* Resources */,
+				D3A7C2071BB27589000605DF /* TBRepeatPicker.swift */,
+				D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */,
+				D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */,
 			);
 			name = TBRepeatPicker;
+			sourceTree = "<group>";
+		};
+		D3A7C20D1BB2A435000605DF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3A7C2181BB2AAA4000605DF /* TBRP-Checkmark@2x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +147,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3A7C2191BB2AAA4000605DF /* TBRP-Checkmark@2x.png in Resources */,
 				D3A7C1F91BB26EAD000605DF /* LaunchScreen.storyboard in Resources */,
 				D3A7C1F61BB26EAD000605DF /* Assets.xcassets in Resources */,
 				D3A7C1F41BB26EAD000605DF /* Main.storyboard in Resources */,
@@ -143,8 +161,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3A7C1F11BB26EAD000605DF /* ViewController.swift in Sources */,
+				D3A7C2081BB27589000605DF /* TBRepeatPicker.swift in Sources */,
+				D3A7C20A1BB2778D000605DF /* TBRPPresetRepeatController.swift in Sources */,
 				D3A7C1EF1BB26EAD000605DF /* AppDelegate.swift in Sources */,
+				D3A7C20C1BB277B8000605DF /* TBRPCustomRepeatController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +312,7 @@
 				D3A7C1FF1BB26EAD000605DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
