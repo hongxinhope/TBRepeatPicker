@@ -45,7 +45,7 @@ class TBRPPresetRepeatController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier(TBRPPresetRepeatCellID)
-        if (cell == nil) {
+        if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: TBRPPresetRepeatCellID)
         }
         
@@ -90,6 +90,8 @@ class TBRPPresetRepeatController: UITableViewController {
                 customRepeatController.tintColor = tintColor
             }
             customRepeatController.locale = locale
+            customRepeatController.frequency = .Daily
+            customRepeatController.every = 1
             
             navigationController?.pushViewController(customRepeatController, animated: true)
         }

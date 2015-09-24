@@ -8,32 +8,122 @@
 
 import UIKit
 
-enum TBRPFrequency {
-    case Daily
-    case Weekly
-    case Monthly
-    case Yearly
+enum TBRPFrequency: Int {
+    case Daily = 0
+    case Weekly = 1
+    case Monthly = 2
+    case Yearly = 3
 }
 
-private let TBRPCustomRepeatCellID = "TBRPCustomRepeatCell"
-private let TBRPPickerHeight: CGFloat = 215.0
+let frequencies = ["每天", "每周", "每月", "每年"]
+let units = ["天", "周", "月", "年"]
+let pluralUnits = ["天s", "周s", "月s", "年s"]
+let TBRPPickerHeight: CGFloat = 215.0
+let TBRPScreenWidth: CGFloat = UIScreen.mainScreen().bounds.size.width
+let TBRPScreenHeight: CGFloat = UIScreen.mainScreen().bounds.size.height
 
-class TBRPCustomRepeatController: UITableViewController {
+private let TBRPCustomRepeatCellID = "TBRPCustomRepeatCell"
+private let TBRPPickerViewCellID = "TBRPPickerViewCell"
+
+class TBRPCustomRepeatController: UITableViewController, TBRPPickerCellDelegate {
     // MARK: - Public properties
     var tintColor: UIColor?
     var locale = NSLocale.currentLocale()
-    var frequency = TBRPFrequency.Daily
-    var every = 1
+    var frequency: TBRPFrequency? {
+        didSet {
+            updateFrequencyTitleCell()
+            updateEveryTitleCell()
+            updateFooterTitle()
+        }
+    }
+    var every: Int? {
+        didSet {
+            updateEveryTitleCell()
+            updateFooterTitle()
+        }
+    }
     
     // MARK: - Private properties
-    private var isPickingFrequency = false
-    private var isPickingEvery = false
+    private let frequencyTitleIndexpath = NSIndexPath(forRow: 0, inSection: 0)
+    private var everyTitleIndexpath: NSIndexPath? {
+        get {
+            if hasPicker() && pickerIndexPath == NSIndexPath(forRow: 1, inSection: 0) {
+                return NSIndexPath(forRow: 2, inSection: 0)
+            } else {
+                return NSIndexPath(forRow: 1, inSection: 0)
+            }
+        }
+    }
+    private var frequencyTitleCell: UITableViewCell? {
+        get {
+            return tableView.cellForRowAtIndexPath(frequencyTitleIndexpath)
+        }
+    }
+    private var everyTitleCell: UITableViewCell? {
+        get {
+            return tableView.cellForRowAtIndexPath(everyTitleIndexpath!)
+        }
+    }
+    private var pickerIndexPath: NSIndexPath?
     
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = "自定义";
+    }
+    
+    // MARK: - Helper
+    func hasPicker() -> Bool {
+        return pickerIndexPath != nil
+    }
+    
+    func isPickerCell(indexPath: NSIndexPath) -> Bool {
+        return hasPicker() && pickerIndexPath == indexPath
+    }
+    
+    func updateFrequencyTitleCell() {
+        frequencyTitleCell?.detailTextLabel?.text = frequencies[(frequency?.rawValue)!]
+    }
+    
+    func updateEveryTitleCell() {
+        everyTitleCell?.detailTextLabel?.text = unitString()
+        
+        if hasPicker() && pickerIndexPath == NSIndexPath(forRow: 2, inSection: 0) {
+            let cell = tableView.cellForRowAtIndexPath(pickerIndexPath!) as! TBRPPickerViewCell
+            cell.unit = unit()
+        }
+    }
+    
+    func updateFooterTitle() {
+        tableView.reloadData()
+    }
+    
+    func footerTitle() -> String? {
+        if let unitStr = unitString() {
+            return "事件将每" + unitStr + "重复一次"
+        }
+        return nil
+    }
+    
+    func unit() -> String? {
+        if every == 1 {
+            return units[(frequency?.rawValue)!]
+        } else if every > 1 {
+            return pluralUnits[(frequency?.rawValue)!]
+        } else {
+            return nil
+        }
+    }
+    
+    func unitString() -> String? {
+        if every == 1 {
+            return unit()
+        } else if every > 1 {
+            return "\(every!) " + unit()!
+        } else {
+            return nil
+        }
     }
 
     // MARK: - Table view data source
@@ -42,129 +132,104 @@ class TBRPCustomRepeatController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        if section == 0 {
+            if hasPicker() {
+                return 3
+            } else {
+                return 2
+            }
+        } else {
+            return 0
+        }
+    }
+    
+    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return footerTitle()
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // Frequency cell
-        if indexPath.section == 0 && indexPath.row == 1 {
-            if isPickingFrequency == true {
-                return TBRPPickerHeight
-            } else {
-                return 0
-            }
-        }
-        // Every cell
-        if indexPath.section == 0 && indexPath.row == 3 {
-            if isPickingEvery == true {
-                return TBRPPickerHeight
-            } else {
-                return 0
-            }
+        if isPickerCell(indexPath) {
+            return TBRPPickerHeight
         }
         
         return 44.0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(TBRPCustomRepeatCellID)
-        if (cell == nil) {
-            cell = UITableViewCell(style: .Value1, reuseIdentifier: TBRPCustomRepeatCellID)
-        }
-        
-        if indexPath.section == 0 {
-            switch indexPath.row {
-            case 0:
-                cell?.textLabel?.text = "频率"
-                switch frequency {
-                case .Daily:
-                    cell?.detailTextLabel?.text = "每天"
-                case .Weekly:
-                    cell?.detailTextLabel?.text = "每周"
-                case .Monthly:
-                    cell?.detailTextLabel?.text = "每月"
-                case .Yearly:
-                    cell?.detailTextLabel?.text = "每年"
-                }
-                
-            case 1:
-                cell?.selectionStyle = .None
-                
-            case 2:
-                cell?.textLabel?.text = "每"
-                switch frequency {
-                case .Daily:
-                    cell?.detailTextLabel?.text = "天"
-                case .Weekly:
-                    cell?.detailTextLabel?.text = "周"
-                case .Monthly:
-                    cell?.detailTextLabel?.text = "月"
-                case .Yearly:
-                    cell?.detailTextLabel?.text = "年"
-                }
-                
-            case 3:
-                cell?.selectionStyle = .None
-                
-            default: break
+        if isPickerCell(indexPath) {
+            if indexPath == NSIndexPath(forRow: 1, inSection: 0) {
+                let cell = TBRPPickerViewCell(style: .Default, reuseIdentifier: TBRPPickerViewCellID, pickerStyle: .Frequency)
+                cell.frequency = frequency
+                cell.delegate = self
+                cell.selectionStyle = .None
+                return cell
+            } else {
+                let cell = TBRPPickerViewCell(style: .Default, reuseIdentifier: TBRPPickerViewCellID, pickerStyle: .Every)
+                cell.unit = unit()
+                cell.every = every
+                cell.delegate = self
+                cell.selectionStyle = .None
+                return cell
             }
         } else {
+            var cell = tableView.dequeueReusableCellWithIdentifier(TBRPCustomRepeatCellID)
+            if cell == nil {
+                cell = UITableViewCell(style: .Value1, reuseIdentifier: TBRPCustomRepeatCellID)
+            }
             
+            if indexPath == frequencyTitleIndexpath {
+                cell?.textLabel?.text = "频率"
+                cell?.detailTextLabel?.text = frequencies[(frequency?.rawValue)!]
+            } else if indexPath == everyTitleIndexpath {
+                cell?.textLabel?.text = "每"
+                cell?.detailTextLabel?.text = unitString()
+            }
+            
+            return cell!;
         }
-
-        return cell!
     }
     
     // MARK: - Table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if isPickingFrequency == true {
-            isPickingFrequency = false
-            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Automatic)
-        } else if indexPath.section == 0 && indexPath.row == 0 {
-            isPickingFrequency = true
-            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Automatic)
-        }
-        
-        if isPickingEvery == true {
-            isPickingEvery = false
-            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 3, inSection: 0)], withRowAnimation: .Automatic)
-        } else if indexPath.section == 0 && indexPath.row == 2 {
-            isPickingEvery = true
-            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 3, inSection: 0)], withRowAnimation: .Automatic)
-        }
-        
-        
-        
-//        if indexPath.section == 0 {
-//            switch indexPath.row {
-//            case 0:
-//                isPickingFrequency = !isPickingFrequency
-//                tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Fade)
-//                if isPickingEvery == true {
-//                    isPickingEvery = false
-//                    tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 3, inSection: 0)], withRowAnimation: .Fade)
-//                }
-//                
-//            case 1: break
-//                
-//                
-//            case 2:
-//                isPickingEvery = !isPickingEvery
-//                tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 3, inSection: 0)], withRowAnimation: .Fade)
-//                if isPickingFrequency == true {
-//                    isPickingFrequency = false
-//                    tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Fade)
-//                }
-//                
-//            case 3: break
-//                
-//            default: break
-//            }
-//        } else {
-//            
-//        }
-        
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if indexPath == pickerIndexPath {
+            return
+        }
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        if cell?.reuseIdentifier == TBRPCustomRepeatCellID {
+            tableView.beginUpdates()
+            
+            if hasPicker() {
+                tableView.deleteRowsAtIndexPaths([pickerIndexPath!], withRowAnimation: .Fade)
+                
+                if indexPath.row == (pickerIndexPath?.row)! - 1 {
+                    pickerIndexPath = nil
+                } else {
+                    if indexPath == frequencyTitleIndexpath {
+                        pickerIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
+                    } else {
+                        pickerIndexPath = indexPath
+                    }
+                    
+                    tableView.insertRowsAtIndexPaths([pickerIndexPath!], withRowAnimation: .Fade)
+                }
+            } else if indexPath.section == 0 {
+                pickerIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
+                tableView.insertRowsAtIndexPaths([pickerIndexPath!], withRowAnimation: .Fade)
+            }
+            
+            tableView.endUpdates()
+        }
+    }
+    
+    // MARK: - TBRPPickerCell delegate
+    func pickerDidPick(pickerView: UIPickerView, pickStyle: TBRPPickerStyle, didSelectRow row: Int, inComponent component: Int) {
+        if pickStyle == .Frequency {
+            frequency = TBRPFrequency(rawValue: row)
+        } else if pickStyle == .Every {
+            every = row + 1
+        }
     }
     
 }
