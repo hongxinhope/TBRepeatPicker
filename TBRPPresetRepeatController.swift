@@ -24,6 +24,11 @@ class TBRPPresetRepeatController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = "重复";
+        
+        if let tintColor = tintColor {
+            navigationController?.navigationBar.tintColor = tintColor
+            tableView.tintColor = tintColor
+        }
     }
 
     // MARK: - Table view data source
@@ -58,12 +63,6 @@ class TBRPPresetRepeatController: UITableViewController {
         }
         
         cell?.imageView?.image = UIImage(named: "TBRP-Checkmark")?.imageWithRenderingMode(.AlwaysTemplate)
-        if let tintColor = tintColor {
-            cell?.tintColor = tintColor
-            cell?.imageView?.tintColor = tintColor
-        } else {
-            cell?.imageView?.tintColor = cell?.tintColor
-        }
         
         if indexPath == selectedIndexPath {
             cell?.imageView?.hidden = false
