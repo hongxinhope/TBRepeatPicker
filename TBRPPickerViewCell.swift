@@ -11,7 +11,12 @@ import UIKit
 enum TBRPPickerStyle {
     case Frequency
     case Every
+    case Week
 }
+
+let TBRPPickerHeight: CGFloat = 215.0
+let daysOfWeekPicker = ["星期日", "星期一", "星期二", "星期三", "星期四","星期五", "星期六", "自然日", "工作日", "周末"]
+let sequencesOfWeekPicker = ["第一个", "第二个", "第三个", "第四个", "第五个", "最后"]
 
 private let TBRPPickerRowHeight: CGFloat = 40.0
 private let TBRPPickerMaxRowCount = 999
@@ -66,10 +71,9 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         if pickerStyle == .Frequency {
             return 1
-        } else if pickerStyle == .Every {
+        } else {
             return 2
         }
-        return 0
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -81,7 +85,13 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             } else {
                 return 1
             }
-        } 
+        } else if pickerStyle == .Week {
+            if component == 0 {
+                return sequencesOfWeekPicker.count
+            } else {
+                return daysOfWeekPicker.count
+            }
+        }
         return 0
     }
     
@@ -102,12 +112,20 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             } else {
                 return unit
             }
+        } else if pickerStyle == .Week {
+            if component == 0 {
+                return sequencesOfWeekPicker[row]
+            } else {
+                return daysOfWeekPicker[row]
+            }
         }
         return nil
     }
     
     // MARK: - UIPickerView delegate
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        delegate?.pickerDidPick(pickerView, pickStyle: pickerStyle!, didSelectRow: row, inComponent: component)
+        if let _ = delegate {
+            delegate!.pickerDidPick(pickerView, pickStyle: pickerStyle!, didSelectRow: row, inComponent: component)
+        }
     }
 }
