@@ -16,7 +16,7 @@ enum TBRPPickerStyle {
 
 let TBRPPickerHeight: CGFloat = 215.0
 let daysOfWeekPicker = ["星期日", "星期一", "星期二", "星期三", "星期四","星期五", "星期六", "自然日", "工作日", "周末"]
-let sequencesOfWeekPicker = ["第一个", "第二个", "第三个", "第四个", "第五个", "最后"]
+let sequencesOfWeekPicker = ["第一个", "第二个", "第三个", "第四个", "第五个", "最后一个"]
 
 private let TBRPPickerRowHeight: CGFloat = 40.0
 private let TBRPPickerMaxRowCount = 999

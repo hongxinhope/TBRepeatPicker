@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30E7B081BB829FC00193D7F /* NSCalendar+TBRPAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E7B071BB829FC00193D7F /* NSCalendar+TBRPAddition.swift */; settings = {ASSET_TAGS = (); }; };
+		D30E7B0C1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E7B0B1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift */; settings = {ASSET_TAGS = (); }; };
 		D3A7C1EF1BB26EAD000605DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C1EE1BB26EAD000605DF /* AppDelegate.swift */; };
 		D3A7C1F41BB26EAD000605DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A7C1F21BB26EAD000605DF /* Main.storyboard */; };
 		D3A7C1F61BB26EAD000605DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3A7C1F51BB26EAD000605DF /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D30E7B071BB829FC00193D7F /* NSCalendar+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+TBRPAddition.swift"; sourceTree = "<group>"; };
+		D30E7B0B1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollectionType+TBRPAddition.swift"; sourceTree = "<group>"; };
 		D3A7C1EB1BB26EAD000605DF /* TBRepeatPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBRepeatPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A7C1EE1BB26EAD000605DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3A7C1F31BB26EAD000605DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D30E7B061BB829B700193D7F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D30E7B071BB829FC00193D7F /* NSCalendar+TBRPAddition.swift */,
+				D30E7B0B1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
 		D3A7C1E21BB26EAC000605DF = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +101,7 @@
 			children = (
 				D3A7C20D1BB2A435000605DF /* Resources */,
 				D3E37DD01BB50743000C8D47 /* CustomView */,
+				D30E7B061BB829B700193D7F /* Extension */,
 				D3A7C2071BB27589000605DF /* TBRepeatPicker.swift */,
 				D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */,
 				D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */,
@@ -188,12 +202,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D30E7B081BB829FC00193D7F /* NSCalendar+TBRPAddition.swift in Sources */,
 				D3A7C2081BB27589000605DF /* TBRepeatPicker.swift in Sources */,
 				D3E37DCE1BB4F85C000C8D47 /* TBRPSwitchCell.swift in Sources */,
 				D3A7C20A1BB2778D000605DF /* TBRPPresetRepeatController.swift in Sources */,
 				D3A7C1EF1BB26EAD000605DF /* AppDelegate.swift in Sources */,
 				D3E37D991BB39127000C8D47 /* TBRPPickerViewCell.swift in Sources */,
 				D3E37DD21BB507C6000C8D47 /* TBRPCollectionViewCell.swift in Sources */,
+				D30E7B0C1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift in Sources */,
 				D3E37DD41BB5111E000C8D47 /* TBRPCollectionItem.swift in Sources */,
 				D3E37DD61BB51727000C8D47 /* TBRPCollectionViewLayout.swift in Sources */,
 				D3A7C20C1BB277B8000605DF /* TBRPCustomRepeatController.swift in Sources */,
