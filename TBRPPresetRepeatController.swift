@@ -17,18 +17,24 @@ class TBRPPresetRepeatController: UITableViewController {
     var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     
     // MARK: - Private properties
-    private let presetRepeat = ["永不", "每天", "每周", "每两周", "每月", "每年"]
+    private var presetRepeat = [String]()
     
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        commonInit()
+    }
+    
+    func commonInit() {
         navigationItem.title = "重复";
         
         if let tintColor = tintColor {
             navigationController?.navigationBar.tintColor = tintColor
             tableView.tintColor = tintColor
         }
+        
+        presetRepeat = TBRPHelper.presetRepeat(locale)
     }
 
     // MARK: - Table view data source

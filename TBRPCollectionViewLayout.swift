@@ -8,20 +8,27 @@
 
 import UIKit
 
-class TBRPCollectionViewLayout: UICollectionViewLayout {
+class TBRPCollectionViewLayout: UICollectionViewFlowLayout {
     private var mode: TBRPCollectionMode?
     
     convenience init(mode: TBRPCollectionMode) {
         self.init()
         
         self.mode = mode
+        if mode == .Days {
+            itemSize = CGSizeMake(TBRPDaysItemWidth, TBRPDaysItemHeight)
+        } else {
+            itemSize = CGSizeMake(TBRPMonthsItemWidth, TBRPMonthsItemHeight)
+        }
+        minimumInteritemSpacing = 0
+        minimumLineSpacing = 0
     }
 
     override func collectionViewContentSize() -> CGSize {
         if mode == .Days {
-            return CGSizeMake(TBRPDaysItemWidth, TBRPDaysItemHeight)
+            return CGSizeMake(TBRPScreenWidth, TBRPDaysCollectionHeight)
         } else {
-            return CGSizeMake(TBRPMonthsItemWidth, TBRPMonthsItemHeight)
+            return CGSizeMake(TBRPScreenWidth, TBRPMonthsCollectionHeight)
         }
     }
     

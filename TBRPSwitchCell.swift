@@ -14,7 +14,7 @@ protocol TBRPSwitchCellDelegate {
     func didSwitch(sender: AnyObject)
 }
 
-class TBRPSwitchCell: UITableViewCell {
+class TBRPSwitchCell: TBRPCustomRepeatCell {
     var weekSwitch: UISwitch?
     var delegate: TBRPSwitchCellDelegate?
     

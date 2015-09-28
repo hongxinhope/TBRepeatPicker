@@ -16,6 +16,7 @@
 		D3A7C2081BB27589000605DF /* TBRepeatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C2071BB27589000605DF /* TBRepeatPicker.swift */; settings = {ASSET_TAGS = (); }; };
 		D3A7C20A1BB2778D000605DF /* TBRPPresetRepeatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */; settings = {ASSET_TAGS = (); }; };
 		D3A7C20C1BB277B8000605DF /* TBRPCustomRepeatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */; settings = {ASSET_TAGS = (); }; };
+		D3B8CBFC1BB945F70020938B /* TBRPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		D3E37D991BB39127000C8D47 /* TBRPPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E37D981BB39127000C8D47 /* TBRPPickerViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D3E37DCA1BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E37DC91BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png */; settings = {ASSET_TAGS = (); }; };
 		D3E37DCC1BB4EB65000C8D47 /* TBRP-Checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E37DCB1BB4EB65000C8D47 /* TBRP-Checkmark@3x.png */; settings = {ASSET_TAGS = (); }; };
@@ -23,6 +24,7 @@
 		D3E37DD21BB507C6000C8D47 /* TBRPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E37DD11BB507C6000C8D47 /* TBRPCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D3E37DD41BB5111E000C8D47 /* TBRPCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E37DD31BB5111E000C8D47 /* TBRPCollectionItem.swift */; settings = {ASSET_TAGS = (); }; };
 		D3E37DD61BB51727000C8D47 /* TBRPCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E37DD51BB51727000C8D47 /* TBRPCollectionViewLayout.swift */; settings = {ASSET_TAGS = (); }; };
+		D3FA9E9A1BBA63AF0045F644 /* TBRPCustomRepeatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FA9E991BBA63AF0045F644 /* TBRPCustomRepeatCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,7 @@
 		D3A7C2071BB27589000605DF /* TBRepeatPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRepeatPicker.swift; sourceTree = "<group>"; };
 		D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPPresetRepeatController.swift; sourceTree = "<group>"; };
 		D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPCustomRepeatController.swift; sourceTree = "<group>"; };
+		D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPHelper.swift; sourceTree = "<group>"; };
 		D3E37D981BB39127000C8D47 /* TBRPPickerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPPickerViewCell.swift; sourceTree = "<group>"; };
 		D3E37DC91BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TBRP-Checkmark@2x.png"; sourceTree = "<group>"; };
 		D3E37DCB1BB4EB65000C8D47 /* TBRP-Checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TBRP-Checkmark@3x.png"; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		D3E37DD11BB507C6000C8D47 /* TBRPCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3E37DD31BB5111E000C8D47 /* TBRPCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPCollectionItem.swift; sourceTree = "<group>"; };
 		D3E37DD51BB51727000C8D47 /* TBRPCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPCollectionViewLayout.swift; sourceTree = "<group>"; };
+		D3FA9E991BBA63AF0045F644 /* TBRPCustomRepeatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPCustomRepeatCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				D3E37DD01BB50743000C8D47 /* CustomView */,
 				D30E7B061BB829B700193D7F /* Extension */,
 				D3A7C2071BB27589000605DF /* TBRepeatPicker.swift */,
+				D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */,
 				D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */,
 				D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */,
 			);
@@ -121,6 +126,7 @@
 		D3E37DD01BB50743000C8D47 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				D3FA9E991BBA63AF0045F644 /* TBRPCustomRepeatCell.swift */,
 				D3E37D981BB39127000C8D47 /* TBRPPickerViewCell.swift */,
 				D3E37DCD1BB4F85C000C8D47 /* TBRPSwitchCell.swift */,
 				D3E37DD31BB5111E000C8D47 /* TBRPCollectionItem.swift */,
@@ -211,8 +217,10 @@
 				D3E37DD21BB507C6000C8D47 /* TBRPCollectionViewCell.swift in Sources */,
 				D30E7B0C1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift in Sources */,
 				D3E37DD41BB5111E000C8D47 /* TBRPCollectionItem.swift in Sources */,
+				D3FA9E9A1BBA63AF0045F644 /* TBRPCustomRepeatCell.swift in Sources */,
 				D3E37DD61BB51727000C8D47 /* TBRPCollectionViewLayout.swift in Sources */,
 				D3A7C20C1BB277B8000605DF /* TBRPCustomRepeatController.swift in Sources */,
+				D3B8CBFC1BB945F70020938B /* TBRPHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

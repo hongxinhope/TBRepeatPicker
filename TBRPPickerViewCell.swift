@@ -15,8 +15,6 @@ enum TBRPPickerStyle {
 }
 
 let TBRPPickerHeight: CGFloat = 215.0
-let daysOfWeekPicker = ["星期日", "星期一", "星期二", "星期三", "星期四","星期五", "星期六", "自然日", "工作日", "周末"]
-let sequencesOfWeekPicker = ["第一个", "第二个", "第三个", "第四个", "第五个", "最后一个"]
 
 private let TBRPPickerRowHeight: CGFloat = 40.0
 private let TBRPPickerMaxRowCount = 999
@@ -27,6 +25,7 @@ protocol TBRPPickerCellDelegate {
 
 class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
     // MARK: - Public properties
+    var locale = NSLocale.currentLocale()
     var pickerStyle: TBRPPickerStyle?
     var delegate: TBRPPickerCellDelegate?
     var unit: String? {
@@ -53,18 +52,56 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
         super.awakeFromNib()
         
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        removeAllSeparators()
+    }
 
-    convenience init(style: UITableViewCellStyle, reuseIdentifier: String?, pickerStyle: TBRPPickerStyle?) {
+    convenience init(style: UITableViewCellStyle, reuseIdentifier: String?, pickerStyle: TBRPPickerStyle, locale: NSLocale) {
         self.init()
 
         pickerView = UIPickerView.init(frame: CGRectMake(0, 0, TBRPScreenWidth, TBRPPickerHeight))
         pickerView!.dataSource = self
         pickerView!.delegate = self
         
-        if let style = pickerStyle {
-            self.pickerStyle = style
+        self.pickerStyle = pickerStyle
+        if pickerStyle == .Frequency {
+            addDefaultBottomSeparator()
+        } else {
+            addSectionBottomSeparator()
         }
+        
+        self.locale = locale
         contentView.addSubview(pickerView!)
+    }
+    
+    // MARK: - Separator line
+    func removeAllSeparators() {
+        for sublayer in layer.sublayers! {
+            if sublayer.name == TBRPTopSeparatorIdentifier || sublayer.name == TBRPBottomSeparatorIdentifier {
+                sublayer.removeFromSuperlayer()
+            }
+        }
+    }
+    
+    func addBottomSeparatorFromLeftX(leftX: CGFloat) {
+        let bottomSeparator = CALayer()
+        bottomSeparator.name = TBRPBottomSeparatorIdentifier
+        
+        bottomSeparator.frame = CGRectMake(leftX, TBRPPickerHeight - TBRPSeparatorLineWidth, TBRPScreenWidth - leftX, TBRPSeparatorLineWidth)
+        bottomSeparator.backgroundColor = TBRPHelper.separatorColor()
+        
+        layer.addSublayer(bottomSeparator)
+    }
+    
+    func addDefaultBottomSeparator() {
+        addBottomSeparatorFromLeftX(TBRPHelper.leadingMargin())
+    }
+    
+    func addSectionBottomSeparator() {
+        addBottomSeparatorFromLeftX(0)
     }
     
     // MARK: - UIPickerView data source
@@ -87,9 +124,9 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             }
         } else if pickerStyle == .Week {
             if component == 0 {
-                return sequencesOfWeekPicker.count
+                return TBRPHelper.sequencesInWeekPicker(locale).count
             } else {
-                return daysOfWeekPicker.count
+                return TBRPHelper.daysInWeekPicker(locale).count
             }
         }
         return 0
@@ -105,7 +142,7 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerStyle == .Frequency {
-            return frequencies[row]
+            return TBRPHelper.frequencies(locale)[row]
         } else if pickerStyle == .Every {
             if component == 0 {
                 return "\(row + 1)"
@@ -114,9 +151,9 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             }
         } else if pickerStyle == .Week {
             if component == 0 {
-                return sequencesOfWeekPicker[row]
+                return TBRPHelper.sequencesInWeekPicker(locale)[row]
             } else {
-                return daysOfWeekPicker[row]
+                return TBRPHelper.daysInWeekPicker(locale)[row]
             }
         }
         return nil
