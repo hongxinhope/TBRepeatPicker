@@ -13,10 +13,10 @@ enum TBRPCollectionMode {
     case Months
 }
 
-let TBRPDaysItemHeight: CGFloat = 50.0
 let TBRPDaysItemWidth: CGFloat = TBRPScreenWidth / 7.0
-let TBRPMonthsItemHeight: CGFloat = 44.0
+let TBRPDaysItemHeight = CGFloat((Int)(TBRPDaysItemWidth * 0.9 + 0.5))
 let TBRPMonthsItemWidth: CGFloat = TBRPScreenWidth / 4.0
+let TBRPMonthsItemHeight: CGFloat = 44.0
 
 let TBRPDaysCollectionHeight: CGFloat = TBRPDaysItemHeight * 5
 let TBRPMonthsCollectionHeight: CGFloat = TBRPMonthsItemHeight * 3

@@ -37,7 +37,7 @@ class TBRPHelper {
     class func yearMonths(locale: NSLocale) -> [String] {
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = locale
-        return dateFormatter.monthSymbols
+        return dateFormatter.shortMonthSymbols
     }
     
     class func frequencies(locale: NSLocale) -> [String] {

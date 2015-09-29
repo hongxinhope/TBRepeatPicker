@@ -26,7 +26,7 @@ class TBRPPresetRepeatController: UITableViewController {
         commonInit()
     }
     
-    func commonInit() {
+    private func commonInit() {
         navigationItem.title = "重复";
         
         if let tintColor = tintColor {

@@ -34,13 +34,21 @@ class TBRPCustomRepeatCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        updateBottomSeparatorWithLeftX(TBRPHelper.leadingMargin())
+        resetSeparatorWithLeftX(TBRPHelper.leadingMargin())
     }
     
     // MARK: - Separator line
     func removeAllSeparators() {
         for sublayer in layer.sublayers! {
             if sublayer.name == TBRPTopSeparatorIdentifier || sublayer.name == TBRPBottomSeparatorIdentifier {
+                sublayer.removeFromSuperlayer()
+            }
+        }
+    }
+    
+    func removeBottomSeparators() {
+        for sublayer in layer.sublayers! {
+            if sublayer.name == TBRPBottomSeparatorIdentifier {
                 sublayer.removeFromSuperlayer()
             }
         }
@@ -79,6 +87,11 @@ class TBRPCustomRepeatCell: UITableViewCell {
     }
     
     func updateBottomSeparatorWithLeftX(leftX: CGFloat) {
+        removeBottomSeparators()
+        addBottomSeparatorFromLeftX(leftX)
+    }
+    
+    func resetSeparatorWithLeftX(leftX: CGFloat) {
         removeAllSeparators()
         addBottomSeparatorFromLeftX(leftX)
     }
