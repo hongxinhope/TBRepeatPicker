@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  TBRepeatPicker
+
+  Created by hongxin on 15/9/30.
+  Copyright © 2015年 Teambition. All rights reserved.
+*/
+
+"TBRPHelper.frequencies.daily" = "매일";
+"TBRPHelper.frequencies.weekly" = "매주";
+"TBRPHelper.frequencies.monthly" = "매월";
+"TBRPHelper.frequencies.yearly" = "매년";
+
+"TBRPHelper.units.day" = "일";
+"TBRPHelper.units.week" = "주";
+"TBRPHelper.units.month" = "개월";
+"TBRPHelper.units.year" = "년";
+
+"TBRPHelper.pluralUnits.days" = "일";
+"TBRPHelper.pluralUnits.weeks" = "주";
+"TBRPHelper.pluralUnits.months" = "개월";
+"TBRPHelper.pluralUnits.years" = "년";
+
+"TBRPHelper.presetRepeat.never" = "Never";
+"TBRPHelper.presetRepeat.everyDay" = "매일";
+"TBRPHelper.presetRepeat.everyWeek" = "매주";
+"TBRPHelper.presetRepeat.everyTwoWeeks" = "Every 2 Weeks";
+"TBRPHelper.presetRepeat.everyMonth" = "매월";
+"TBRPHelper.presetRepeat.everyYear" = "매년";
+
+"TBRPHelper.sequencesInWeekPicker.first" = "첫 번째";
+"TBRPHelper.sequencesInWeekPicker.second" = "두 번째";
+"TBRPHelper.sequencesInWeekPicker.third" = "세 번째";
+"TBRPHelper.sequencesInWeekPicker.fourth" = "네 번째";
+"TBRPHelper.sequencesInWeekPicker.fifth" = "다섯 번째";
+"TBRPHelper.sequencesInWeekPicker.last" = "last";
+
+"TBRPHelper.daysInWeekPicker.day" = "day";
+"TBRPHelper.daysInWeekPicker.weekday" = "평일";
+"TBRPHelper.daysInWeekPicker.weekendDay" = "주말";
+
+"TBRPPresetRepeatController.navigation.title" = "반복";
+"TBRPPresetRepeatController.textLabel.custom" = "Custom";
+
+"TBRPCustomRepeatController.textLabel.frequency" = "Frequency";
+"TBRPCustomRepeatController.textLabel.every" = "Every";
+"TBRPCustomRepeatController.textLabel.date" = "Each";
+"TBRPCustomRepeatController.weekCell.onThe" = "On the...";
+"TBRPCustomRepeatController.weekCell.daysOfWeek" = "Days of Week";
+

@@ -25,7 +25,7 @@ protocol TBRPPickerCellDelegate {
 
 class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
     // MARK: - Public properties
-    var locale = NSLocale.currentLocale()
+    var language: TBRPLanguage = .English
     var pickerStyle: TBRPPickerStyle?
     var delegate: TBRPPickerCellDelegate?
     var unit: String? {
@@ -69,7 +69,7 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
         removeAllSeparators()
     }
 
-    convenience init(style: UITableViewCellStyle, reuseIdentifier: String?, pickerStyle: TBRPPickerStyle, locale: NSLocale) {
+    convenience init(style: UITableViewCellStyle, reuseIdentifier: String?, pickerStyle: TBRPPickerStyle, language: TBRPLanguage) {
         self.init()
 
         pickerView = UIPickerView.init(frame: CGRectMake(0, 0, TBRPScreenWidth, TBRPPickerHeight))
@@ -83,7 +83,7 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             addSectionBottomSeparator()
         }
         
-        self.locale = locale
+        self.language = language
         contentView.addSubview(pickerView!)
     }
     
@@ -134,9 +134,9 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             }
         } else if pickerStyle == .Week {
             if component == 0 {
-                return TBRPHelper.sequencesInWeekPicker(locale).count
+                return TBRPHelper.sequencesInWeekPicker(language).count
             } else {
-                return TBRPHelper.daysInWeekPicker(locale).count
+                return TBRPHelper.daysInWeekPicker(language).count
             }
         }
         return 0
@@ -152,7 +152,7 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerStyle == .Frequency {
-            return TBRPHelper.frequencies(locale)[row]
+            return TBRPHelper.frequencies(language)[row]
         } else if pickerStyle == .Every {
             if component == 0 {
                 return "\(row + 1)"
@@ -161,9 +161,9 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             }
         } else if pickerStyle == .Week {
             if component == 0 {
-                return TBRPHelper.sequencesInWeekPicker(locale)[row]
+                return TBRPHelper.sequencesInWeekPicker(language)[row]
             } else {
-                return TBRPHelper.daysInWeekPicker(locale)[row]
+                return TBRPHelper.daysInWeekPicker(language)[row]
             }
         }
         return nil

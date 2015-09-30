@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  TBRepeatPicker
+
+  Created by hongxin on 15/9/30.
+  Copyright © 2015年 Teambition. All rights reserved.
+*/
+
+"TBRPHelper.frequencies.daily" = "Daily";
+"TBRPHelper.frequencies.weekly" = "Weekly";
+"TBRPHelper.frequencies.monthly" = "Monthly";
+"TBRPHelper.frequencies.yearly" = "Yearly";
+
+"TBRPHelper.units.day" = "Day";
+"TBRPHelper.units.week" = "Week";
+"TBRPHelper.units.month" = "Month";
+"TBRPHelper.units.year" = "Year";
+
+"TBRPHelper.pluralUnits.days" = "days";
+"TBRPHelper.pluralUnits.weeks" = "weeks";
+"TBRPHelper.pluralUnits.months" = "months";
+"TBRPHelper.pluralUnits.years" = "years";
+
+"TBRPHelper.presetRepeat.never" = "Never";
+"TBRPHelper.presetRepeat.everyDay" = "Every Day";
+"TBRPHelper.presetRepeat.everyWeek" = "Every Week";
+"TBRPHelper.presetRepeat.everyTwoWeeks" = "Every 2 Weeks";
+"TBRPHelper.presetRepeat.everyMonth" = "Every Month";
+"TBRPHelper.presetRepeat.everyYear" = "Every Year";
+
+"TBRPHelper.sequencesInWeekPicker.first" = "first";
+"TBRPHelper.sequencesInWeekPicker.second" = "second";
+"TBRPHelper.sequencesInWeekPicker.third" = "third";
+"TBRPHelper.sequencesInWeekPicker.fourth" = "fourth";
+"TBRPHelper.sequencesInWeekPicker.fifth" = "fifth";
+"TBRPHelper.sequencesInWeekPicker.last" = "last";
+
+"TBRPHelper.daysInWeekPicker.day" = "day";
+"TBRPHelper.daysInWeekPicker.weekday" = "weekday";
+"TBRPHelper.daysInWeekPicker.weekendDay" = "weekend day";
+
+"TBRPPresetRepeatController.navigation.title" = "Repeat";
+"TBRPPresetRepeatController.textLabel.custom" = "Custom";
+
+"TBRPCustomRepeatController.textLabel.frequency" = "Frequency";
+"TBRPCustomRepeatController.textLabel.every" = "Every";
+"TBRPCustomRepeatController.textLabel.date" = "Each";
+"TBRPCustomRepeatController.weekCell.onThe" = "On the...";
+"TBRPCustomRepeatController.weekCell.daysOfWeek" = "Days of Week";
+

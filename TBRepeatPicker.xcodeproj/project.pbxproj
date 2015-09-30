@@ -17,6 +17,8 @@
 		D3A7C20A1BB2778D000605DF /* TBRPPresetRepeatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */; settings = {ASSET_TAGS = (); }; };
 		D3A7C20C1BB277B8000605DF /* TBRPCustomRepeatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */; settings = {ASSET_TAGS = (); }; };
 		D3B8CBFC1BB945F70020938B /* TBRPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		D3DC1F7A1BBB8EDC008A8AB4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3DC1F7C1BBB8EDC008A8AB4 /* Localizable.strings */; };
+		D3DC1F7F1BBB925F008A8AB4 /* TBRPInternationalControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DC1F7E1BBB925F008A8AB4 /* TBRPInternationalControl.swift */; settings = {ASSET_TAGS = (); }; };
 		D3E37D991BB39127000C8D47 /* TBRPPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E37D981BB39127000C8D47 /* TBRPPickerViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D3E37DCA1BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E37DC91BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png */; settings = {ASSET_TAGS = (); }; };
 		D3E37DCC1BB4EB65000C8D47 /* TBRP-Checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E37DCB1BB4EB65000C8D47 /* TBRP-Checkmark@3x.png */; settings = {ASSET_TAGS = (); }; };
@@ -30,6 +32,9 @@
 /* Begin PBXFileReference section */
 		D30E7B071BB829FC00193D7F /* NSCalendar+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+TBRPAddition.swift"; sourceTree = "<group>"; };
 		D30E7B0B1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollectionType+TBRPAddition.swift"; sourceTree = "<group>"; };
+		D39B02DD1BBBADC7004AF10C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D39B02DE1BBBADD2004AF10C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D39B02DF1BBBADEA004AF10C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3A7C1EB1BB26EAD000605DF /* TBRepeatPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBRepeatPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A7C1EE1BB26EAD000605DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3A7C1F31BB26EAD000605DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +45,9 @@
 		D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPPresetRepeatController.swift; sourceTree = "<group>"; };
 		D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPCustomRepeatController.swift; sourceTree = "<group>"; };
 		D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPHelper.swift; sourceTree = "<group>"; };
+		D3DC1F7B1BBB8EDC008A8AB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D3DC1F7D1BBB8EF1008A8AB4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D3DC1F7E1BBB925F008A8AB4 /* TBRPInternationalControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPInternationalControl.swift; sourceTree = "<group>"; };
 		D3E37D981BB39127000C8D47 /* TBRPPickerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPPickerViewCell.swift; sourceTree = "<group>"; };
 		D3E37DC91BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TBRP-Checkmark@2x.png"; sourceTree = "<group>"; };
 		D3E37DCB1BB4EB65000C8D47 /* TBRP-Checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TBRP-Checkmark@3x.png"; sourceTree = "<group>"; };
@@ -107,6 +115,7 @@
 				D30E7B061BB829B700193D7F /* Extension */,
 				D3E37DD01BB50743000C8D47 /* CustomView */,
 				D3A7C2071BB27589000605DF /* TBRepeatPicker.swift */,
+				D3DC1F7E1BBB925F008A8AB4 /* TBRPInternationalControl.swift */,
 				D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */,
 				D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */,
 				D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */,
@@ -117,10 +126,27 @@
 		D3A7C20D1BB2A435000605DF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3DC1F771BBB8E5E008A8AB4 /* Icons */,
+				D3DC1F761BBB8E41008A8AB4 /* Localizations */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D3DC1F761BBB8E41008A8AB4 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				D3DC1F7C1BBB8EDC008A8AB4 /* Localizable.strings */,
+			);
+			name = Localizations;
+			sourceTree = "<group>";
+		};
+		D3DC1F771BBB8E5E008A8AB4 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
 				D3E37DC91BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png */,
 				D3E37DCB1BB4EB65000C8D47 /* TBRP-Checkmark@3x.png */,
 			);
-			name = Resources;
+			name = Icons;
 			sourceTree = "<group>";
 		};
 		D3E37DD01BB50743000C8D47 /* CustomView */ = {
@@ -177,6 +203,10 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
+				ko,
+				ja,
 			);
 			mainGroup = D3A7C1E21BB26EAC000605DF;
 			productRefGroup = D3A7C1EC1BB26EAD000605DF /* Products */;
@@ -194,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3E37DCA1BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png in Resources */,
+				D3DC1F7A1BBB8EDC008A8AB4 /* Localizable.strings in Resources */,
 				D3A7C1F91BB26EAD000605DF /* LaunchScreen.storyboard in Resources */,
 				D3A7C1F61BB26EAD000605DF /* Assets.xcassets in Resources */,
 				D3A7C1F41BB26EAD000605DF /* Main.storyboard in Resources */,
@@ -214,6 +245,7 @@
 				D3A7C20A1BB2778D000605DF /* TBRPPresetRepeatController.swift in Sources */,
 				D3A7C1EF1BB26EAD000605DF /* AppDelegate.swift in Sources */,
 				D3E37D991BB39127000C8D47 /* TBRPPickerViewCell.swift in Sources */,
+				D3DC1F7F1BBB925F008A8AB4 /* TBRPInternationalControl.swift in Sources */,
 				D3E37DD21BB507C6000C8D47 /* TBRPCollectionViewCell.swift in Sources */,
 				D30E7B0C1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift in Sources */,
 				D3E37DD41BB5111E000C8D47 /* TBRPCollectionItem.swift in Sources */,
@@ -241,6 +273,18 @@
 				D3A7C1F81BB26EAD000605DF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D3DC1F7C1BBB8EDC008A8AB4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3DC1F7B1BBB8EDC008A8AB4 /* en */,
+				D3DC1F7D1BBB8EF1008A8AB4 /* zh-Hans */,
+				D39B02DD1BBBADC7004AF10C /* zh-Hant */,
+				D39B02DE1BBBADD2004AF10C /* ko */,
+				D39B02DF1BBBADEA004AF10C /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

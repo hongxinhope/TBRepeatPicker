@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let repeatPicker = TBRepeatPicker.init(locale: nil, tintColor: UIColor.init(red: 3.0 / 255.0, green: 169.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0))
+        let repeatPicker = TBRepeatPicker(locale: NSLocale.currentLocale(), language: .TraditionalChinese, tintColor: UIColor.init(red: 3.0 / 255.0, green: 169.0 / 255.0, blue: 244.0 / 255.0, alpha: 1.0))
         if let appWindow = window {
             appWindow.rootViewController = repeatPicker
             appWindow.makeKeyAndVisible()

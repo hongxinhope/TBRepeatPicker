@@ -30,7 +30,7 @@ protocol TBRPCollectionViewCellDelegate {
 
 class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     // MARK: - Public properties
-    var locale = NSLocale.currentLocale()
+    var language: TBRPLanguage = .English
     var selectedDaysInMonth = [Int]()
     var selectedMonthsInYear = [Int]()
     var delegate: TBRPCollectionViewCellDelegate?
@@ -51,7 +51,7 @@ class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICol
         removeAllSeparators()
     }
     
-    convenience init(style: UITableViewCellStyle, reuseIdentifier: String?, mode: TBRPCollectionMode, locale: NSLocale) {
+    convenience init(style: UITableViewCellStyle, reuseIdentifier: String?, mode: TBRPCollectionMode, language: TBRPLanguage) {
         self.init()
         
         separatorInset = UIEdgeInsetsMake(0, TBRPScreenWidth, 0, 0)
@@ -62,7 +62,7 @@ class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICol
             addSectionBottomSeparator()
         }
         
-        self.locale = locale
+        self.language = language
         let layout = TBRPCollectionViewLayout(mode: mode)
         
         if mode == .Days {
@@ -143,7 +143,7 @@ class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICol
         } else {
             let month = indexPath.row + 1
             
-            cell.textLabel!.text = TBRPHelper.yearMonths(locale)[indexPath.row]
+            cell.textLabel!.text = TBRPHelper.yearMonths(language)[indexPath.row]
             cell.setItemSelected(selectedMonthsInYear.contains(month))
         }
         

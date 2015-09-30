@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  TBRepeatPicker
+
+  Created by hongxin on 15/9/30.
+  Copyright © 2015年 Teambition. All rights reserved.
+*/
+
+"TBRPHelper.frequencies.daily" = "每天";
+"TBRPHelper.frequencies.weekly" = "每周";
+"TBRPHelper.frequencies.monthly" = "每月";
+"TBRPHelper.frequencies.yearly" = "每年";
+
+"TBRPHelper.units.day" = "天";
+"TBRPHelper.units.week" = "周";
+"TBRPHelper.units.month" = "月";
+"TBRPHelper.units.year" = "年";
+
+"TBRPHelper.pluralUnits.days" = "天";
+"TBRPHelper.pluralUnits.weeks" = "周";
+"TBRPHelper.pluralUnits.months" = "个月";
+"TBRPHelper.pluralUnits.years" = "年";
+
+"TBRPHelper.presetRepeat.never" = "永不";
+"TBRPHelper.presetRepeat.everyDay" = "每天";
+"TBRPHelper.presetRepeat.everyWeek" = "每周";
+"TBRPHelper.presetRepeat.everyTwoWeeks" = "每两周";
+"TBRPHelper.presetRepeat.everyMonth" = "每月";
+"TBRPHelper.presetRepeat.everyYear" = "每年";
+
+"TBRPHelper.sequencesInWeekPicker.first" = "第一个";
+"TBRPHelper.sequencesInWeekPicker.second" = "第二个";
+"TBRPHelper.sequencesInWeekPicker.third" = "第三个";
+"TBRPHelper.sequencesInWeekPicker.fourth" = "第四个";
+"TBRPHelper.sequencesInWeekPicker.fifth" = "第五个";
+"TBRPHelper.sequencesInWeekPicker.last" = "最后一个";
+
+"TBRPHelper.daysInWeekPicker.day" = "自然日";
+"TBRPHelper.daysInWeekPicker.weekday" = "工作日";
+"TBRPHelper.daysInWeekPicker.weekendDay" = "周末";
+
+"TBRPPresetRepeatController.navigation.title" = "重复";
+"TBRPPresetRepeatController.textLabel.custom" = "自定义";
+
+"TBRPCustomRepeatController.textLabel.frequency" = "频率";
+"TBRPCustomRepeatController.textLabel.every" = "每";
+"TBRPCustomRepeatController.textLabel.date" = "日期";
+"TBRPCustomRepeatController.weekCell.onThe" = "星期";
+"TBRPCustomRepeatController.weekCell.daysOfWeek" = "星期";
+

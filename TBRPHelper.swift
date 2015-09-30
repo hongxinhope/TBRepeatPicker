@@ -32,40 +32,58 @@ class TBRPHelper {
         return UIColor.init(white: 128.0 / 255.0, alpha: 1.0)
     }
     
-    class func weekdays(locale: NSLocale) -> [String] {
+    class func weekdays(language: TBRPLanguage) -> [String] {
+        let languageLocale = NSLocale(localeIdentifier: language.rawValue)
+        
         let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = locale
+        dateFormatter.locale = languageLocale
         return dateFormatter.weekdaySymbols
     }
     
-    class func yearMonths(locale: NSLocale) -> [String] {
+    class func yearMonths(language: TBRPLanguage) -> [String] {
+        let languageLocale = NSLocale(localeIdentifier: language.rawValue)
+        
         let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = locale
+        dateFormatter.locale = languageLocale
         return dateFormatter.shortMonthSymbols
     }
     
-    class func frequencies(locale: NSLocale) -> [String] {
-        return ["每天", "每周", "每月", "每年"]
+    class func frequencies(language: TBRPLanguage) -> [String] {
+        let internationalControl = TBRPInternationalControl(language: language)
+        
+        return [internationalControl.localized("TBRPHelper.frequencies.daily", comment: "Daily"),internationalControl.localized("TBRPHelper.frequencies.weekly", comment: "Weekly"), internationalControl.localized("TBRPHelper.frequencies.monthly", comment: "Monthly"), internationalControl.localized("TBRPHelper.frequencies.yearly", comment: "Yearly")]
     }
     
-    class func units(locale: NSLocale) -> [String] {
-        return ["天", "周", "月", "年"]
+    class func units(language: TBRPLanguage) -> [String] {
+        let internationalControl = TBRPInternationalControl(language: language)
+        
+        return [internationalControl.localized("TBRPHelper.units.day", comment: "Day"), internationalControl.localized("TBRPHelper.units.week", comment: "Week"), internationalControl.localized("TBRPHelper.units.month", comment: "Month"), internationalControl.localized("TBRPHelper.units.year", comment: "Year")]
     }
     
-    class func pluralUnits(locale: NSLocale) -> [String] {
-        return ["天s", "周s", "月s", "年s"]
+    class func pluralUnits(language: TBRPLanguage) -> [String] {
+        let internationalControl = TBRPInternationalControl(language: language)
+        
+        return [internationalControl.localized("TBRPHelper.pluralUnits.days", comment: "days"), internationalControl.localized("TBRPHelper.pluralUnits.weeks", comment: "weeks"), internationalControl.localized("TBRPHelper.pluralUnits.months", comment: "months"), internationalControl.localized("TBRPHelper.pluralUnits.years", comment: "years")]
     }
     
-    class func presetRepeat(locale: NSLocale) -> [String] {
-        return ["永不", "每天", "每周", "每两周", "每月", "每年"]
+    class func presetRepeat(language: TBRPLanguage) -> [String] {
+        let internationalControl = TBRPInternationalControl(language: language)
+        
+        return [internationalControl.localized("TBRPHelper.presetRepeat.never", comment: "Never"), internationalControl.localized("TBRPHelper.presetRepeat.everyDay", comment: "Every Day"), internationalControl.localized("TBRPHelper.presetRepeat.everyWeek", comment: "Every Week"), internationalControl.localized("TBRPHelper.presetRepeat.everyTwoWeeks", comment: "Every 2 Weeks"), internationalControl.localized("TBRPHelper.presetRepeat.everyMonth", comment: "Every Month"), internationalControl.localized("TBRPHelper.presetRepeat.everyYear", comment: "Every Year")]
     }
     
-    class func daysInWeekPicker(locale: NSLocale) -> [String] {
-        return ["星期日", "星期一", "星期二", "星期三", "星期四","星期五", "星期六", "自然日", "工作日", "周末"]
+    class func daysInWeekPicker(language: TBRPLanguage) -> [String] {
+        let internationalControl = TBRPInternationalControl(language: language)
+        let commonWeekdays = weekdays(language)
+        let additionDays = [internationalControl.localized("TBRPHelper.daysInWeekPicker.day", comment: "day"), internationalControl.localized("TBRPHelper.daysInWeekPicker.weekday", comment: "weekday"), internationalControl.localized("TBRPHelper.daysInWeekPicker.weekendDay", comment: "weekend day")]
+        
+        return commonWeekdays + additionDays
     }
     
-    class func sequencesInWeekPicker(locale: NSLocale) -> [String] {
-        return ["第一个", "第二个", "第三个", "第四个", "第五个", "最后一个"]
+    class func sequencesInWeekPicker(language: TBRPLanguage) -> [String] {
+        let internationalControl = TBRPInternationalControl(language: language)
+        
+        return [internationalControl.localized("TBRPHelper.sequencesInWeekPicker.first", comment: "first"), internationalControl.localized("TBRPHelper.sequencesInWeekPicker.second", comment: "second"), internationalControl.localized("TBRPHelper.sequencesInWeekPicker.third", comment: "third"), internationalControl.localized("TBRPHelper.sequencesInWeekPicker.fourth", comment: "fourth"), internationalControl.localized("TBRPHelper.sequencesInWeekPicker.fifth", comment: "fifth"), internationalControl.localized("TBRPHelper.sequencesInWeekPicker.last", comment: "last")]
     }
     
 }

@@ -12,12 +12,14 @@ private let TBRPPresetRepeatCellID = "TBRPPresetRepeatCell"
 
 class TBRPPresetRepeatController: UITableViewController {
     // MARK: - Public properties
-    var tintColor: UIColor?
+    var tintColor = UIColor.blueColor()
     var locale = NSLocale.currentLocale()
+    var language: TBRPLanguage = .English
     var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     
     // MARK: - Private properties
     private var presetRepeat = [String]()
+    private var internationalControl: TBRPInternationalControl?
     
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -27,14 +29,13 @@ class TBRPPresetRepeatController: UITableViewController {
     }
     
     private func commonInit() {
-        navigationItem.title = "重复";
+        internationalControl = TBRPInternationalControl(language: language)
+        navigationItem.title = internationalControl?.localized("TBRPPresetRepeatController.navigation.title", comment: "Repeat")
         
-        if let tintColor = tintColor {
-            navigationController?.navigationBar.tintColor = tintColor
-            tableView.tintColor = tintColor
-        }
+        navigationController?.navigationBar.tintColor = tintColor
+        tableView.tintColor = tintColor
         
-        presetRepeat = TBRPHelper.presetRepeat(locale)
+        presetRepeat = TBRPHelper.presetRepeat(language)
     }
 
     // MARK: - Table view data source
@@ -62,7 +63,7 @@ class TBRPPresetRepeatController: UITableViewController {
         
         if indexPath.section == 1 {
             cell?.accessoryType = .DisclosureIndicator
-            cell?.textLabel?.text = "自定义"
+            cell?.textLabel?.text = internationalControl?.localized("TBRPPresetRepeatController.textLabel.custom", comment: "Custom")
         } else {
             cell?.accessoryType = .None
             cell?.textLabel?.text = presetRepeat[indexPath.row]
@@ -91,10 +92,9 @@ class TBRPPresetRepeatController: UITableViewController {
         
         if indexPath.section == 1 {
             let customRepeatController = TBRPCustomRepeatController(style: .Grouped)
-            if let tintColor = tintColor {
-                customRepeatController.tintColor = tintColor
-            }
+            customRepeatController.tintColor = tintColor
             customRepeatController.locale = locale
+            customRepeatController.language = language
             customRepeatController.frequency = .Daily
             customRepeatController.every = 1
             

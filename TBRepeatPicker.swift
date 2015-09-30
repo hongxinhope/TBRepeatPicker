@@ -8,22 +8,27 @@
 
 import UIKit
 
+enum TBRPLanguage: String {
+    case English = "en"
+    case SimplifiedChinese = "zh-Hans"
+    case TraditionalChinese = "zh-Hant"
+    case Korean = "ko"
+    case Japanese = "ja"
+}
+
 class TBRepeatPicker: UIViewController  {
     // MARK: - Public properties
     
     // MARK: - Private properties
     
     // MARK: - Public functions
-    convenience init(locale: NSLocale?, tintColor: UIColor?) {
+    convenience init(locale: NSLocale!, language: TBRPLanguage!, tintColor: UIColor!) {
         self.init()
         
         let presetRepeatController = TBRPPresetRepeatController(style: .Grouped)
-        if let locale = locale {
-            presetRepeatController.locale = locale
-        }
-        if let tintColor = tintColor {
-            presetRepeatController.tintColor = tintColor
-        }
+        presetRepeatController.locale = locale
+        presetRepeatController.language = language
+        presetRepeatController.tintColor = tintColor
         presetRepeatController.selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
         
         let navigationViewController = UINavigationController.init(rootViewController: presetRepeatController)
