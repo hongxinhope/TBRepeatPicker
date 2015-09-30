@@ -22,17 +22,28 @@ class TBRPPresetRepeatController: UITableViewController {
     private var internationalControl: TBRPInternationalControl?
     
     // MARK: - View life cycle
+    convenience init(locale: NSLocale!, language: TBRPLanguage!, tintColor: UIColor!) {
+        self.init()
+        
+        self.tableView = UITableView(frame: view.frame, style: .Grouped)
+        self.locale = locale
+        self.language = language
+        self.tintColor = tintColor
+        self.selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        
+        commonInit()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        commonInit()
     }
     
     private func commonInit() {
         internationalControl = TBRPInternationalControl(language: language)
         navigationItem.title = internationalControl?.localized("TBRPPresetRepeatController.navigation.title", comment: "Repeat")
         
-        navigationController?.navigationBar.tintColor = tintColor
+        navigationController?.navigationBar.barTintColor = tintColor
         tableView.tintColor = tintColor
         
         presetRepeat = TBRPHelper.presetRepeat(language)

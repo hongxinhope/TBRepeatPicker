@@ -115,7 +115,7 @@ class TBRPCustomRepeatController: UITableViewController, TBRPPickerCellDelegate,
         internationalControl = TBRPInternationalControl(language: language)
         navigationItem.title = internationalControl?.localized("TBRPPresetRepeatController.textLabel.custom", comment: "Custom")
         
-        navigationController?.navigationBar.tintColor = tintColor
+        navigationController?.navigationBar.barTintColor = tintColor
         tableView.tintColor = tintColor
         tableView.separatorStyle = .None
         
