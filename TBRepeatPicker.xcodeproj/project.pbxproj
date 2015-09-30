@@ -104,8 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				D3A7C20D1BB2A435000605DF /* Resources */,
-				D3E37DD01BB50743000C8D47 /* CustomView */,
 				D30E7B061BB829B700193D7F /* Extension */,
+				D3E37DD01BB50743000C8D47 /* CustomView */,
 				D3A7C2071BB27589000605DF /* TBRepeatPicker.swift */,
 				D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */,
 				D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */,

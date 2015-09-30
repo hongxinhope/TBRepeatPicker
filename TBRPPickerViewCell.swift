@@ -43,6 +43,16 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             pickerView?.selectRow(every! - 1, inComponent: 0, animated: true)
         }
     }
+    var pickedWeekSequence: TBRPWeekPickerSequences? {
+        didSet {
+            pickerView?.selectRow((pickedWeekSequence?.rawValue)!, inComponent: 0, animated: true)
+        }
+    }
+    var pickedDayOfWeek: TBRPWeekPickerDays? {
+        didSet {
+            pickerView?.selectRow((pickedDayOfWeek?.rawValue)!, inComponent: 1, animated: true)
+        }
+    }
     
     // MARK: - Private properties
     private var pickerView: UIPickerView?

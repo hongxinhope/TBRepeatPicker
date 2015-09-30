@@ -28,6 +28,10 @@ class TBRPHelper {
         return UIColor.init(red: 188.0 / 255.0, green: 186.0 / 255.0, blue: 193.0 / 255.0, alpha: 1.0).CGColor
     }
     
+    class func detailTextColor() -> UIColor {
+        return UIColor.init(white: 128.0 / 255.0, alpha: 1.0)
+    }
+    
     class func weekdays(locale: NSLocale) -> [String] {
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = locale
