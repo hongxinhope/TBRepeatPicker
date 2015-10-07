@@ -10,7 +10,7 @@ import UIKit
 
 enum TBRPPickerStyle {
     case Frequency
-    case Every
+    case Interval
     case Week
 }
 
@@ -38,19 +38,19 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             pickerView?.selectRow((frequency?.rawValue)!, inComponent: 0, animated: true)
         }
     }
-    var every: Int? {
+    var interval: Int? {
         didSet {
-            pickerView?.selectRow(every! - 1, inComponent: 0, animated: true)
+            pickerView?.selectRow(interval! - 1, inComponent: 0, animated: true)
         }
     }
-    var pickedWeekSequence: TBRPWeekPickerSequences? {
+    var pickedWeekNumber: TBRPWeekPickerNumber? {
         didSet {
-            pickerView?.selectRow((pickedWeekSequence?.rawValue)!, inComponent: 0, animated: true)
+            pickerView?.selectRow((pickedWeekNumber?.rawValue)!, inComponent: 0, animated: true)
         }
     }
-    var pickedDayOfWeek: TBRPWeekPickerDays? {
+    var pickedWeekday: TBRPWeekPickerDay? {
         didSet {
-            pickerView?.selectRow((pickedDayOfWeek?.rawValue)!, inComponent: 1, animated: true)
+            pickerView?.selectRow((pickedWeekday?.rawValue)!, inComponent: 1, animated: true)
         }
     }
     
@@ -126,7 +126,7 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerStyle == .Frequency {
             return 4
-        } else if pickerStyle == .Every {
+        } else if pickerStyle == .Interval {
             if component == 0 {
                 return TBRPPickerMaxRowCount
             } else {
@@ -134,7 +134,7 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             }
         } else if pickerStyle == .Week {
             if component == 0 {
-                return TBRPHelper.sequencesInWeekPicker(language).count
+                return TBRPHelper.numbersInWeekPicker(language).count
             } else {
                 return TBRPHelper.daysInWeekPicker(language).count
             }
@@ -153,7 +153,7 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerStyle == .Frequency {
             return TBRPHelper.frequencies(language)[row]
-        } else if pickerStyle == .Every {
+        } else if pickerStyle == .Interval {
             if component == 0 {
                 return "\(row + 1)"
             } else {
@@ -161,7 +161,7 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             }
         } else if pickerStyle == .Week {
             if component == 0 {
-                return TBRPHelper.sequencesInWeekPicker(language)[row]
+                return TBRPHelper.numbersInWeekPicker(language)[row]
             } else {
                 return TBRPHelper.daysInWeekPicker(language)[row]
             }

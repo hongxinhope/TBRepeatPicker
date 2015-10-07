@@ -28,12 +28,12 @@
 "TBRPHelper.presetRepeat.everyMonth" = "每月";
 "TBRPHelper.presetRepeat.everyYear" = "每年";
 
-"TBRPHelper.sequencesInWeekPicker.first" = "第一个";
-"TBRPHelper.sequencesInWeekPicker.second" = "第二个";
-"TBRPHelper.sequencesInWeekPicker.third" = "第三个";
-"TBRPHelper.sequencesInWeekPicker.fourth" = "第四个";
-"TBRPHelper.sequencesInWeekPicker.fifth" = "第五个";
-"TBRPHelper.sequencesInWeekPicker.last" = "最后一个";
+"TBRPHelper.numbersInWeekPicker.first" = "第一个";
+"TBRPHelper.numbersInWeekPicker.second" = "第二个";
+"TBRPHelper.numbersInWeekPicker.third" = "第三个";
+"TBRPHelper.numbersInWeekPicker.fourth" = "第四个";
+"TBRPHelper.numbersInWeekPicker.fifth" = "第五个";
+"TBRPHelper.numbersInWeekPicker.last" = "最后一个";
 
 "TBRPHelper.daysInWeekPicker.day" = "自然日";
 "TBRPHelper.daysInWeekPicker.weekday" = "工作日";
@@ -43,7 +43,7 @@
 "TBRPPresetRepeatController.textLabel.custom" = "自定义";
 
 "TBRPCustomRepeatController.textLabel.frequency" = "频率";
-"TBRPCustomRepeatController.textLabel.every" = "每";
+"TBRPCustomRepeatController.textLabel.interval" = "每";
 "TBRPCustomRepeatController.textLabel.date" = "日期";
 "TBRPCustomRepeatController.weekCell.onThe" = "星期";
 "TBRPCustomRepeatController.weekCell.daysOfWeek" = "星期";

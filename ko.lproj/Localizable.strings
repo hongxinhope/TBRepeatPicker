@@ -28,12 +28,12 @@
 "TBRPHelper.presetRepeat.everyMonth" = "매월";
 "TBRPHelper.presetRepeat.everyYear" = "매년";
 
-"TBRPHelper.sequencesInWeekPicker.first" = "첫 번째";
-"TBRPHelper.sequencesInWeekPicker.second" = "두 번째";
-"TBRPHelper.sequencesInWeekPicker.third" = "세 번째";
-"TBRPHelper.sequencesInWeekPicker.fourth" = "네 번째";
-"TBRPHelper.sequencesInWeekPicker.fifth" = "다섯 번째";
-"TBRPHelper.sequencesInWeekPicker.last" = "last";
+"TBRPHelper.numbersInWeekPicker.first" = "첫 번째";
+"TBRPHelper.numbersInWeekPicker.second" = "두 번째";
+"TBRPHelper.numbersInWeekPicker.third" = "세 번째";
+"TBRPHelper.numbersInWeekPicker.fourth" = "네 번째";
+"TBRPHelper.numbersInWeekPicker.fifth" = "다섯 번째";
+"TBRPHelper.numbersInWeekPicker.last" = "last";
 
 "TBRPHelper.daysInWeekPicker.day" = "day";
 "TBRPHelper.daysInWeekPicker.weekday" = "평일";
@@ -43,7 +43,7 @@
 "TBRPPresetRepeatController.textLabel.custom" = "Custom";
 
 "TBRPCustomRepeatController.textLabel.frequency" = "Frequency";
-"TBRPCustomRepeatController.textLabel.every" = "Every";
+"TBRPCustomRepeatController.textLabel.interval" = "Every";
 "TBRPCustomRepeatController.textLabel.date" = "Each";
 "TBRPCustomRepeatController.weekCell.onThe" = "On the...";
 "TBRPCustomRepeatController.weekCell.daysOfWeek" = "Days of Week";

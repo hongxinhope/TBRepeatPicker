@@ -24,15 +24,15 @@ let TBRPMonthsCollectionHeight: CGFloat = TBRPMonthsItemHeight * 3
 private let TBRPCollectionItemID = "TBRPCollectionItem"
 
 protocol TBRPCollectionViewCellDelegate {
-    func selectedDaysInMonthDidChanged(selectedDays: [Int])
-    func selectedMonthsInYearDidChanged(selectedMonths: [Int])
+    func selectedMonthdaysDidChanged(days: [Int])
+    func selectedMonthsDidChanged(months: [Int])
 }
 
 class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     // MARK: - Public properties
     var language: TBRPLanguage = .English
-    var selectedDaysInMonth = [Int]()
-    var selectedMonthsInYear = [Int]()
+    var selectedMonthdays = [Int]()
+    var selectedMonths = [Int]()
     var delegate: TBRPCollectionViewCellDelegate?
     
     // MARK: - Private properties
@@ -139,12 +139,12 @@ class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICol
             let day = indexPath.row + 1
             
             cell.textLabel!.text = "\(day)"
-            cell.setItemSelected(selectedDaysInMonth.contains(day))
+            cell.setItemSelected(selectedMonthdays.contains(day))
         } else {
             let month = indexPath.row + 1
             
             cell.textLabel!.text = TBRPHelper.yearMonths(language)[indexPath.row]
-            cell.setItemSelected(selectedMonthsInYear.contains(month))
+            cell.setItemSelected(selectedMonths.contains(month))
         }
         
         configureSeparatorLine(cell, indexPath: indexPath)
@@ -180,38 +180,38 @@ class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICol
         
         if mode == .Days {
             let day = indexPath.row + 1
-            if selectedDaysInMonth.count == 1 && selectedDaysInMonth.contains(day) == true {
+            if selectedMonthdays.count == 1 && selectedMonthdays.contains(day) == true {
                 return
             }
             
-            cell.setItemSelected(!selectedDaysInMonth.contains(day))
+            cell.setItemSelected(!selectedMonthdays.contains(day))
             
-            if selectedDaysInMonth.contains(day) == true {
-                selectedDaysInMonth.removeObject(day)
+            if selectedMonthdays.contains(day) == true {
+                selectedMonthdays.removeObject(day)
             } else {
-                selectedDaysInMonth.append(day)
+                selectedMonthdays.append(day)
             }
             cell.backgroundColor = UIColor.whiteColor()
             
             if let _ = delegate {
-                delegate?.selectedDaysInMonthDidChanged(selectedDaysInMonth)
+                delegate?.selectedMonthdaysDidChanged(selectedMonthdays)
             }
         } else if mode == .Months {
             let month = indexPath.row + 1
-            if selectedMonthsInYear.count == 1 && selectedMonthsInYear.contains(month) == true {
+            if selectedMonths.count == 1 && selectedMonths.contains(month) == true {
                 return
             }
             
-            cell.setItemSelected(!selectedMonthsInYear.contains(month))
+            cell.setItemSelected(!selectedMonths.contains(month))
             
-            if selectedMonthsInYear.contains(month) == true {
-                selectedMonthsInYear.removeObject(month)
+            if selectedMonths.contains(month) == true {
+                selectedMonths.removeObject(month)
             } else {
-                selectedMonthsInYear.append(month)
+                selectedMonths.append(month)
             }
             
             if let _ = delegate {
-                delegate?.selectedMonthsInYearDidChanged(selectedMonthsInYear)
+                delegate?.selectedMonthsDidChanged(selectedMonths)
             }
         }
     }

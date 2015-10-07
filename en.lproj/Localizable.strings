@@ -28,12 +28,12 @@
 "TBRPHelper.presetRepeat.everyMonth" = "Every Month";
 "TBRPHelper.presetRepeat.everyYear" = "Every Year";
 
-"TBRPHelper.sequencesInWeekPicker.first" = "first";
-"TBRPHelper.sequencesInWeekPicker.second" = "second";
-"TBRPHelper.sequencesInWeekPicker.third" = "third";
-"TBRPHelper.sequencesInWeekPicker.fourth" = "fourth";
-"TBRPHelper.sequencesInWeekPicker.fifth" = "fifth";
-"TBRPHelper.sequencesInWeekPicker.last" = "last";
+"TBRPHelper.numbersInWeekPicker.first" = "first";
+"TBRPHelper.numbersInWeekPicker.second" = "second";
+"TBRPHelper.numbersInWeekPicker.third" = "third";
+"TBRPHelper.numbersInWeekPicker.fourth" = "fourth";
+"TBRPHelper.numbersInWeekPicker.fifth" = "fifth";
+"TBRPHelper.numbersInWeekPicker.last" = "last";
 
 "TBRPHelper.daysInWeekPicker.day" = "day";
 "TBRPHelper.daysInWeekPicker.weekday" = "weekday";
@@ -43,7 +43,7 @@
 "TBRPPresetRepeatController.textLabel.custom" = "Custom";
 
 "TBRPCustomRepeatController.textLabel.frequency" = "Frequency";
-"TBRPCustomRepeatController.textLabel.every" = "Every";
+"TBRPCustomRepeatController.textLabel.interval" = "Every";
 "TBRPCustomRepeatController.textLabel.date" = "Each";
 "TBRPCustomRepeatController.weekCell.onThe" = "On the...";
 "TBRPCustomRepeatController.weekCell.daysOfWeek" = "Days of Week";

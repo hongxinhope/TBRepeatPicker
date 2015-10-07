@@ -28,12 +28,12 @@
 "TBRPHelper.presetRepeat.everyMonth" = "毎月";
 "TBRPHelper.presetRepeat.everyYear" = "毎年";
 
-"TBRPHelper.sequencesInWeekPicker.first" = "第1";
-"TBRPHelper.sequencesInWeekPicker.second" = "第2";
-"TBRPHelper.sequencesInWeekPicker.third" = "第3";
-"TBRPHelper.sequencesInWeekPicker.fourth" = "第4";
-"TBRPHelper.sequencesInWeekPicker.fifth" = "第5";
-"TBRPHelper.sequencesInWeekPicker.last" = "最後の";
+"TBRPHelper.numbersInWeekPicker.first" = "第1";
+"TBRPHelper.numbersInWeekPicker.second" = "第2";
+"TBRPHelper.numbersInWeekPicker.third" = "第3";
+"TBRPHelper.numbersInWeekPicker.fourth" = "第4";
+"TBRPHelper.numbersInWeekPicker.fifth" = "第5";
+"TBRPHelper.numbersInWeekPicker.last" = "最後の";
 
 "TBRPHelper.daysInWeekPicker.day" = "日";
 "TBRPHelper.daysInWeekPicker.weekday" = "平日";
@@ -43,7 +43,7 @@
 "TBRPPresetRepeatController.textLabel.custom" = "Custom";
 
 "TBRPCustomRepeatController.textLabel.frequency" = "繰り返しの単位";
-"TBRPCustomRepeatController.textLabel.every" = "繰り返しの頻度";
+"TBRPCustomRepeatController.textLabel.interval" = "繰り返しの頻度";
 "TBRPCustomRepeatController.textLabel.date" = "毎";
 "TBRPCustomRepeatController.weekCell.onThe" = "指定日";
 "TBRPCustomRepeatController.weekCell.daysOfWeek" = "曜日";
