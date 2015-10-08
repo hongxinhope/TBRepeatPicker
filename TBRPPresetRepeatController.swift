@@ -31,7 +31,6 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
     // MARK: - Private properties
     private var presetRepeat = [String]()
     private var internationalControl: TBRPInternationalControl?
-    private let customRecurrenceIndexPath = NSIndexPath(forRow: 0, inSection: 1)
     
     // MARK: - View life cycle
     class func initWith(locale: NSLocale, language: TBRPLanguage, tintColor: UIColor) -> TBRPPresetRepeatController {
@@ -70,28 +69,20 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
     
     // MARK: - Helper
     private func setupSelectedIndexPath(recurrence: TBRecurrence?) {
-        let todayIndexInWeek = NSCalendar.dayIndexInWeek(NSDate(), locale: locale)
-        let todayIndexInMonth = NSCalendar.dayIndexInMonth(NSDate(), locale: locale)
-        let todayMonthIndex = NSCalendar.monthIndexInYear(NSDate(), locale: locale)
-        
         if recurrence == nil {
             selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-        } else if recurrence!.frequency == .Daily && recurrence!.interval == 1 {
+        } else if recurrence?.isDailyRecurrence() == true {
             selectedIndexPath = NSIndexPath(forRow: 1, inSection: 0)
-        } else if recurrence!.frequency == .Weekly && recurrence!.selectedWeekdays == [todayIndexInWeek - 1] {
-            if recurrence!.interval == 1 {
-                selectedIndexPath = NSIndexPath(forRow: 2, inSection: 0)
-            } else if recurrence!.interval == 2 {
-                selectedIndexPath = NSIndexPath(forRow: 3, inSection: 0)
-            } else {
-                selectedIndexPath = customRecurrenceIndexPath
-            }
-        } else if recurrence!.frequency == .Monthly && recurrence!.interval == 1 && recurrence!.byWeekNumber == false && recurrence!.selectedMonthdays == [todayIndexInMonth] {
+        } else if recurrence?.isWeeklyRecurrence(locale) == true {
+            selectedIndexPath = NSIndexPath(forRow: 2, inSection: 0)
+        } else if recurrence?.isBiWeeklyRecurrence(locale) == true {
+            selectedIndexPath = NSIndexPath(forRow: 3, inSection: 0)
+        } else if recurrence?.isMonthlyRecurrence(locale) == true {
             selectedIndexPath = NSIndexPath(forRow: 4, inSection: 0)
-        } else if recurrence!.frequency == .Yearly && recurrence!.interval == 1 && recurrence!.byWeekNumber == false && recurrence!.selectedMonths == [todayMonthIndex] {
+        } else if recurrence?.isYearlyRecurrence(locale) == true {
             selectedIndexPath = NSIndexPath(forRow: 5, inSection: 0)
         } else {
-            selectedIndexPath = customRecurrenceIndexPath
+            selectedIndexPath = NSIndexPath(forRow: 0, inSection: 1)
         }
     }
     

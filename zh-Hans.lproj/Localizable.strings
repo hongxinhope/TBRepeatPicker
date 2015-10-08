@@ -48,3 +48,14 @@
 "TBRPCustomRepeatController.weekCell.onThe" = "星期";
 "TBRPCustomRepeatController.weekCell.daysOfWeek" = "星期";
 
+"RecurrenceString.presetRepeat" = "事件将每%@重复一次。";
+"RecurrenceString.element.on.weekly" = "于";
+"RecurrenceString.element.on.monthly" = "于";
+"RecurrenceString.element.on.yearlyMonths" = "于";
+"RecurrenceString.element.on.yearlyMonths.byWeekNo" = "于";
+"RecurrenceString.element.on.yearly.weekStr" = "的";
+"RecurrenceString.element.and" = "和";
+"RecurrenceString.element.comma" = "、";
+"RecurrenceString.element.day" = "%d日";
+"RecurrenceString.specifiedDaysOrMonths" = "事件将每%@%@重复一次。";
+"RecurrenceString.yearlyByWeekNoString" = "事件将每%@%@%@重复一次。";

@@ -48,3 +48,14 @@
 "TBRPCustomRepeatController.weekCell.onThe" = "指定日";
 "TBRPCustomRepeatController.weekCell.daysOfWeek" = "曜日";
 
+"RecurrenceString.presetRepeat" = "Event will occur every %@.";
+"RecurrenceString.element.on.weekly" = "on";
+"RecurrenceString.element.on.monthly" = "on the";
+"RecurrenceString.element.on.yearlyMonths" = "in";
+"RecurrenceString.element.on.yearlyMonths.byWeekNo" = "of";
+"RecurrenceString.element.on.yearly.weekStr" = "on the";
+"RecurrenceString.element.and" = "and";
+"RecurrenceString.element.comma" = ",";
+"RecurrenceString.element.day" = "%d日";
+"RecurrenceString.specifiedDaysOrMonths" = "Event will occur every %@ %@.";
+"RecurrenceString.yearlyByWeekNoString" = "Event will occur every %@ %@ %@.";

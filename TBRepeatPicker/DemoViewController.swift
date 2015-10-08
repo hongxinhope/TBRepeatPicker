@@ -19,7 +19,13 @@ class DemoViewController: UIViewController, TBRepeatPickerDelegate {
     }
     
     @IBAction func startPicking(sender: UIButton) {
-        let repeatPicker = TBRepeatPicker.initWith(NSLocale.currentLocale(), language: .SimplifiedChinese, tintColor: tbBlueColor())
+        let language: TBRPLanguage = .English
+        //let language: TBRPLanguage = .SimplifiedChinese
+        //let language: TBRPLanguage = .TraditionalChinese
+        //let language: TBRPLanguage = .Korean
+        //let language: TBRPLanguage = .Japanese
+        
+        let repeatPicker = TBRepeatPicker.initWith(NSLocale.currentLocale(), language: language, tintColor: tbBlueColor())
         repeatPicker.delegate = self
         
         //recurrence = nil

@@ -157,7 +157,7 @@ class TBRPPickerViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewD
             if component == 0 {
                 return "\(row + 1)"
             } else {
-                return unit
+                return unit?.lowercaseString
             }
         } else if pickerStyle == .Week {
             if component == 0 {

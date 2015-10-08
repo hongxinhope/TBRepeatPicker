@@ -38,17 +38,59 @@ enum TBRPWeekPickerDay: Int {
 }
 
 class TBRecurrence: NSObject {
+    /** The frequency of recurrence, must be one of the following cases:
+    * TBRPFrequency.Daily
+    * TBRPFrequency.Weekly
+    * TBRPFrequency.Monthly
+    * TBRPFrequency.Yearly
+    */
     var frequency: TBRPFrequency = .Daily
+    
+    /** The interval between each frequency iteration. For example, when in a daily frequency, an interval of 1 means that event will occur every day, and an interval of 3 means that event will occur every 3 days. The default interval is 1.
+    */
     var interval: Int = 1
     
+    /** The selected weekdays when frequency is weekly. Elements in this array are all integers in a range between 0 to 6, 0 means Sunday, which is the first day of week, and the integers from 1 to 6 respectively mean the days from Monday to Saturday.
+    */
     var selectedWeekdays = [Int]()
     
+    /** A boolean value decides whether the recurrence is constructed by week number or not when frequency is weekly or yearly. For example, we can get a recurrence like "Second Friday" with it.
+    */
     var byWeekNumber = false
+    
+    /** The selected monthdays when frequency is monthly. Elements in this array are all integers in a range between 1 to 31, which respectively mean the days from 1st to 31st of a month.
+    */
     var selectedMonthdays = [Int]()
+    
+    /** The selected months when frequency is yearly. Elements in this array are all integers in a range between 1 to 12, which respectively mean the months from January to December.
+    */
     var selectedMonths = [Int]()
+    
+    /** The week number when the recurrence is constructed by week number, must be one of the following cases:
+    * TBRPWeekPickerNumber.First
+    * TBRPWeekPickerNumber.Second
+    * TBRPWeekPickerNumber.Third
+    * TBRPWeekPickerNumber.Fourth
+    * TBRPWeekPickerNumber.Fifth
+    * TBRPWeekPickerNumber.Last
+    */
     var pickedWeekNumber: TBRPWeekPickerNumber = .First
+    
+    /** The day of week when the recurrence is constructed by week number, must be one of the following cases:
+    * TBRPWeekPickerDay.Sunday
+    * TBRPWeekPickerDay.Monday
+    * TBRPWeekPickerDay.Tuesday
+    * TBRPWeekPickerDay.Wednesday
+    * TBRPWeekPickerDay.Thursday
+    * TBRPWeekPickerDay.Friday
+    * TBRPWeekPickerDay.Saturday
+    * TBRPWeekPickerDay.Day
+    * TBRPWeekPickerDay.Weekday
+    * TBRPWeekPickerDay.WeekendDay
+    */
     var pickedWeekday: TBRPWeekPickerDay = .Sunday
     
+    // MARK: - Initialization
     convenience init(locale: NSLocale) {
         self.init()
         
@@ -177,5 +219,34 @@ class TBRecurrence: NSObject {
         yearlyRecurrence.pickedWeekday = pickedWeekday
         
         return yearlyRecurrence
+    }
+    
+    // MARK: - Helper
+    func isDailyRecurrence() -> Bool {
+        return frequency == .Daily && interval == 1
+    }
+    
+    func isWeeklyRecurrence(locale: NSLocale) -> Bool {
+        let todayIndexInWeek = NSCalendar.dayIndexInWeek(NSDate(), locale: locale)
+        
+        return frequency == .Weekly && selectedWeekdays == [todayIndexInWeek - 1] && interval == 1
+    }
+    
+    func isBiWeeklyRecurrence(locale: NSLocale) -> Bool {
+        let todayIndexInWeek = NSCalendar.dayIndexInWeek(NSDate(), locale: locale)
+        
+        return frequency == .Weekly && selectedWeekdays == [todayIndexInWeek - 1] && interval == 2
+    }
+    
+    func isMonthlyRecurrence(locale: NSLocale) -> Bool {
+        let todayIndexInMonth = NSCalendar.dayIndexInMonth(NSDate(), locale: locale)
+        
+        return frequency == .Monthly && interval == 1 && byWeekNumber == false && selectedMonthdays == [todayIndexInMonth]
+    }
+    
+    func isYearlyRecurrence(locale: NSLocale) -> Bool {
+        let todayMonthIndex = NSCalendar.monthIndexInYear(NSDate(), locale: locale)
+        
+        return frequency == .Yearly && interval == 1 && byWeekNumber == false && selectedMonths == [todayMonthIndex]
     }
 }

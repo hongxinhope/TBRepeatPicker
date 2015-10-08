@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D30E7B081BB829FC00193D7F /* NSCalendar+TBRPAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E7B071BB829FC00193D7F /* NSCalendar+TBRPAddition.swift */; settings = {ASSET_TAGS = (); }; };
 		D30E7B0C1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E7B0B1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift */; settings = {ASSET_TAGS = (); }; };
+		D31BE43E1BC6382300443B51 /* String+TBRPAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31BE43D1BC6382300443B51 /* String+TBRPAddition.swift */; settings = {ASSET_TAGS = (); }; };
 		D3902F8E1BC54EE700316ABA /* TBRecurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3902F8D1BC54EE700316ABA /* TBRecurrence.swift */; settings = {ASSET_TAGS = (); }; };
 		D3902F901BC58D1800316ABA /* Array+TBRPAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3902F8F1BC58D1800316ABA /* Array+TBRPAddition.swift */; settings = {ASSET_TAGS = (); }; };
 		D39B02E11BBBD00F004AF10C /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39B02E01BBBD00F004AF10C /* DemoViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		D30E7B071BB829FC00193D7F /* NSCalendar+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+TBRPAddition.swift"; sourceTree = "<group>"; };
 		D30E7B0B1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollectionType+TBRPAddition.swift"; sourceTree = "<group>"; };
+		D31BE43D1BC6382300443B51 /* String+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+TBRPAddition.swift"; sourceTree = "<group>"; };
 		D3902F8D1BC54EE700316ABA /* TBRecurrence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRecurrence.swift; sourceTree = "<group>"; };
 		D3902F8F1BC58D1800316ABA /* Array+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+TBRPAddition.swift"; sourceTree = "<group>"; };
 		D39B02DD1BBBADC7004AF10C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				D30E7B071BB829FC00193D7F /* NSCalendar+TBRPAddition.swift */,
 				D30E7B0B1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift */,
 				D3902F8F1BC58D1800316ABA /* Array+TBRPAddition.swift */,
+				D31BE43D1BC6382300443B51 /* String+TBRPAddition.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			files = (
 				D3902F8E1BC54EE700316ABA /* TBRecurrence.swift in Sources */,
 				D30E7B081BB829FC00193D7F /* NSCalendar+TBRPAddition.swift in Sources */,
+				D31BE43E1BC6382300443B51 /* String+TBRPAddition.swift in Sources */,
 				D3902F901BC58D1800316ABA /* Array+TBRPAddition.swift in Sources */,
 				D3A7C2081BB27589000605DF /* TBRepeatPicker.swift in Sources */,
 				D3E37DCE1BB4F85C000C8D47 /* TBRPSwitchCell.swift in Sources */,
