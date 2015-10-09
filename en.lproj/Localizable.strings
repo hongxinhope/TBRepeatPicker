@@ -53,7 +53,7 @@
 "RecurrenceString.element.on.monthly" = "on the";
 "RecurrenceString.element.on.yearlyMonths" = "in";
 "RecurrenceString.element.on.yearlyMonths.byWeekNo" = "of";
-"RecurrenceString.element.on.yearly.weekStr" = "on the";
+"RecurrenceString.element.on.yearlyWeekString" = "on the";
 "RecurrenceString.element.and" = "and";
 "RecurrenceString.element.comma" = ",";
 "RecurrenceString.element.day" = "";

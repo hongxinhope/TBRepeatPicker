@@ -21,10 +21,10 @@
 "TBRPHelper.pluralUnits.months" = "개월";
 "TBRPHelper.pluralUnits.years" = "년";
 
-"TBRPHelper.presetRepeat.never" = "Never";
+"TBRPHelper.presetRepeat.never" = "안 함";
 "TBRPHelper.presetRepeat.everyDay" = "매일";
 "TBRPHelper.presetRepeat.everyWeek" = "매주";
-"TBRPHelper.presetRepeat.everyTwoWeeks" = "Every 2 Weeks";
+"TBRPHelper.presetRepeat.everyTwoWeeks" = "2주마다";
 "TBRPHelper.presetRepeat.everyMonth" = "매월";
 "TBRPHelper.presetRepeat.everyYear" = "매년";
 
@@ -33,29 +33,29 @@
 "TBRPHelper.numbersInWeekPicker.third" = "세 번째";
 "TBRPHelper.numbersInWeekPicker.fourth" = "네 번째";
 "TBRPHelper.numbersInWeekPicker.fifth" = "다섯 번째";
-"TBRPHelper.numbersInWeekPicker.last" = "last";
+"TBRPHelper.numbersInWeekPicker.last" = "최근";
 
-"TBRPHelper.daysInWeekPicker.day" = "day";
+"TBRPHelper.daysInWeekPicker.day" = "요일";
 "TBRPHelper.daysInWeekPicker.weekday" = "평일";
 "TBRPHelper.daysInWeekPicker.weekendDay" = "주말";
 
 "TBRPPresetRepeatController.navigation.title" = "반복";
-"TBRPPresetRepeatController.textLabel.custom" = "Custom";
+"TBRPPresetRepeatController.textLabel.custom" = "사용자 설정";
 
-"TBRPCustomRepeatController.textLabel.frequency" = "Frequency";
-"TBRPCustomRepeatController.textLabel.interval" = "Every";
-"TBRPCustomRepeatController.textLabel.date" = "Each";
-"TBRPCustomRepeatController.weekCell.onThe" = "On the...";
-"TBRPCustomRepeatController.weekCell.daysOfWeek" = "Days of Week";
+"TBRPCustomRepeatController.textLabel.frequency" = "반복 주기";
+"TBRPCustomRepeatController.textLabel.interval" = "반복";
+"TBRPCustomRepeatController.textLabel.date" = "일자 지정";
+"TBRPCustomRepeatController.weekCell.onThe" = "조건 지정...";
+"TBRPCustomRepeatController.weekCell.daysOfWeek" = "요일";
 
-"RecurrenceString.presetRepeat" = "Event will occur every %@.";
-"RecurrenceString.element.on.weekly" = "on";
-"RecurrenceString.element.on.monthly" = "on the";
-"RecurrenceString.element.on.yearlyMonths" = "in";
-"RecurrenceString.element.on.yearlyMonths.byWeekNo" = "of";
-"RecurrenceString.element.on.yearly.weekStr" = "on the";
-"RecurrenceString.element.and" = "and";
+"RecurrenceString.presetRepeat" = "%@마다 이벤트 반복";
+"RecurrenceString.element.on.weekly" = "에";
+"RecurrenceString.element.on.monthly" = "에";
+"RecurrenceString.element.on.yearlyMonths" = "에";
+"RecurrenceString.element.on.yearlyMonths.byWeekNo" = "에";
+"RecurrenceString.element.on.yearlyWeekString" = "의";
+"RecurrenceString.element.and" = "및";
 "RecurrenceString.element.comma" = ",";
-"RecurrenceString.element.day" = "%d日";
-"RecurrenceString.specifiedDaysOrMonths" = "Event will occur every %@ %@.";
-"RecurrenceString.yearlyByWeekNoString" = "Event will occur every %@ %@ %@.";
+"RecurrenceString.element.day" = "%d일";
+"RecurrenceString.specifiedDaysOrMonths" = "%@마다 %@ 이벤트 반복";
+"RecurrenceString.yearlyByWeekNoString" = "%@마다 %@ %@ 이벤트 반복";

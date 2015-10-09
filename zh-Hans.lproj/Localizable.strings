@@ -53,7 +53,7 @@
 "RecurrenceString.element.on.monthly" = "于";
 "RecurrenceString.element.on.yearlyMonths" = "于";
 "RecurrenceString.element.on.yearlyMonths.byWeekNo" = "于";
-"RecurrenceString.element.on.yearly.weekStr" = "的";
+"RecurrenceString.element.on.yearlyWeekString" = "的";
 "RecurrenceString.element.and" = "和";
 "RecurrenceString.element.comma" = "、";
 "RecurrenceString.element.day" = "%d日";

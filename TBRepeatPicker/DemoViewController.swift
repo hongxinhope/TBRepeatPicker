@@ -8,23 +8,45 @@
 
 import UIKit
 
-class DemoViewController: UIViewController, TBRepeatPickerDelegate {
+let languageStrings = ["English", "SimplifiedChinese", "TraditionalChinese", "Korean", "Japanese"]
+let languages: [TBRPLanguage] = [.English, .SimplifiedChinese, .TraditionalChinese, .Korean, .Japanese]
+
+class DemoViewController: UIViewController, TBRepeatPickerDelegate, SwitchLanguageViewControllerDelegate {
     var recurrence: TBRecurrence?
+    var language: TBRPLanguage = .English
     
     @IBOutlet weak var resultTextView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        resultTextView.userInteractionEnabled = false
+        updateLanguageTitle()
+        updateResultTextView()
+    }
+    
+    private func updateLanguageTitle() {
+        let languageIndex = languages.indexOf(language)
+        let languageTitle = languageStrings[languageIndex!]
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: languageTitle, style: .Plain, target: self, action: "switchLanguage")
+    }
+    
+    func switchLanguage() {
+        let switchLanguageViewController = SwitchLanguageViewController.init(style: .Grouped)
+        let navigationViewController = UINavigationController(rootViewController: switchLanguageViewController)
+        switchLanguageViewController.language = language
+        switchLanguageViewController.delegate = self
+        
+        presentViewController(navigationViewController, animated: true, completion: nil)
+    }
+    
+    func donePickingLanguage(language: TBRPLanguage) {
+        self.language = language
+        updateLanguageTitle()
+        updateResultTextView()
     }
     
     @IBAction func startPicking(sender: UIButton) {
-        let language: TBRPLanguage = .English
-        //let language: TBRPLanguage = .SimplifiedChinese
-        //let language: TBRPLanguage = .TraditionalChinese
-        //let language: TBRPLanguage = .Korean
-        //let language: TBRPLanguage = .Japanese
-        
         let repeatPicker = TBRepeatPicker.initWith(NSLocale.currentLocale(), language: language, tintColor: tbBlueColor())
         repeatPicker.delegate = self
         
@@ -61,10 +83,14 @@ class DemoViewController: UIViewController, TBRepeatPickerDelegate {
     func didPickRecurrence(recurrence: TBRecurrence?) {
         self.recurrence = recurrence
         
+        updateResultTextView()
+    }
+    
+    private func updateResultTextView() {
         if let _ = recurrence {
-            resultTextView.text = TBRPHelper.recurrenceString(recurrence!, language: .SimplifiedChinese, locale: NSLocale.currentLocale())
+            resultTextView.text = TBRPHelper.recurrenceString(recurrence!, language: language, locale: NSLocale.currentLocale())
         } else {
-            resultTextView.text = "永不重复"
+            resultTextView.text = "Never Repeat"
         }
     }
     

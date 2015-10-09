@@ -681,7 +681,9 @@ class TBRPCustomRepeatController: UITableViewController, TBRPPickerCellDelegate,
         if pickStyle == .Frequency {
             frequency = TBRPFrequency(rawValue: row)
         } else if pickStyle == .Interval {
-            interval = row + 1
+            if component == 0 {
+                interval = row + 1
+            }
         } else if pickStyle == .Week {
             if hasRepeatPicker() {
                 tableView.beginUpdates()

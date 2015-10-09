@@ -21,6 +21,8 @@
 		D3A7C20A1BB2778D000605DF /* TBRPPresetRepeatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */; settings = {ASSET_TAGS = (); }; };
 		D3A7C20C1BB277B8000605DF /* TBRPCustomRepeatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */; settings = {ASSET_TAGS = (); }; };
 		D3B8CBFC1BB945F70020938B /* TBRPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		D3BAE1721BC7AB6800CC2467 /* SwitchLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1711BC7AB6800CC2467 /* SwitchLanguageViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D3BAE1741BC7D9E900CC2467 /* UIColor+TBRPAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1731BC7D9E900CC2467 /* UIColor+TBRPAddition.swift */; settings = {ASSET_TAGS = (); }; };
 		D3DC1F7A1BBB8EDC008A8AB4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3DC1F7C1BBB8EDC008A8AB4 /* Localizable.strings */; };
 		D3DC1F7F1BBB925F008A8AB4 /* TBRPInternationalControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DC1F7E1BBB925F008A8AB4 /* TBRPInternationalControl.swift */; settings = {ASSET_TAGS = (); }; };
 		D3E37D991BB39127000C8D47 /* TBRPPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E37D981BB39127000C8D47 /* TBRPPickerViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -53,6 +55,8 @@
 		D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPPresetRepeatController.swift; sourceTree = "<group>"; };
 		D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPCustomRepeatController.swift; sourceTree = "<group>"; };
 		D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPHelper.swift; sourceTree = "<group>"; };
+		D3BAE1711BC7AB6800CC2467 /* SwitchLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchLanguageViewController.swift; sourceTree = "<group>"; };
+		D3BAE1731BC7D9E900CC2467 /* UIColor+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TBRPAddition.swift"; sourceTree = "<group>"; };
 		D3DC1F7B1BBB8EDC008A8AB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3DC1F7D1BBB8EF1008A8AB4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D3DC1F7E1BBB925F008A8AB4 /* TBRPInternationalControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPInternationalControl.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 				D30E7B0B1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift */,
 				D3902F8F1BC58D1800316ABA /* Array+TBRPAddition.swift */,
 				D31BE43D1BC6382300443B51 /* String+TBRPAddition.swift */,
+				D3BAE1731BC7D9E900CC2467 /* UIColor+TBRPAddition.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 			children = (
 				D3A7C1EE1BB26EAD000605DF /* AppDelegate.swift */,
 				D39B02E01BBBD00F004AF10C /* DemoViewController.swift */,
+				D3BAE1711BC7AB6800CC2467 /* SwitchLanguageViewController.swift */,
 				D3A7C1F21BB26EAD000605DF /* Main.storyboard */,
 				D3A7C1F51BB26EAD000605DF /* Assets.xcassets */,
 				D3A7C1F71BB26EAD000605DF /* LaunchScreen.storyboard */,
@@ -251,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3BAE1721BC7AB6800CC2467 /* SwitchLanguageViewController.swift in Sources */,
 				D3902F8E1BC54EE700316ABA /* TBRecurrence.swift in Sources */,
 				D30E7B081BB829FC00193D7F /* NSCalendar+TBRPAddition.swift in Sources */,
 				D31BE43E1BC6382300443B51 /* String+TBRPAddition.swift in Sources */,
@@ -263,6 +270,7 @@
 				D3DC1F7F1BBB925F008A8AB4 /* TBRPInternationalControl.swift in Sources */,
 				D3E37DD21BB507C6000C8D47 /* TBRPCollectionViewCell.swift in Sources */,
 				D30E7B0C1BB83EBF00193D7F /* RangeReplaceableCollectionType+TBRPAddition.swift in Sources */,
+				D3BAE1741BC7D9E900CC2467 /* UIColor+TBRPAddition.swift in Sources */,
 				D39B02E11BBBD00F004AF10C /* DemoViewController.swift in Sources */,
 				D3E37DD41BB5111E000C8D47 /* TBRPCollectionItem.swift in Sources */,
 				D3FA9E9A1BBA63AF0045F644 /* TBRPCustomRepeatCell.swift in Sources */,

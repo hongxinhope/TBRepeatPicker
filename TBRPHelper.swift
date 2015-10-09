@@ -25,11 +25,17 @@ class TBRPHelper {
     }
     
     class func separatorColor() -> CGColorRef {
-        return UIColor.init(red: 188.0 / 255.0, green: 186.0 / 255.0, blue: 193.0 / 255.0, alpha: 1.0).CGColor
+        let defaultSeparatorColor = UITableView().separatorColor
+        let red = defaultSeparatorColor?.rgbComponents.red
+        let green = defaultSeparatorColor?.rgbComponents.green
+        let blue = defaultSeparatorColor?.rgbComponents.blue
+        let bit: CGFloat = 255.0
+        
+        return UIColor.init(red: red! / bit, green: green! / bit, blue: blue! / bit, alpha: 0.7).CGColor
     }
     
     class func detailTextColor() -> UIColor {
-        return UIColor.init(white: 128.0 / 255.0, alpha: 1.0)
+        return UIColor.grayColor()
     }
     
     class func weekdays(language: TBRPLanguage) -> [String] {
@@ -118,11 +124,20 @@ class TBRPHelper {
         let internationalControl = TBRPInternationalControl(language: language)
         
         var unitString: String?
-        if recurrence.interval == 1 {
-            unitString = units(language)[recurrence.frequency.rawValue]
-        } else if recurrence.interval > 1 {
-            unitString = " " + "\(recurrence.interval)" + " " + pluralUnits(language)[recurrence.frequency.rawValue]
+        if language == .Korean || language == .Japanese {
+            unitString = "\(recurrence.interval)" + pluralUnits(language)[recurrence.frequency.rawValue]
+        } else {
+            if recurrence.interval == 1 {
+                unitString = units(language)[recurrence.frequency.rawValue]
+            } else if recurrence.interval > 1 {
+                if language == .English {
+                    unitString = "\(recurrence.interval)" + " " + pluralUnits(language)[recurrence.frequency.rawValue]
+                } else {
+                    unitString = "\(recurrence.interval)" + pluralUnits(language)[recurrence.frequency.rawValue]
+                }
+            }
         }
+        
         unitString = unitString?.lowercaseString
         
         if unitString == nil {
@@ -136,7 +151,13 @@ class TBRPHelper {
             if recurrence.selectedWeekdays == [todayIndexInWeek - 1] {
                 return String(format: internationalControl.localized("RecurrenceString.presetRepeat", comment: "Event will occur every %@."), unitString!)
             } else {
-                var weekdaysString = internationalControl.localized("RecurrenceString.element.on.weekly", comment: "on") + " " + weekdays(language)[recurrence.selectedWeekdays.first!]
+                var weekdaysString: String
+                if language == .Korean {
+                    weekdaysString = weekdays(language)[recurrence.selectedWeekdays.first!]
+                } else {
+                    weekdaysString = internationalControl.localized("RecurrenceString.element.on.weekly", comment: "on") + " " + weekdays(language)[recurrence.selectedWeekdays.first!]
+                }
+                
                 for i in 1..<recurrence.selectedWeekdays.count {
                     var prefixStr: String?
                     if i == recurrence.selectedWeekdays.count - 1 {
@@ -147,8 +168,13 @@ class TBRPHelper {
                     
                     weekdaysString += prefixStr! + " " + weekdays(language)[recurrence.selectedWeekdays[i]]
                 }
-                if language != .English {
+                
+                if language != .English && language != .Korean {
                     weekdaysString.removeSubstring(" ")
+                }
+                
+                if language == .Korean {
+                    weekdaysString += internationalControl.localized("RecurrenceString.element.on.weekly", comment: "on")
                 }
                 
                 return String(format: internationalControl.localized("RecurrenceString.specifiedDaysOrMonths", comment: "Event will occur every %@ %@"), unitString!, weekdaysString)
@@ -156,8 +182,15 @@ class TBRPHelper {
             
         } else if recurrence.frequency == .Monthly {
             if recurrence.byWeekNumber == true {
-                var weekNumberString = internationalControl.localized("RecurrenceString.element.on.monthly", comment: "on the ") + " " + "\(numbersInWeekPicker(language)[recurrence.pickedWeekNumber.rawValue])" + " " + "\(daysInWeekPicker(language)[recurrence.pickedWeekday.rawValue])"
-                if language != .English {
+                var weekNumberString: String
+                
+                if language == .Korean {
+                    weekNumberString = "\(numbersInWeekPicker(language)[recurrence.pickedWeekNumber.rawValue])" + " " + "\(daysInWeekPicker(language)[recurrence.pickedWeekday.rawValue])" + internationalControl.localized("RecurrenceString.element.on.monthly", comment: "on the")
+                } else {
+                    weekNumberString = internationalControl.localized("RecurrenceString.element.on.monthly", comment: "on the") + " " + "\(numbersInWeekPicker(language)[recurrence.pickedWeekNumber.rawValue])" + " " + "\(daysInWeekPicker(language)[recurrence.pickedWeekday.rawValue])"
+                }
+                
+                if language != .English && language != .Korean {
                     weekNumberString.removeSubstring(" ")
                 }
                 
@@ -170,6 +203,8 @@ class TBRPHelper {
                     var monthdaysString: String
                     if language == .English {
                         monthdaysString = internationalControl.localized("RecurrenceString.element.on.monthly", comment: "on the") + " " + englishDayString(recurrence.selectedMonthdays.first!)
+                    } else if language == .Korean {
+                        monthdaysString = String(format: internationalControl.localized("RecurrenceString.element.day", comment: ""), recurrence.selectedMonthdays.first!)
                     } else {
                         monthdaysString = internationalControl.localized("RecurrenceString.element.on.monthly", comment: "on the") + String(format: internationalControl.localized("RecurrenceString.element.day", comment: ""), recurrence.selectedMonthdays.first!)
                     }
@@ -185,12 +220,14 @@ class TBRPHelper {
                         if language == .English {
                             monthdaysString += prefixStr! + " " + englishDayString(recurrence.selectedMonthdays[i])
                         } else {
-                            monthdaysString += prefixStr! + String(format: internationalControl.localized("RecurrenceString.element.day", comment: ""), recurrence.selectedMonthdays[i])
+                            monthdaysString += prefixStr! + " " + String(format: internationalControl.localized("RecurrenceString.element.day", comment: ""), recurrence.selectedMonthdays[i])
                         }
                     }
                     
-                    if language != .English {
+                    if language != .English && language != .Korean {
                         monthdaysString.removeSubstring(" ")
+                    } else if language == .Korean {
+                        monthdaysString += internationalControl.localized("RecurrenceString.element.on.monthly", comment: "")
                     }
                     
                     return String(format: internationalControl.localized("RecurrenceString.specifiedDaysOrMonths", comment: "Event will occur every %@ %@"), unitString!, monthdaysString)
@@ -198,11 +235,13 @@ class TBRPHelper {
             }
         } else if recurrence.frequency == .Yearly {
             if recurrence.byWeekNumber == true {
-                var pickedWeekdayString = internationalControl.localized("RecurrenceString.element.on.yearly.weekStr", comment: "on the") + " " + "\(numbersInWeekPicker(language)[recurrence.pickedWeekNumber.rawValue])" + " " + "\(daysInWeekPicker(language)[recurrence.pickedWeekday.rawValue])"
+                var pickedWeekdayString = internationalControl.localized("RecurrenceString.element.on.yearlyWeekString", comment: "on the") + " " + "\(numbersInWeekPicker(language)[recurrence.pickedWeekNumber.rawValue])" + " " + "\(daysInWeekPicker(language)[recurrence.pickedWeekday.rawValue])"
                 
                 var monthsString: String
                 if language == .English {
                     monthsString = internationalControl.localized("RecurrenceString.element.on.yearlyMonths.byWeekNo", comment: "of") + " " + completeYearMonths(language)[recurrence.selectedMonths.first! - 1]
+                } else if language == .Korean {
+                    monthsString = yearMonths(language)[recurrence.selectedMonths.first! - 1]
                 } else {
                     monthsString = internationalControl.localized("RecurrenceString.element.on.yearlyMonths.byWeekNo", comment: "of") + yearMonths(language)[recurrence.selectedMonths.first! - 1]
                 }
@@ -218,13 +257,17 @@ class TBRPHelper {
                     if language == .English {
                         monthsString += prefixStr! + " " + completeYearMonths(language)[recurrence.selectedMonths[i] - 1]
                     } else {
-                        monthsString += prefixStr! + yearMonths(language)[recurrence.selectedMonths[i] - 1]
+                        monthsString += prefixStr! + " " + yearMonths(language)[recurrence.selectedMonths[i] - 1]
                     }
                 }
                 
-                if language != .English {
+                if language != .English && language != .Korean {
                     pickedWeekdayString.removeSubstring(" ")
                     monthsString.removeSubstring(" ")
+                }
+                
+                if language == .Korean {
+                    pickedWeekdayString += internationalControl.localized("RecurrenceString.element.on.yearlyMonths.byWeekNo", comment: "of")
                 }
                 
                 if language == .English {
@@ -241,6 +284,8 @@ class TBRPHelper {
                     var monthsString: String
                     if language == .English {
                         monthsString = internationalControl.localized("RecurrenceString.element.on.yearlyMonths", comment: "in") + " " + completeYearMonths(language)[recurrence.selectedMonths.first! - 1]
+                    } else if language == .Korean {
+                        monthsString = completeYearMonths(language)[recurrence.selectedMonths.first! - 1]
                     } else {
                         monthsString = internationalControl.localized("RecurrenceString.element.on.yearlyMonths", comment: "in") + yearMonths(language)[recurrence.selectedMonths.first! - 1]
                     }
@@ -256,12 +301,16 @@ class TBRPHelper {
                         if language == .English {
                             monthsString += prefixStr! + " " + completeYearMonths(language)[recurrence.selectedMonths[i] - 1]
                         } else {
-                            monthsString += prefixStr! + yearMonths(language)[recurrence.selectedMonths[i] - 1]
+                            monthsString += prefixStr! + " " + yearMonths(language)[recurrence.selectedMonths[i] - 1]
                         }
                     }
                     
-                    if language != .English {
+                    if language != .English && language != .Korean {
                         monthsString.removeSubstring(" ")
+                    }
+                    
+                    if language == .Korean {
+                        monthsString += internationalControl.localized("RecurrenceString.element.on.yearlyMonths", comment: "in")
                     }
                     
                     return String(format: internationalControl.localized("RecurrenceString.specifiedDaysOrMonths", comment: "Event will occur every %@ %@"), unitString!, monthsString)
