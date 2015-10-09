@@ -23,7 +23,7 @@
 		D3B8CBFC1BB945F70020938B /* TBRPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		D3BAE1721BC7AB6800CC2467 /* SwitchLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1711BC7AB6800CC2467 /* SwitchLanguageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D3BAE1741BC7D9E900CC2467 /* UIColor+TBRPAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAE1731BC7D9E900CC2467 /* UIColor+TBRPAddition.swift */; settings = {ASSET_TAGS = (); }; };
-		D3DC1F7A1BBB8EDC008A8AB4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3DC1F7C1BBB8EDC008A8AB4 /* Localizable.strings */; };
+		D3DC1F7A1BBB8EDC008A8AB4 /* TBRPLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3DC1F7C1BBB8EDC008A8AB4 /* TBRPLocalizable.strings */; };
 		D3DC1F7F1BBB925F008A8AB4 /* TBRPInternationalControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DC1F7E1BBB925F008A8AB4 /* TBRPInternationalControl.swift */; settings = {ASSET_TAGS = (); }; };
 		D3E37D991BB39127000C8D47 /* TBRPPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E37D981BB39127000C8D47 /* TBRPPickerViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D3E37DCA1BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3E37DC91BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -41,9 +41,9 @@
 		D31BE43D1BC6382300443B51 /* String+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+TBRPAddition.swift"; sourceTree = "<group>"; };
 		D3902F8D1BC54EE700316ABA /* TBRecurrence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRecurrence.swift; sourceTree = "<group>"; };
 		D3902F8F1BC58D1800316ABA /* Array+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+TBRPAddition.swift"; sourceTree = "<group>"; };
-		D39B02DD1BBBADC7004AF10C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		D39B02DE1BBBADD2004AF10C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D39B02DF1BBBADEA004AF10C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D39B02DD1BBBADC7004AF10C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TBRPLocalizable.strings"; sourceTree = "<group>"; };
+		D39B02DE1BBBADD2004AF10C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/TBRPLocalizable.strings; sourceTree = "<group>"; };
+		D39B02DF1BBBADEA004AF10C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/TBRPLocalizable.strings; sourceTree = "<group>"; };
 		D39B02E01BBBD00F004AF10C /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		D3A7C1EB1BB26EAD000605DF /* TBRepeatPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBRepeatPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A7C1EE1BB26EAD000605DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,8 +57,8 @@
 		D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPHelper.swift; sourceTree = "<group>"; };
 		D3BAE1711BC7AB6800CC2467 /* SwitchLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchLanguageViewController.swift; sourceTree = "<group>"; };
 		D3BAE1731BC7D9E900CC2467 /* UIColor+TBRPAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+TBRPAddition.swift"; sourceTree = "<group>"; };
-		D3DC1F7B1BBB8EDC008A8AB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D3DC1F7D1BBB8EF1008A8AB4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D3DC1F7B1BBB8EDC008A8AB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TBRPLocalizable.strings; sourceTree = "<group>"; };
+		D3DC1F7D1BBB8EF1008A8AB4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TBRPLocalizable.strings"; sourceTree = "<group>"; };
 		D3DC1F7E1BBB925F008A8AB4 /* TBRPInternationalControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPInternationalControl.swift; sourceTree = "<group>"; };
 		D3E37D981BB39127000C8D47 /* TBRPPickerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBRPPickerViewCell.swift; sourceTree = "<group>"; };
 		D3E37DC91BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TBRP-Checkmark@2x.png"; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		D3DC1F761BBB8E41008A8AB4 /* Localizations */ = {
 			isa = PBXGroup;
 			children = (
-				D3DC1F7C1BBB8EDC008A8AB4 /* Localizable.strings */,
+				D3DC1F7C1BBB8EDC008A8AB4 /* TBRPLocalizable.strings */,
 			);
 			name = Localizations;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3E37DCA1BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png in Resources */,
-				D3DC1F7A1BBB8EDC008A8AB4 /* Localizable.strings in Resources */,
+				D3DC1F7A1BBB8EDC008A8AB4 /* TBRPLocalizable.strings in Resources */,
 				D3A7C1F91BB26EAD000605DF /* LaunchScreen.storyboard in Resources */,
 				D3A7C1F61BB26EAD000605DF /* Assets.xcassets in Resources */,
 				D3A7C1F41BB26EAD000605DF /* Main.storyboard in Resources */,
@@ -299,7 +299,7 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		D3DC1F7C1BBB8EDC008A8AB4 /* Localizable.strings */ = {
+		D3DC1F7C1BBB8EDC008A8AB4 /* TBRPLocalizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D3DC1F7B1BBB8EDC008A8AB4 /* en */,
@@ -308,7 +308,7 @@
 				D39B02DE1BBBADD2004AF10C /* ko */,
 				D39B02DF1BBBADEA004AF10C /* ja */,
 			);
-			name = Localizable.strings;
+			name = TBRPLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

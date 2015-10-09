@@ -21,7 +21,7 @@ class TBRPInternationalControl: NSObject {
         let path = NSBundle.mainBundle().pathForResource(language.rawValue, ofType: "lproj")
         if let _ = path {
             let bundle = NSBundle(path: path!)
-            return bundle!.localizedStringForKey(key, value: nil, table: "Localizable")
+            return bundle!.localizedStringForKey(key, value: nil, table: "TBRPLocalizable")
         } else {
             return nil
         }
