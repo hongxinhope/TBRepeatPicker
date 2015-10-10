@@ -132,8 +132,8 @@
 				D3E37DD01BB50743000C8D47 /* CustomView */,
 				D3902F8D1BC54EE700316ABA /* TBRecurrence.swift */,
 				D3A7C2071BB27589000605DF /* TBRepeatPicker.swift */,
-				D3DC1F7E1BBB925F008A8AB4 /* TBRPInternationalControl.swift */,
 				D3B8CBFB1BB945F70020938B /* TBRPHelper.swift */,
+				D3DC1F7E1BBB925F008A8AB4 /* TBRPInternationalControl.swift */,
 				D3A7C2091BB2778D000605DF /* TBRPPresetRepeatController.swift */,
 				D3A7C20B1BB277B8000605DF /* TBRPCustomRepeatController.swift */,
 			);
@@ -147,7 +147,7 @@
 				D3DC1F771BBB8E5E008A8AB4 /* Icons */,
 				D3DC1F761BBB8E41008A8AB4 /* Localizations */,
 			);
-			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		D3DC1F761BBB8E41008A8AB4 /* Localizations */ = {
@@ -155,7 +155,7 @@
 			children = (
 				D3DC1F7C1BBB8EDC008A8AB4 /* TBRPLocalizable.strings */,
 			);
-			name = Localizations;
+			path = Localizations;
 			sourceTree = "<group>";
 		};
 		D3DC1F771BBB8E5E008A8AB4 /* Icons */ = {
@@ -164,7 +164,7 @@
 				D3E37DC91BB4EAAB000C8D47 /* TBRP-Checkmark@2x.png */,
 				D3E37DCB1BB4EB65000C8D47 /* TBRP-Checkmark@3x.png */,
 			);
-			name = Icons;
+			path = Icons;
 			sourceTree = "<group>";
 		};
 		D3E37DD01BB50743000C8D47 /* CustomView */ = {

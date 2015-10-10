@@ -10,7 +10,7 @@ import UIKit
 
 private let TBRPPresetRepeatCellID = "TBRPPresetRepeatCell"
 
-protocol TBRepeatPickerDelegate {
+@objc protocol TBRepeatPickerDelegate {
     func didPickRecurrence(recurrence: TBRecurrence?)
 }
 
@@ -29,20 +29,10 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
     var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     
     // MARK: - Private properties
-    private var presetRepeat = [String]()
+    private var presetRepeats = [String]()
     private var internationalControl: TBRPInternationalControl?
     
     // MARK: - View life cycle
-    class func initWith(locale: NSLocale, language: TBRPLanguage, tintColor: UIColor) -> TBRPPresetRepeatController {
-        let presetRepeatController = TBRPPresetRepeatController.init(style: .Grouped)
-        
-        presetRepeatController.locale = locale
-        presetRepeatController.language = language
-        presetRepeatController.tintColor = tintColor
-        
-        return presetRepeatController
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +46,7 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
         navigationController?.navigationBar.tintColor = tintColor
         tableView.tintColor = tintColor
         
-        presetRepeat = TBRPHelper.presetRepeat(language)
+        presetRepeats = TBRPHelper.presetRepeats(language)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -158,6 +148,13 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
         return nil
     }
     
+    override func tableView(tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        if view.isKindOfClass(UITableViewHeaderFooterView) {
+            let tableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+            tableViewHeaderFooterView.textLabel?.font = UIFont.systemFontOfSize(CGFloat(13.0))
+        }
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier(TBRPPresetRepeatCellID)
         if cell == nil {
@@ -169,7 +166,7 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
             cell?.textLabel?.text = internationalControl?.localized("TBRPPresetRepeatController.textLabel.custom", comment: "Custom")
         } else {
             cell?.accessoryType = .None
-            cell?.textLabel?.text = presetRepeat[indexPath.row]
+            cell?.textLabel?.text = presetRepeats[indexPath.row]
         }
         
         cell?.imageView?.image = UIImage(named: "TBRP-Checkmark")?.imageWithRenderingMode(.AlwaysTemplate)

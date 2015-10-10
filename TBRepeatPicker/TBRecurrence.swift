@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum TBRPFrequency: Int {
+@objc enum TBRPFrequency: Int {
     case Daily = 0
     case Weekly = 1
     case Monthly = 2
     case Yearly = 3
 }
 
-enum TBRPWeekPickerNumber: Int {
+@objc enum TBRPWeekPickerNumber: Int {
     case First = 0
     case Second = 1
     case Third = 2
@@ -24,7 +24,7 @@ enum TBRPWeekPickerNumber: Int {
     case Last = 5
 }
 
-enum TBRPWeekPickerDay: Int {
+@objc enum TBRPWeekPickerDay: Int {
     case Sunday = 0
     case Monday = 1
     case Tuesday = 2
@@ -52,7 +52,11 @@ class TBRecurrence: NSObject {
     
     /** The selected weekdays when frequency is weekly. Elements in this array are all integers in a range between 0 to 6, 0 means Sunday, which is the first day of week, and the integers from 1 to 6 respectively mean the days from Monday to Saturday.
     */
-    var selectedWeekdays = [Int]()
+    var selectedWeekdays = [Int]() {
+        didSet {
+            selectedWeekdays = selectedWeekdays.sort { $0 < $1 }
+        }
+    }
     
     /** A boolean value decides whether the recurrence is constructed by week number or not when frequency is weekly or yearly. For example, we can get a recurrence like "Second Friday" with it.
     */
@@ -60,11 +64,19 @@ class TBRecurrence: NSObject {
     
     /** The selected monthdays when frequency is monthly. Elements in this array are all integers in a range between 1 to 31, which respectively mean the days from 1st to 31st of a month.
     */
-    var selectedMonthdays = [Int]()
+    var selectedMonthdays = [Int]() {
+        didSet {
+            selectedMonthdays = selectedMonthdays.sort { $0 < $1 }
+        }
+    }
     
     /** The selected months when frequency is yearly. Elements in this array are all integers in a range between 1 to 12, which respectively mean the months from January to December.
     */
-    var selectedMonths = [Int]()
+    var selectedMonths = [Int]() {
+        didSet {
+            selectedMonths = selectedMonths.sort { $0 < $1 }
+        }
+    }
     
     /** The week number when the recurrence is constructed by week number, must be one of the following cases:
     * TBRPWeekPickerNumber.First

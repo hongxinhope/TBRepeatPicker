@@ -39,7 +39,7 @@ class TBRPHelper {
     }
     
     class func weekdays(language: TBRPLanguage) -> [String] {
-        let languageLocale = NSLocale(localeIdentifier: language.rawValue)
+        let languageLocale = NSLocale(localeIdentifier: TBRPInternationalControl.languageKey(language))
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = languageLocale
@@ -47,7 +47,7 @@ class TBRPHelper {
     }
     
     class func yearMonths(language: TBRPLanguage) -> [String] {
-        let languageLocale = NSLocale(localeIdentifier: language.rawValue)
+        let languageLocale = NSLocale(localeIdentifier: TBRPInternationalControl.languageKey(language))
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = languageLocale
@@ -55,7 +55,7 @@ class TBRPHelper {
     }
     
     class func completeYearMonths(language: TBRPLanguage) -> [String] {
-        let languageLocale = NSLocale(localeIdentifier: language.rawValue)
+        let languageLocale = NSLocale(localeIdentifier: TBRPInternationalControl.languageKey(language))
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = languageLocale
@@ -100,7 +100,7 @@ class TBRPHelper {
         return [internationalControl.localized("TBRPHelper.pluralUnits.days", comment: "days"), internationalControl.localized("TBRPHelper.pluralUnits.weeks", comment: "weeks"), internationalControl.localized("TBRPHelper.pluralUnits.months", comment: "months"), internationalControl.localized("TBRPHelper.pluralUnits.years", comment: "years")]
     }
     
-    class func presetRepeat(language: TBRPLanguage) -> [String] {
+    class func presetRepeats(language: TBRPLanguage) -> [String] {
         let internationalControl = TBRPInternationalControl(language: language)
         
         return [internationalControl.localized("TBRPHelper.presetRepeat.never", comment: "Never"), internationalControl.localized("TBRPHelper.presetRepeat.everyDay", comment: "Every Day"), internationalControl.localized("TBRPHelper.presetRepeat.everyWeek", comment: "Every Week"), internationalControl.localized("TBRPHelper.presetRepeat.everyTwoWeeks", comment: "Every 2 Weeks"), internationalControl.localized("TBRPHelper.presetRepeat.everyMonth", comment: "Every Month"), internationalControl.localized("TBRPHelper.presetRepeat.everyYear", comment: "Every Year")]
@@ -321,4 +321,5 @@ class TBRPHelper {
             return nil
         }
     }
+    
 }

@@ -344,27 +344,6 @@ class TBRPCustomRepeatController: UITableViewController, TBRPPickerCellDelegate,
             yearlyWeekCell.updateBottomSeparatorWithLeftX(0)
         }
     }
-    
-    private func sortSelectedWeekdays() {
-        if selectedWeekdays.count < 2 {
-            return
-        }
-        selectedWeekdays = selectedWeekdays.sort { $0 < $1 }
-    }
-    
-    private func sortSelectedMonthdays() {
-        if selectedMonthdays.count < 2 {
-            return
-        }
-        selectedMonthdays = selectedMonthdays.sort { $0 < $1 }
-    }
-    
-    private func sortSelectedMonths() {
-        if selectedMonths.count < 2 {
-            return
-        }
-        selectedMonths = selectedMonths.sort { $0 < $1 }
-    }
 
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -407,6 +386,13 @@ class TBRPCustomRepeatController: UITableViewController, TBRPPickerCellDelegate,
             return footerTitle()
         }
         return nil
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        if view.isKindOfClass(UITableViewHeaderFooterView) {
+            let tableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+            tableViewHeaderFooterView.textLabel?.font = UIFont.systemFontOfSize(CGFloat(13.0))
+        }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -652,7 +638,6 @@ class TBRPCustomRepeatController: UITableViewController, TBRPPickerCellDelegate,
                         selectedWeekdays.append(day)
                     }
                     
-                    sortSelectedWeekdays()
                     updateFooterTitle()
                 } else if frequency == .Monthly {
                     let dateCellIndexPath = NSIndexPath(forRow: 0, inSection: 1)
@@ -726,7 +711,6 @@ class TBRPCustomRepeatController: UITableViewController, TBRPPickerCellDelegate,
         
         selectedMonthdays = days
         
-        sortSelectedMonthdays()
         updateFooterTitle()
     }
     
@@ -741,7 +725,6 @@ class TBRPCustomRepeatController: UITableViewController, TBRPPickerCellDelegate,
         
         selectedMonths = months
         
-        sortSelectedMonths()
         updateFooterTitle()
     }
 }

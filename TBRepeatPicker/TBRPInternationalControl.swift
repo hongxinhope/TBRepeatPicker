@@ -18,7 +18,7 @@ class TBRPInternationalControl: NSObject {
     }
     
     private func localizedForKey(key: String!) -> String? {
-        let path = NSBundle.mainBundle().pathForResource(language.rawValue, ofType: "lproj")
+        let path = NSBundle.mainBundle().pathForResource(TBRPInternationalControl.languageKey(language), ofType: "lproj")
         if let _ = path {
             let bundle = NSBundle(path: path!)
             return bundle!.localizedStringForKey(key, value: nil, table: "TBRPLocalizable")
@@ -35,5 +35,11 @@ class TBRPInternationalControl: NSObject {
             return localizedString
         }
         return comment
+    }
+    
+    class func languageKey(language: TBRPLanguage) -> String {
+        let languageKeys = ["en", "zh-Hans", "zh-Hant", "ko", "ja"]
+        
+        return languageKeys[language.rawValue]
     }
 }
