@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
   s.source               = { :git => "https://github.com/hongxinhope/TBRepeatPicker.git", :tag => s.version.to_s }
   s.platform             = :ios, '8.0'
   s.requires_arc         = true
-  s.source_files         = "TBRepeatPicker/*"
-  s.resource_bundles     = { 'TBRepeatPicker' => 'TBRepeatPicker/*.png' }
+  s.source_files         = "TBRepeatPicker/*.swift"
+  s.resource_bundles     = { 'TBRepeatPicker' => ['TBRepeatPicker/*.png', 'TBRepeatPicker/*.lproj'] }
   s.frameworks           = "Foundation", "UIKit"
 
 end
