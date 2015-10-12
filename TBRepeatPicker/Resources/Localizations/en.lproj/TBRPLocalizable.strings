@@ -59,3 +59,4 @@
 "RecurrenceString.element.day" = "";
 "RecurrenceString.specifiedDaysOrMonths" = "Event will occur every %@ %@.";
 "RecurrenceString.yearlyByWeekNoString" = "Event will occur every %@ %@ %@.";
+"RecurrenceString.weekdayRecurrence" = "Event will occur every weekday.";

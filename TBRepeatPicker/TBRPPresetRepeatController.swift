@@ -86,19 +86,19 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
             recurrence = nil
             
         case 1:
-            recurrence = TBRecurrence.initDaily(1, locale: locale)
+            recurrence = TBRecurrence.dailyRecurrence(locale)
         
         case 2:
-            recurrence = TBRecurrence.initWeekly(1, selectedWeekdays: [], locale: locale)
+            recurrence = TBRecurrence.weeklyRecurrence(locale)
             
         case 3:
-            recurrence = TBRecurrence.initWeekly(2, selectedWeekdays: [], locale: locale)
+            recurrence = TBRecurrence.biWeeklyRecurrence(locale)
             
         case 4:
-            recurrence = TBRecurrence.initMonthly(1, selectedMonthdays: [], locale: locale)
+            recurrence = TBRecurrence.monthlyRecurrence(locale)
             
         case 5:
-            recurrence = TBRecurrence.initYearly(1, selectedMonths: [], locale: locale)
+            recurrence = TBRecurrence.yearlyRecurrence(locale)
             
         default:
             break
@@ -131,7 +131,7 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 6
+            return presetRepeats.count
         } else {
             return 1
         }

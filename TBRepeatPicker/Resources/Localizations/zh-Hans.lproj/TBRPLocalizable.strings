@@ -59,3 +59,4 @@
 "RecurrenceString.element.day" = "%d日";
 "RecurrenceString.specifiedDaysOrMonths" = "事件将每%@%@重复一次。";
 "RecurrenceString.yearlyByWeekNoString" = "事件将每%@%@%@重复一次。";
+"RecurrenceString.weekdayRecurrence" = "事件将每个工作日重复一次。";

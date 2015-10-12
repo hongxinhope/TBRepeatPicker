@@ -115,6 +115,32 @@ class TBRecurrence: NSObject {
         selectedMonths = [todayMonthIndex]
     }
     
+    // preset recurrence initialization
+    class func dailyRecurrence(locale: NSLocale) -> TBRecurrence {
+        return initDaily(1, locale: locale)
+    }
+    
+    class func weeklyRecurrence(locale: NSLocale) -> TBRecurrence {
+        return initWeekly(1, selectedWeekdays: [], locale: locale)
+    }
+    
+    class func biWeeklyRecurrence(locale: NSLocale) -> TBRecurrence {
+        return initWeekly(2, selectedWeekdays: [], locale: locale)
+    }
+    
+    class func monthlyRecurrence(locale: NSLocale) -> TBRecurrence {
+        return initMonthly(1, selectedMonthdays: [], locale: locale)
+    }
+    
+    class func yearlyRecurrence(locale: NSLocale) -> TBRecurrence {
+        return initYearly(1, selectedMonths: [], locale: locale)
+    }
+    
+    class func weekdayRecurrence(locale: NSLocale) -> TBRecurrence {
+        return initWeekly(1, selectedWeekdays: [1, 2, 3, 4, 5], locale: locale)
+    }
+    
+    // custom recurrence initialization
     class func initDaily(interval: Int, locale: NSLocale) -> TBRecurrence {
         let dailyRecurrence = TBRecurrence(locale: locale)
         dailyRecurrence.frequency = .Daily
@@ -260,5 +286,13 @@ class TBRecurrence: NSObject {
         let todayMonthIndex = NSCalendar.monthIndexInYear(NSDate(), locale: locale)
         
         return frequency == .Yearly && interval == 1 && byWeekNumber == false && selectedMonths == [todayMonthIndex]
+    }
+    
+    func isWeekdayRecurrence() -> Bool {
+        return frequency == .Weekly && interval == 1 && selectedWeekdays == [1, 2, 3, 4, 5]
+    }
+    
+    func isCustomRecurrence(locale: NSLocale) -> Bool {
+        return !isDailyRecurrence() && !isWeeklyRecurrence(locale) && !isBiWeeklyRecurrence(locale) && !isMonthlyRecurrence(locale) && !isYearlyRecurrence(locale)
     }
 }

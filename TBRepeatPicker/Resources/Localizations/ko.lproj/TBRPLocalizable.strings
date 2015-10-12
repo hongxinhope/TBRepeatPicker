@@ -59,3 +59,4 @@
 "RecurrenceString.element.day" = "%d일";
 "RecurrenceString.specifiedDaysOrMonths" = "%@마다 %@ 이벤트 반복";
 "RecurrenceString.yearlyByWeekNoString" = "%@마다 %@ %@ 이벤트 반복";
+"RecurrenceString.weekdayRecurrence" = "매주 평일마다 이벤트 반복";

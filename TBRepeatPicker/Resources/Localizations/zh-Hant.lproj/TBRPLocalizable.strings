@@ -59,3 +59,4 @@
 "RecurrenceString.element.day" = "%d日";
 "RecurrenceString.specifiedDaysOrMonths" = "行程每%@%@重複一次。";
 "RecurrenceString.yearlyByWeekNoString" = "行程每%@%@%@重複一次。";
+"RecurrenceString.weekdayRecurrence" = "行程每週一到週五重複一次。";

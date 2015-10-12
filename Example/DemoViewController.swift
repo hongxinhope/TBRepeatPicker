@@ -75,6 +75,13 @@ class DemoViewController: UIViewController, TBRepeatPickerDelegate, SwitchLangua
         //recurrence = TBRecurrence.initYearlyByWeekNumber(1, pickedWeekNumber: .Fifth, pickedWeekday: .Wednesday, locale:  NSLocale.currentLocale())
         //recurrence = TBRecurrence.initYearlyByWeekNumber(3, pickedWeekNumber: .Last, pickedWeekday: .Day, locale:  NSLocale.currentLocale())
         
+        //recurrence = TBRecurrence.dailyRecurrence(NSLocale.currentLocale())
+        //recurrence = TBRecurrence.weeklyRecurrence(NSLocale.currentLocale())
+        //recurrence = TBRecurrence.biWeeklyRecurrence(NSLocale.currentLocale())
+        //recurrence = TBRecurrence.monthlyRecurrence(NSLocale.currentLocale())
+        //recurrence = TBRecurrence.yearlyRecurrence(NSLocale.currentLocale())
+        //recurrence = TBRecurrence.weekdayRecurrence(NSLocale.currentLocale())
+        
         repeatPicker.recurrence = recurrence
         
         navigationController?.pushViewController(repeatPicker, animated: true)

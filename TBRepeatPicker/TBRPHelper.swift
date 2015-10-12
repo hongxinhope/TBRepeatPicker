@@ -150,6 +150,8 @@ class TBRPHelper {
             let todayIndexInWeek = NSCalendar.dayIndexInWeek(NSDate(), locale: locale)
             if recurrence.selectedWeekdays == [todayIndexInWeek - 1] {
                 return String(format: internationalControl.localized("RecurrenceString.presetRepeat", comment: "Event will occur every %@."), unitString!)
+            } else if recurrence.isWeekdayRecurrence() {
+                return internationalControl.localized("RecurrenceString.weekdayRecurrence", comment: "Event will occur every weekday.")
             } else {
                 var weekdaysString: String
                 if language == .Korean {

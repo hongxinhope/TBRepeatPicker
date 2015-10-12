@@ -59,3 +59,4 @@
 "RecurrenceString.element.day" = "%d日";
 "RecurrenceString.specifiedDaysOrMonths" = "%@ごと%@にあるイベントです。";
 "RecurrenceString.yearlyByWeekNoString" = "%@ごと%@%@にあるイベントです。";
+"RecurrenceString.weekdayRecurrence" = "平日に毎日あるイベントです。";

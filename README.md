@@ -19,7 +19,7 @@ pod "TBRepeatPicker"
 ##### 1. Create and present TBRepeatPicker
 ```objective-c
 // init picker
-let repeatPicker = TBRepeatPicker.initPicker(NSLocale.currentLocale(), language: language, tintColor: tbBlueColor())
+let repeatPicker = TBRepeatPicker.initPicker(NSLocale.currentLocale(), language: .English, tintColor: UIColor.blueColor())
 
 // assign a recurrence to the picker, you can pass nil or do nothing here when the repeat rule is "Never".
 repeatPicker.recurrence = TBRecurrence.initMonthly(2, selectedMonthdays: [3, 17], locale: NSLocale.currentLocale())
@@ -42,7 +42,10 @@ func didPickRecurrence(recurrence: TBRecurrence?) {
 ## Minimum Requirement
  iOS 8.0
 
-## Objective-C and Swift
+## Localization
+TBRepeatPicker supports 5 languages: English, SimplifiedChinese, TraditionalChinese, Korean, Japanese. You can set the language when init.
+
+## Swift and Objective-C
 TBRepeatPicker support both Swift and Objective-C.
 
  in Objective-C, you just need to import a header like this:
