@@ -55,6 +55,12 @@ class TBRPCustomRepeatCell: UITableViewCell {
     }
     
     func addBottomSeparatorFromLeftX(leftX: CGFloat) {
+        for sublayer in layer.sublayers! {
+            if sublayer.name == TBRPBottomSeparatorIdentifier {
+                sublayer.removeFromSuperlayer()
+            }
+        }
+        
         let bottomSeparator = CALayer()
         bottomSeparator.name = TBRPBottomSeparatorIdentifier
         
@@ -65,6 +71,12 @@ class TBRPCustomRepeatCell: UITableViewCell {
     }
     
     func addTopSeparatorFromLeftX(leftX: CGFloat) {
+        for sublayer in layer.sublayers! {
+            if sublayer.name == TBRPTopSeparatorIdentifier {
+                sublayer.removeFromSuperlayer()
+            }
+        }
+        
         let topSeparator = CALayer()
         topSeparator.name = TBRPTopSeparatorIdentifier
         

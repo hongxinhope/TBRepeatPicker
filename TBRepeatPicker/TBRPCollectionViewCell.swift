@@ -157,7 +157,7 @@ class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICol
             cell.showTopLine = false
             cell.showLeftLine = false
             
-            if indexPath.row + 1 % 7 == 0 {
+            if (indexPath.row + 1) % 7 == 0 {
                 cell.showRightLine = false
             }
             
@@ -168,7 +168,7 @@ class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICol
             }
             
             cell.showLeftLine = false
-            if indexPath.row + 1 % 4 == 0 {
+            if (indexPath.row + 1) % 4 == 0 {
                 cell.showRightLine = false
             }
         }
