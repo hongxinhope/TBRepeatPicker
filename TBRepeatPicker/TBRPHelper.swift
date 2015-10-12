@@ -152,6 +152,8 @@ class TBRPHelper {
                 return String(format: internationalControl.localized("RecurrenceString.presetRepeat", comment: "Event will occur every %@."), unitString!)
             } else if recurrence.isWeekdayRecurrence() {
                 return internationalControl.localized("RecurrenceString.weekdayRecurrence", comment: "Event will occur every weekday.")
+            } else if recurrence.selectedWeekdays == [0, 1, 2, 3, 4, 5, 6] && recurrence.interval == 1 {
+                return recurrenceString(TBRecurrence.dailyRecurrence(locale), language: language, locale: locale)
             } else {
                 var weekdaysString: String
                 if language == .Korean {
