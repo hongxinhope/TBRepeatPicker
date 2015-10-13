@@ -50,7 +50,7 @@ class TBRecurrence: NSObject {
     */
     var interval: Int = 1
     
-    /** The selected weekdays when frequency is weekly. Elements in this array are all integers in a range between 0 to 6, 0 means Sunday, which is the first day of week, and the integers from 1 to 6 respectively mean the days from Monday to Saturday.
+    /** The selected weekdays when frequency is weekly. Elements in this array are all integers in a range between 0 to 6, 0 means Sunday, which is the first day of week, and the integers from 1 to 6 respectively mean the days from Monday to Saturday. This property value is valid only for a frequency type of TBRPFrequency.Weekly.
     */
     var selectedWeekdays = [Int]() {
         didSet {
@@ -58,11 +58,11 @@ class TBRecurrence: NSObject {
         }
     }
     
-    /** A boolean value decides whether the recurrence is constructed by week number or not when frequency is weekly or yearly. For example, we can get a recurrence like "Second Friday" with it.
+    /** A boolean value decides whether the recurrence is constructed by week number or not when frequency is weekly or yearly. For example, we can get a recurrence like "Second Friday" with it. This property value is valid only for a frequency type of TBRPFrequency.Monthly or TBRPFrequency.Yearly.
     */
     var byWeekNumber = false
     
-    /** The selected monthdays when frequency is monthly. Elements in this array are all integers in a range between 1 to 31, which respectively mean the days from 1st to 31st of a month.
+    /** The selected monthdays when frequency is monthly. Elements in this array are all integers in a range between 1 to 31, which respectively mean the days from 1st to 31st of a month. This property value is valid only for a frequency type of TBRPFrequency.Monthly.
     */
     var selectedMonthdays = [Int]() {
         didSet {
@@ -70,7 +70,7 @@ class TBRecurrence: NSObject {
         }
     }
     
-    /** The selected months when frequency is yearly. Elements in this array are all integers in a range between 1 to 12, which respectively mean the months from January to December.
+    /** The selected months when frequency is yearly. Elements in this array are all integers in a range between 1 to 12, which respectively mean the months from January to December. This property value is valid only for a frequency type of TBRPFrequency.Yearly.
     */
     var selectedMonths = [Int]() {
         didSet {
@@ -85,6 +85,8 @@ class TBRecurrence: NSObject {
     * TBRPWeekPickerNumber.Fourth
     * TBRPWeekPickerNumber.Fifth
     * TBRPWeekPickerNumber.Last
+    
+    This property value is valid only for a frequency type of TBRPFrequency.Monthly or TBRPFrequency.Yearly.
     */
     var pickedWeekNumber: TBRPWeekPickerNumber = .First
     
@@ -99,6 +101,8 @@ class TBRecurrence: NSObject {
     * TBRPWeekPickerDay.Day
     * TBRPWeekPickerDay.Weekday
     * TBRPWeekPickerDay.WeekendDay
+    
+    This property value is valid only for a frequency type of TBRPFrequency.Monthly or TBRPFrequency.Yearly.
     */
     var pickedWeekday: TBRPWeekPickerDay = .Sunday
     
@@ -113,6 +117,66 @@ class TBRecurrence: NSObject {
         selectedWeekdays = [todayIndexInWeek - 1]
         selectedMonthdays = [todayIndexInMonth]
         selectedMonths = [todayMonthIndex]
+    }
+    
+    func recurrenceCopy() -> TBRecurrence {
+        let recurrence = TBRecurrence()
+        
+        recurrence.frequency = frequency
+        recurrence.interval = interval
+        recurrence.selectedWeekdays = selectedWeekdays
+        recurrence.byWeekNumber = byWeekNumber
+        recurrence.selectedMonthdays = selectedMonthdays
+        recurrence.selectedMonths = selectedMonths
+        recurrence.pickedWeekNumber = pickedWeekNumber
+        recurrence.pickedWeekday = pickedWeekday
+        
+        return recurrence
+    }
+    
+    class func isEqualRecurrence(recurrence1: TBRecurrence?, recurrence2: TBRecurrence?) -> Bool {
+        if recurrence1 == nil && recurrence2 == nil {
+            return true
+        } else if recurrence1?.frequency == recurrence2?.frequency && recurrence1?.interval == recurrence2?.interval {
+            if recurrence1?.frequency == .Daily {
+                return true
+            } else if recurrence1?.frequency == .Weekly {
+                let selectedWeekdays1 = recurrence1?.selectedWeekdays.sort { $0 < $1 }
+                let selectedWeekdays2 = recurrence2?.selectedWeekdays.sort { $0 < $1 }
+                
+                return selectedWeekdays1! == selectedWeekdays2!
+            } else if recurrence1?.frequency == .Monthly {
+                if recurrence1?.byWeekNumber == recurrence2?.byWeekNumber {
+                    if recurrence1?.byWeekNumber == true {
+                        return recurrence1?.pickedWeekNumber == recurrence2?.pickedWeekNumber && recurrence1?.pickedWeekday == recurrence2?.pickedWeekday
+                    } else {
+                        let selectedMonthdays1 = recurrence1?.selectedMonthdays.sort { $0 < $1 }
+                        let selectedMonthdays2 = recurrence2?.selectedMonthdays.sort { $0 < $1 }
+                        
+                        return selectedMonthdays1! == selectedMonthdays2!
+                    }
+                } else {
+                    return false
+                }
+            } else if recurrence1?.frequency == .Yearly {
+                if recurrence1?.byWeekNumber == recurrence2?.byWeekNumber {
+                    let selectedMonths1 = recurrence1?.selectedMonths.sort { $0 < $1 }
+                    let selectedMonths2 = recurrence2?.selectedMonths.sort { $0 < $1 }
+                    
+                    if recurrence1?.byWeekNumber == true {
+                        return selectedMonths1! == selectedMonths2! && recurrence1?.pickedWeekNumber == recurrence2?.pickedWeekNumber && recurrence1?.pickedWeekday == recurrence2?.pickedWeekday
+                    } else {
+                        return selectedMonths1! == selectedMonths2!
+                    }
+                } else {
+                    return false
+                }
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
     }
     
     // preset recurrence initialization

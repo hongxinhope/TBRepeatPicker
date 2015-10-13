@@ -29,6 +29,7 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
     var selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     
     // MARK: - Private properties
+    private var recurrenceBackup: TBRecurrence?
     private var presetRepeats = [String]()
     private var internationalControl: TBRPInternationalControl?
     
@@ -47,6 +48,20 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
         tableView.tintColor = tintColor
         
         presetRepeats = TBRPHelper.presetRepeats(language)
+        
+        if let _ = recurrence {
+            recurrenceBackup = recurrence!.recurrenceCopy()
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        if TBRecurrence.isEqualRecurrence(recurrence, recurrence2: recurrenceBackup) == false {
+            if let _ = delegate {
+                delegate?.didPickRecurrence(recurrence, repeatPicker: self as! TBRepeatPicker)
+            }
+        }
+        
+        super.viewWillDisappear(animated)
     }
     
     // MARK: - Helper
@@ -174,12 +189,6 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
 
     // MARK: - Table view delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 && indexPath == selectedIndexPath {
-            navigationController?.popViewControllerAnimated(true)
-            
-            return
-        }
-        
         let lastSelectedCell = tableView.cellForRowAtIndexPath(selectedIndexPath)
         let currentSelectedCell = tableView.cellForRowAtIndexPath(indexPath)
         
@@ -206,10 +215,7 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
             updateRecurrence(indexPath)
             updateFooterTitle()
             
-            if let _ = delegate {
-                navigationController?.popViewControllerAnimated(true)
-                delegate?.didPickRecurrence(recurrence, repeatPicker: self as! TBRepeatPicker)
-            }
+            navigationController?.popViewControllerAnimated(true)
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -220,9 +226,5 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
         self.recurrence = recurrence
         updateFooterTitle()
         tableView.reloadData()
-        
-        if let _ = delegate {
-            delegate?.didPickRecurrence(recurrence, repeatPicker: self as! TBRepeatPicker)
-        }
     }
 }
