@@ -264,26 +264,26 @@ class TBRecurrence: NSObject {
         return frequency == .Daily && interval == 1
     }
     
-    func isWeeklyRecurrence(locale: NSLocale) -> Bool {
-        let todayIndexInWeek = NSCalendar.dayIndexInWeek(NSDate(), locale: locale)
+    func isWeeklyRecurrence() -> Bool {
+        let todayIndexInWeek = NSCalendar.dayIndexInWeek(NSDate(), locale: NSLocale.currentLocale())
         
         return frequency == .Weekly && selectedWeekdays == [todayIndexInWeek - 1] && interval == 1
     }
     
-    func isBiWeeklyRecurrence(locale: NSLocale) -> Bool {
-        let todayIndexInWeek = NSCalendar.dayIndexInWeek(NSDate(), locale: locale)
+    func isBiWeeklyRecurrence() -> Bool {
+        let todayIndexInWeek = NSCalendar.dayIndexInWeek(NSDate(), locale: NSLocale.currentLocale())
         
         return frequency == .Weekly && selectedWeekdays == [todayIndexInWeek - 1] && interval == 2
     }
     
-    func isMonthlyRecurrence(locale: NSLocale) -> Bool {
-        let todayIndexInMonth = NSCalendar.dayIndexInMonth(NSDate(), locale: locale)
+    func isMonthlyRecurrence() -> Bool {
+        let todayIndexInMonth = NSCalendar.dayIndexInMonth(NSDate(), locale: NSLocale.currentLocale())
         
         return frequency == .Monthly && interval == 1 && byWeekNumber == false && selectedMonthdays == [todayIndexInMonth]
     }
     
-    func isYearlyRecurrence(locale: NSLocale) -> Bool {
-        let todayMonthIndex = NSCalendar.monthIndexInYear(NSDate(), locale: locale)
+    func isYearlyRecurrence() -> Bool {
+        let todayMonthIndex = NSCalendar.monthIndexInYear(NSDate(), locale: NSLocale.currentLocale())
         
         return frequency == .Yearly && interval == 1 && byWeekNumber == false && selectedMonths == [todayMonthIndex]
     }
@@ -292,7 +292,7 @@ class TBRecurrence: NSObject {
         return frequency == .Weekly && interval == 1 && selectedWeekdays == [1, 2, 3, 4, 5]
     }
     
-    func isCustomRecurrence(locale: NSLocale) -> Bool {
-        return !isDailyRecurrence() && !isWeeklyRecurrence(locale) && !isBiWeeklyRecurrence(locale) && !isMonthlyRecurrence(locale) && !isYearlyRecurrence(locale)
+    func isCustomRecurrence() -> Bool {
+        return !isDailyRecurrence() && !isWeeklyRecurrence() && !isBiWeeklyRecurrence() && !isMonthlyRecurrence() && !isYearlyRecurrence()
     }
 }

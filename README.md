@@ -34,7 +34,7 @@ Note: You should always use push segue here to present the picker, TBRepeatPicke
 
 ##### 2. Implement didPickRecurrence delegate
 ```objective-c
-func didPickRecurrence(recurrence: TBRecurrence?) {
+func didPickRecurrence(recurrence: TBRecurrence?, repeatPicker: TBRepeatPicker) {
     // do something
 }
 ```

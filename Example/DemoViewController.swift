@@ -87,7 +87,7 @@ class DemoViewController: UIViewController, TBRepeatPickerDelegate, SwitchLangua
         navigationController?.pushViewController(repeatPicker, animated: true)
     }
     
-    func didPickRecurrence(recurrence: TBRecurrence?) {
+    func didPickRecurrence(recurrence: TBRecurrence?, repeatPicker: TBRepeatPicker) {
         self.recurrence = recurrence
         
         updateResultTextView()

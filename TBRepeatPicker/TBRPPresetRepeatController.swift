@@ -11,7 +11,7 @@ import UIKit
 private let TBRPPresetRepeatCellID = "TBRPPresetRepeatCell"
 
 @objc protocol TBRepeatPickerDelegate {
-    func didPickRecurrence(recurrence: TBRecurrence?)
+    func didPickRecurrence(recurrence: TBRecurrence?, repeatPicker: TBRepeatPicker)
 }
 
 class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControllerDelegate {
@@ -55,13 +55,13 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
             selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
         } else if recurrence?.isDailyRecurrence() == true {
             selectedIndexPath = NSIndexPath(forRow: 1, inSection: 0)
-        } else if recurrence?.isWeeklyRecurrence(locale) == true {
+        } else if recurrence?.isWeeklyRecurrence() == true {
             selectedIndexPath = NSIndexPath(forRow: 2, inSection: 0)
-        } else if recurrence?.isBiWeeklyRecurrence(locale) == true {
+        } else if recurrence?.isBiWeeklyRecurrence() == true {
             selectedIndexPath = NSIndexPath(forRow: 3, inSection: 0)
-        } else if recurrence?.isMonthlyRecurrence(locale) == true {
+        } else if recurrence?.isMonthlyRecurrence() == true {
             selectedIndexPath = NSIndexPath(forRow: 4, inSection: 0)
-        } else if recurrence?.isYearlyRecurrence(locale) == true {
+        } else if recurrence?.isYearlyRecurrence() == true {
             selectedIndexPath = NSIndexPath(forRow: 5, inSection: 0)
         } else {
             selectedIndexPath = NSIndexPath(forRow: 0, inSection: 1)
@@ -207,7 +207,7 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
             updateFooterTitle()
             
             if let _ = delegate {
-                delegate?.didPickRecurrence(recurrence)
+                delegate?.didPickRecurrence(recurrence, repeatPicker: self as! TBRepeatPicker)
                 navigationController?.popViewControllerAnimated(true)
             }
         }
@@ -222,7 +222,7 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
         tableView.reloadData()
         
         if let _ = delegate {
-            delegate?.didPickRecurrence(recurrence)
+            delegate?.didPickRecurrence(recurrence, repeatPicker: self as! TBRepeatPicker)
         }
     }
 }
