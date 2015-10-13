@@ -207,8 +207,8 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
             updateFooterTitle()
             
             if let _ = delegate {
-                delegate?.didPickRecurrence(recurrence, repeatPicker: self as! TBRepeatPicker)
                 navigationController?.popViewControllerAnimated(true)
+                delegate?.didPickRecurrence(recurrence, repeatPicker: self as! TBRepeatPicker)
             }
         }
         
