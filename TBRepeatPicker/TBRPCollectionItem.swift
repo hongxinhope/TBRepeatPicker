@@ -72,8 +72,10 @@ class TBRPCollectionItem: UICollectionViewCell {
     func setItemSelected(selected: Bool) {
         if selected == true {
             textLabel?.backgroundColor = tintColor
+            textLabel?.textColor = UIColor.whiteColor()
         } else {
             textLabel?.backgroundColor = UIColor.whiteColor()
+            textLabel?.textColor = UIColor.blackColor()
         }
     }
 }
