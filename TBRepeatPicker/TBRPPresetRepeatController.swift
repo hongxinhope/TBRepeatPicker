@@ -54,14 +54,15 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        if TBRecurrence.isEqualRecurrence(recurrence, recurrence2: recurrenceBackup) == false {
-            if let _ = delegate {
-                delegate?.didPickRecurrence(recurrence, repeatPicker: self as! TBRepeatPicker)
+    override func didMoveToParentViewController(parent: UIViewController?) {
+        if parent == nil {
+            // navigation was popped
+            if TBRecurrence.isEqualRecurrence(recurrence, recurrence2: recurrenceBackup) == false {
+                if let _ = delegate {
+                    delegate?.didPickRecurrence(recurrence, repeatPicker: self as! TBRepeatPicker)
+                }
             }
         }
-        
-        super.viewWillDisappear(animated)
     }
     
     // MARK: - Helper
