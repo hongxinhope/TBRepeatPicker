@@ -27,6 +27,7 @@
 "TBRPHelper.presetRepeat.everyTwoWeeks" = "Every 2 Weeks";
 "TBRPHelper.presetRepeat.everyMonth" = "Every Month";
 "TBRPHelper.presetRepeat.everyYear" = "Every Year";
+"TBRPHelper.presetRepeat.everyWeekday" = "Every Weekday";
 
 "TBRPHelper.numbersInWeekPicker.first" = "first";
 "TBRPHelper.numbersInWeekPicker.second" = "second";

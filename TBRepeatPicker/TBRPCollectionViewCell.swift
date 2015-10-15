@@ -57,11 +57,6 @@ class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICol
         separatorInset = UIEdgeInsetsMake(0, TBRPScreenWidth, 0, 0)
         
         self.mode = mode
-        if mode == .Months {
-            addSectionTopSeparator()
-            addSectionBottomSeparator()
-        }
-        
         self.language = language
         let layout = TBRPCollectionViewLayout(mode: mode)
         
@@ -154,7 +149,9 @@ class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICol
     
     func configureSeparatorLine(cell: TBRPCollectionItem,indexPath: NSIndexPath) {
         if mode == .Days {
-            cell.showTopLine = false
+            if indexPath.row + 1 > 7 {
+                cell.showTopLine = false
+            }
             cell.showLeftLine = false
             
             if (indexPath.row + 1) % 7 == 0 {
@@ -162,9 +159,8 @@ class TBRPCollectionViewCell: UITableViewCell, UICollectionViewDataSource, UICol
             }
             
         } else if mode == .Months {
-            cell.showBottomLine = false
-            if indexPath.row + 1 < 5 {
-                cell.showTopLine = false
+            if indexPath.row + 1 < 9 {
+                cell.showBottomLine = false
             }
             
             cell.showLeftLine = false

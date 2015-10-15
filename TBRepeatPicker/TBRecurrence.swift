@@ -357,6 +357,6 @@ class TBRecurrence: NSObject {
     }
     
     func isCustomRecurrence(occurrenceDate: NSDate) -> Bool {
-        return !isDailyRecurrence() && !isWeeklyRecurrence(occurrenceDate) && !isBiWeeklyRecurrence(occurrenceDate) && !isMonthlyRecurrence(occurrenceDate) && !isYearlyRecurrence(occurrenceDate)
+        return !isDailyRecurrence() && !isWeeklyRecurrence(occurrenceDate) && !isBiWeeklyRecurrence(occurrenceDate) && !isMonthlyRecurrence(occurrenceDate) && !isYearlyRecurrence(occurrenceDate) && !isWeekdayRecurrence()
     }
 }

@@ -79,6 +79,8 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
             selectedIndexPath = NSIndexPath(forRow: 4, inSection: 0)
         } else if recurrence?.isYearlyRecurrence(occurrenceDate) == true {
             selectedIndexPath = NSIndexPath(forRow: 5, inSection: 0)
+        } else if recurrence?.isWeekdayRecurrence() == true {
+            selectedIndexPath = NSIndexPath(forRow: 6, inSection: 0)
         } else {
             selectedIndexPath = NSIndexPath(forRow: 0, inSection: 1)
         }
@@ -107,6 +109,9 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
             
         case 5:
             recurrence = TBRecurrence.yearlyRecurrence(occurrenceDate)
+            
+        case 6:
+            recurrence = TBRecurrence.weekdayRecurrence(occurrenceDate)
             
         default:
             break

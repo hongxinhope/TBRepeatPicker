@@ -27,6 +27,7 @@
 "TBRPHelper.presetRepeat.everyTwoWeeks" = "2주마다";
 "TBRPHelper.presetRepeat.everyMonth" = "매월";
 "TBRPHelper.presetRepeat.everyYear" = "매년";
+"TBRPHelper.presetRepeat.everyWeekday" = "매주 평일마다";
 
 "TBRPHelper.numbersInWeekPicker.first" = "첫 번째";
 "TBRPHelper.numbersInWeekPicker.second" = "두 번째";

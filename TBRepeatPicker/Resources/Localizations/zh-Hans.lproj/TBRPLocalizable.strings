@@ -27,6 +27,7 @@
 "TBRPHelper.presetRepeat.everyTwoWeeks" = "每两周";
 "TBRPHelper.presetRepeat.everyMonth" = "每月";
 "TBRPHelper.presetRepeat.everyYear" = "每年";
+"TBRPHelper.presetRepeat.everyWeekday" = "每个工作日";
 
 "TBRPHelper.numbersInWeekPicker.first" = "第一个";
 "TBRPHelper.numbersInWeekPicker.second" = "第二个";

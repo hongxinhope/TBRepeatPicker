@@ -27,6 +27,7 @@
 "TBRPHelper.presetRepeat.everyTwoWeeks" = "２週間ごと";
 "TBRPHelper.presetRepeat.everyMonth" = "毎月";
 "TBRPHelper.presetRepeat.everyYear" = "毎年";
+"TBRPHelper.presetRepeat.everyWeekday" = "平日に毎日";
 
 "TBRPHelper.numbersInWeekPicker.first" = "第1";
 "TBRPHelper.numbersInWeekPicker.second" = "第2";
