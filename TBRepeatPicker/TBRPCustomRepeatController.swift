@@ -19,8 +19,8 @@ protocol TBRPCustomRepeatControllerDelegate {
 
 class TBRPCustomRepeatController: UITableViewController, TBRPPickerCellDelegate, TBRPSwitchCellDelegate, TBRPCollectionViewCellDelegate {
     // MARK: - Public properties
+    var startDate = NSDate()
     var tintColor = UIColor.blueColor()
-    var locale = NSLocale.currentLocale()
     var language: TBRPLanguage = .English
     var delegate: TBRPCustomRepeatControllerDelegate?
     
@@ -305,7 +305,7 @@ class TBRPCustomRepeatController: UITableViewController, TBRPPickerCellDelegate,
     }
     
     private func footerTitle() -> String? {
-        return TBRPHelper.recurrenceString(recurrence, language: language, locale: locale)
+        return TBRPHelper.recurrenceString(recurrence, startDate: startDate, language: language)
     }
     
     private func unit() -> String? {

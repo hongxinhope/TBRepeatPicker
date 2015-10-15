@@ -9,21 +9,21 @@
 import Foundation
 
 extension NSCalendar {
-    class func dayIndexInWeek(date: NSDate, locale: NSLocale) -> Int {
-        return components(date, locale: locale).weekday
+    class func dayIndexInWeek(date: NSDate) -> Int {
+        return components(date).weekday
     }
     
-    class func dayIndexInMonth(date: NSDate, locale: NSLocale) -> Int {
-        return components(date, locale: locale).day
+    class func dayIndexInMonth(date: NSDate) -> Int {
+        return components(date).day
     }
     
-    class func monthIndexInYear(date: NSDate, locale: NSLocale) -> Int {
-        return components(date, locale: locale).month
+    class func monthIndexInYear(date: NSDate) -> Int {
+        return components(date).month
     }
     
-    private class func components(date: NSDate, locale: NSLocale) -> NSDateComponents {
+    private class func components(date: NSDate) -> NSDateComponents {
         let calendar = NSCalendar.currentCalendar()
-        calendar.locale = locale
+        calendar.locale = NSLocale.currentLocale()
         let components = calendar.components([.Month, .Weekday, .Day], fromDate: date)
         
         return components

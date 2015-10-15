@@ -107,16 +107,16 @@ class TBRecurrence: NSObject {
     var pickedWeekday: TBRPWeekPickerDay = .Sunday
     
     // MARK: - Initialization
-    convenience init(locale: NSLocale) {
+    convenience init(startDate: NSDate) {
         self.init()
         
-        let todayIndexInWeek = NSCalendar.dayIndexInWeek(NSDate(), locale: locale)
-        let todayIndexInMonth = NSCalendar.dayIndexInMonth(NSDate(), locale: locale)
-        let todayMonthIndex = NSCalendar.monthIndexInYear(NSDate(), locale: locale)
+        let startDateDayIndexInWeek = NSCalendar.dayIndexInWeek(startDate)
+        let startDateDayIndexInMonth = NSCalendar.dayIndexInMonth(startDate)
+        let startDateMonthIndexInYear = NSCalendar.monthIndexInYear(startDate)
         
-        selectedWeekdays = [todayIndexInWeek - 1]
-        selectedMonthdays = [todayIndexInMonth]
-        selectedMonths = [todayMonthIndex]
+        selectedWeekdays = [startDateDayIndexInWeek - 1]
+        selectedMonthdays = [startDateDayIndexInMonth]
+        selectedMonths = [startDateMonthIndexInYear]
     }
     
     func recurrenceCopy() -> TBRecurrence {
@@ -180,33 +180,33 @@ class TBRecurrence: NSObject {
     }
     
     // preset recurrence initialization
-    class func dailyRecurrence(locale: NSLocale) -> TBRecurrence {
-        return initDaily(1, locale: locale)
+    class func dailyRecurrence(startDate: NSDate) -> TBRecurrence {
+        return initDaily(1, startDate: startDate)
     }
     
-    class func weeklyRecurrence(locale: NSLocale) -> TBRecurrence {
-        return initWeekly(1, selectedWeekdays: [], locale: locale)
+    class func weeklyRecurrence(startDate: NSDate) -> TBRecurrence {
+        return initWeekly(1, selectedWeekdays: [], startDate: startDate)
     }
     
-    class func biWeeklyRecurrence(locale: NSLocale) -> TBRecurrence {
-        return initWeekly(2, selectedWeekdays: [], locale: locale)
+    class func biWeeklyRecurrence(startDate: NSDate) -> TBRecurrence {
+        return initWeekly(2, selectedWeekdays: [], startDate: startDate)
     }
     
-    class func monthlyRecurrence(locale: NSLocale) -> TBRecurrence {
-        return initMonthly(1, selectedMonthdays: [], locale: locale)
+    class func monthlyRecurrence(startDate: NSDate) -> TBRecurrence {
+        return initMonthly(1, selectedMonthdays: [], startDate: startDate)
     }
     
-    class func yearlyRecurrence(locale: NSLocale) -> TBRecurrence {
-        return initYearly(1, selectedMonths: [], locale: locale)
+    class func yearlyRecurrence(startDate: NSDate) -> TBRecurrence {
+        return initYearly(1, selectedMonths: [], startDate: startDate)
     }
     
-    class func weekdayRecurrence(locale: NSLocale) -> TBRecurrence {
-        return initWeekly(1, selectedWeekdays: [1, 2, 3, 4, 5], locale: locale)
+    class func weekdayRecurrence(startDate: NSDate) -> TBRecurrence {
+        return initWeekly(1, selectedWeekdays: [1, 2, 3, 4, 5], startDate: startDate)
     }
     
     // custom recurrence initialization
-    class func initDaily(interval: Int, locale: NSLocale) -> TBRecurrence {
-        let dailyRecurrence = TBRecurrence(locale: locale)
+    class func initDaily(interval: Int, startDate: NSDate) -> TBRecurrence {
+        let dailyRecurrence = TBRecurrence(startDate: startDate)
         dailyRecurrence.frequency = .Daily
         
         if interval < 1 {
@@ -218,8 +218,8 @@ class TBRecurrence: NSObject {
         return dailyRecurrence
     }
     
-    class func initWeekly(interval: Int, var selectedWeekdays: [Int], locale: NSLocale) -> TBRecurrence {
-        let weeklyRecurrence = TBRecurrence(locale: locale)
+    class func initWeekly(interval: Int, var selectedWeekdays: [Int], startDate: NSDate) -> TBRecurrence {
+        let weeklyRecurrence = TBRecurrence(startDate: startDate)
         weeklyRecurrence.frequency = .Weekly
         for day in selectedWeekdays {
             if day < 0 || day > 6 {
@@ -241,8 +241,8 @@ class TBRecurrence: NSObject {
         return weeklyRecurrence
     }
     
-    class func initMonthly(interval: Int, var selectedMonthdays: [Int], locale: NSLocale) -> TBRecurrence {
-        let monthlyRecurrence = TBRecurrence(locale: locale)
+    class func initMonthly(interval: Int, var selectedMonthdays: [Int], startDate: NSDate) -> TBRecurrence {
+        let monthlyRecurrence = TBRecurrence(startDate: startDate)
         monthlyRecurrence.frequency = .Monthly
         monthlyRecurrence.byWeekNumber = false
         for day in selectedMonthdays {
@@ -265,8 +265,8 @@ class TBRecurrence: NSObject {
         return monthlyRecurrence
     }
     
-    class func initMonthlyByWeekNumber(interval: Int, pickedWeekNumber: TBRPWeekPickerNumber, pickedWeekday: TBRPWeekPickerDay, locale: NSLocale) -> TBRecurrence {
-        let monthlyRecurrence = TBRecurrence(locale: locale)
+    class func initMonthlyByWeekNumber(interval: Int, pickedWeekNumber: TBRPWeekPickerNumber, pickedWeekday: TBRPWeekPickerDay, startDate: NSDate) -> TBRecurrence {
+        let monthlyRecurrence = TBRecurrence(startDate: startDate)
         monthlyRecurrence.frequency = .Monthly
         monthlyRecurrence.byWeekNumber = true
         
@@ -282,8 +282,8 @@ class TBRecurrence: NSObject {
         return monthlyRecurrence
     }
     
-    class func initYearly(interval: Int, var selectedMonths: [Int], locale: NSLocale) -> TBRecurrence {
-        let yearlyRecurrence = TBRecurrence(locale: locale)
+    class func initYearly(interval: Int, var selectedMonths: [Int], startDate: NSDate) -> TBRecurrence {
+        let yearlyRecurrence = TBRecurrence(startDate: startDate)
         yearlyRecurrence.frequency = .Yearly
         yearlyRecurrence.byWeekNumber = false
         for day in selectedMonths {
@@ -306,8 +306,8 @@ class TBRecurrence: NSObject {
         return yearlyRecurrence
     }
     
-    class func initYearlyByWeekNumber(interval: Int, pickedWeekNumber: TBRPWeekPickerNumber, pickedWeekday: TBRPWeekPickerDay, locale: NSLocale) -> TBRecurrence {
-        let yearlyRecurrence = TBRecurrence(locale: locale)
+    class func initYearlyByWeekNumber(interval: Int, pickedWeekNumber: TBRPWeekPickerNumber, pickedWeekday: TBRPWeekPickerDay, startDate: NSDate) -> TBRecurrence {
+        let yearlyRecurrence = TBRecurrence(startDate: startDate)
         yearlyRecurrence.frequency = .Yearly
         yearlyRecurrence.byWeekNumber = true
         
@@ -328,35 +328,35 @@ class TBRecurrence: NSObject {
         return frequency == .Daily && interval == 1
     }
     
-    func isWeeklyRecurrence() -> Bool {
-        let todayIndexInWeek = NSCalendar.dayIndexInWeek(NSDate(), locale: NSLocale.currentLocale())
+    func isWeeklyRecurrence(startDate: NSDate) -> Bool {
+        let startDateDayIndexInWeek = NSCalendar.dayIndexInWeek(startDate)
         
-        return frequency == .Weekly && selectedWeekdays == [todayIndexInWeek - 1] && interval == 1
+        return frequency == .Weekly && selectedWeekdays == [startDateDayIndexInWeek - 1] && interval == 1
     }
     
-    func isBiWeeklyRecurrence() -> Bool {
-        let todayIndexInWeek = NSCalendar.dayIndexInWeek(NSDate(), locale: NSLocale.currentLocale())
+    func isBiWeeklyRecurrence(startDate: NSDate) -> Bool {
+        let startDateDayIndexInWeek = NSCalendar.dayIndexInWeek(startDate)
         
-        return frequency == .Weekly && selectedWeekdays == [todayIndexInWeek - 1] && interval == 2
+        return frequency == .Weekly && selectedWeekdays == [startDateDayIndexInWeek - 1] && interval == 2
     }
     
-    func isMonthlyRecurrence() -> Bool {
-        let todayIndexInMonth = NSCalendar.dayIndexInMonth(NSDate(), locale: NSLocale.currentLocale())
+    func isMonthlyRecurrence(startDate: NSDate) -> Bool {
+        let startDateDayIndexInMonth = NSCalendar.dayIndexInMonth(startDate)
         
-        return frequency == .Monthly && interval == 1 && byWeekNumber == false && selectedMonthdays == [todayIndexInMonth]
+        return frequency == .Monthly && interval == 1 && byWeekNumber == false && selectedMonthdays == [startDateDayIndexInMonth]
     }
     
-    func isYearlyRecurrence() -> Bool {
-        let todayMonthIndex = NSCalendar.monthIndexInYear(NSDate(), locale: NSLocale.currentLocale())
+    func isYearlyRecurrence(startDate: NSDate) -> Bool {
+        let startDateMonthIndexInYear = NSCalendar.monthIndexInYear(startDate)
         
-        return frequency == .Yearly && interval == 1 && byWeekNumber == false && selectedMonths == [todayMonthIndex]
+        return frequency == .Yearly && interval == 1 && byWeekNumber == false && selectedMonths == [startDateMonthIndexInYear]
     }
     
     func isWeekdayRecurrence() -> Bool {
         return frequency == .Weekly && interval == 1 && selectedWeekdays == [1, 2, 3, 4, 5]
     }
     
-    func isCustomRecurrence() -> Bool {
-        return !isDailyRecurrence() && !isWeeklyRecurrence() && !isBiWeeklyRecurrence() && !isMonthlyRecurrence() && !isYearlyRecurrence()
+    func isCustomRecurrence(startDate: NSDate) -> Bool {
+        return !isDailyRecurrence() && !isWeeklyRecurrence(startDate) && !isBiWeeklyRecurrence(startDate) && !isMonthlyRecurrence(startDate) && !isYearlyRecurrence(startDate)
     }
 }

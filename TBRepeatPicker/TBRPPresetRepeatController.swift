@@ -16,8 +16,8 @@ private let TBRPPresetRepeatCellID = "TBRPPresetRepeatCell"
 
 class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControllerDelegate {
     // MARK: - Public properties
+    var startDate = NSDate()
     var tintColor = UIColor.blueColor()
-    var locale = NSLocale.currentLocale()
     var language: TBRPLanguage = .English
     var delegate: TBRepeatPickerDelegate?
     
@@ -71,13 +71,13 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
             selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
         } else if recurrence?.isDailyRecurrence() == true {
             selectedIndexPath = NSIndexPath(forRow: 1, inSection: 0)
-        } else if recurrence?.isWeeklyRecurrence() == true {
+        } else if recurrence?.isWeeklyRecurrence(startDate) == true {
             selectedIndexPath = NSIndexPath(forRow: 2, inSection: 0)
-        } else if recurrence?.isBiWeeklyRecurrence() == true {
+        } else if recurrence?.isBiWeeklyRecurrence(startDate) == true {
             selectedIndexPath = NSIndexPath(forRow: 3, inSection: 0)
-        } else if recurrence?.isMonthlyRecurrence() == true {
+        } else if recurrence?.isMonthlyRecurrence(startDate) == true {
             selectedIndexPath = NSIndexPath(forRow: 4, inSection: 0)
-        } else if recurrence?.isYearlyRecurrence() == true {
+        } else if recurrence?.isYearlyRecurrence(startDate) == true {
             selectedIndexPath = NSIndexPath(forRow: 5, inSection: 0)
         } else {
             selectedIndexPath = NSIndexPath(forRow: 0, inSection: 1)
@@ -94,19 +94,19 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
             recurrence = nil
             
         case 1:
-            recurrence = TBRecurrence.dailyRecurrence(locale)
+            recurrence = TBRecurrence.dailyRecurrence(startDate)
         
         case 2:
-            recurrence = TBRecurrence.weeklyRecurrence(locale)
+            recurrence = TBRecurrence.weeklyRecurrence(startDate)
             
         case 3:
-            recurrence = TBRecurrence.biWeeklyRecurrence(locale)
+            recurrence = TBRecurrence.biWeeklyRecurrence(startDate)
             
         case 4:
-            recurrence = TBRecurrence.monthlyRecurrence(locale)
+            recurrence = TBRecurrence.monthlyRecurrence(startDate)
             
         case 5:
-            recurrence = TBRecurrence.yearlyRecurrence(locale)
+            recurrence = TBRecurrence.yearlyRecurrence(startDate)
             
         default:
             break
@@ -127,7 +127,7 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
             if selectedIndexPath.section == 0 {
                 return nil
             }
-            return TBRPHelper.recurrenceString(recurrence!, language: language, locale: locale)
+            return TBRPHelper.recurrenceString(recurrence!, startDate: startDate, language: language)
         }
         return nil
     }
@@ -200,14 +200,14 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
         
         if indexPath.section == 1 {
             let customRepeatController = TBRPCustomRepeatController(style: .Grouped)
+            customRepeatController.startDate = startDate
             customRepeatController.tintColor = tintColor
-            customRepeatController.locale = locale
             customRepeatController.language = language
             
             if let _ = recurrence {
                 customRepeatController.recurrence = recurrence!
             } else {
-                customRepeatController.recurrence = TBRecurrence.dailyRecurrence(locale)
+                customRepeatController.recurrence = TBRecurrence.dailyRecurrence(startDate)
             }
             customRepeatController.delegate = self
             

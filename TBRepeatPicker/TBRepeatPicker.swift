@@ -33,8 +33,8 @@ class TBRepeatPicker: TBRPPresetRepeatController  {
     
     /** Return an initialized repeat picker object.
     
-    - Parameter locale: The locale of picker, it can be the current locale most of the time.
-    - Parameter language: The language of picker, must be one of the following 5 supported languages:
+    - Parameter startDate: Start date of the event, which will be used for creating weekly/bi-weekly/monthly/yearly/custom recurrence, or judging the type of a recurrence.
+    - Parameter language: Language of the picker, must be one of the following 5 supported languages:
       * TBRPLanguage.English
       * TBRPLanguage.SimplifiedChinese
       * TBRPLanguage.TraditionalChinese
@@ -44,10 +44,10 @@ class TBRepeatPicker: TBRPPresetRepeatController  {
     
     - Returns: An initialized repeat picker object.
     */
-    class func initPicker(locale: NSLocale, language: TBRPLanguage, tintColor: UIColor) -> TBRepeatPicker {
+    class func initPicker(startDate: NSDate, language: TBRPLanguage, tintColor: UIColor) -> TBRepeatPicker {
         let repeatPicker = TBRepeatPicker.init(style: .Grouped)
         
-        repeatPicker.locale = locale
+        repeatPicker.startDate = startDate
         repeatPicker.language = language
         repeatPicker.tintColor = tintColor
         

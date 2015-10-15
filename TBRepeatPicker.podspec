@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name                 = "TBRepeatPicker"
-  s.version              = "1.1.0"
+  s.version              = "1.1.1"
   s.summary              = "An event repeat rule picker similar to iOS system calendar."
   s.homepage             = "https://github.com/hongxinhope/TBRepeatPicker"
   s.license              = { :type => 'MIT', :file => 'LICENSE.txt' }
