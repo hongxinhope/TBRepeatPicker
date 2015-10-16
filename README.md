@@ -18,16 +18,16 @@ pod "TBRepeatPicker"
 ###Usage
 ##### 1. Create and present TBRepeatPicker
 ```objective-c
-// prepare a startDate
+// give the occurrence date of event
 let dateFormatter = NSDateFormatter()
 dateFormatter.dateFormat = "yyyy-MM-dd"
-let startDate = dateFormatter.dateFromString("2015-09-25")!
+occurrenceDate = dateFormatter.dateFromString("2015-09-25")!
 
 // init picker
-let repeatPicker = TBRepeatPicker.initPicker(startDate, language: .English, tintColor: UIColor.blueColor())
+let repeatPicker = TBRepeatPicker.initPicker(occurrenceDate, language: .English, tintColor: UIColor.blueColor())
 
 // assign a recurrence to the picker, you can pass nil or do nothing here when the repeat rule is "Never".
-repeatPicker.recurrence = TBRecurrence.initMonthly(1, selectedMonthdays: [3, 17], startDate: startDate)
+repeatPicker.recurrence = TBRecurrence.initMonthly(1, selectedMonthdays: [3, 17], occurrenceDate: occurrenceDate)
 
 // set delegate
 repeatPicker.delegate = self

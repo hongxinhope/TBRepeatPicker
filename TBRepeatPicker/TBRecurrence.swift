@@ -107,16 +107,16 @@ class TBRecurrence: NSObject {
     var pickedWeekday: TBRPWeekPickerDay = .Sunday
     
     // MARK: - Initialization
-    convenience init(startDate: NSDate) {
+    convenience init(occurrenceDate: NSDate) {
         self.init()
         
-        let startDateDayIndexInWeek = NSCalendar.dayIndexInWeek(startDate)
-        let startDateDayIndexInMonth = NSCalendar.dayIndexInMonth(startDate)
-        let startDateMonthIndexInYear = NSCalendar.monthIndexInYear(startDate)
+        let occurrenceDateDayIndexInWeek = NSCalendar.dayIndexInWeek(occurrenceDate)
+        let occurrenceDateDayIndexInMonth = NSCalendar.dayIndexInMonth(occurrenceDate)
+        let occurrenceDateMonthIndexInYear = NSCalendar.monthIndexInYear(occurrenceDate)
         
-        selectedWeekdays = [startDateDayIndexInWeek - 1]
-        selectedMonthdays = [startDateDayIndexInMonth]
-        selectedMonths = [startDateMonthIndexInYear]
+        selectedWeekdays = [occurrenceDateDayIndexInWeek - 1]
+        selectedMonthdays = [occurrenceDateDayIndexInMonth]
+        selectedMonths = [occurrenceDateMonthIndexInYear]
     }
     
     func recurrenceCopy() -> TBRecurrence {
@@ -180,33 +180,33 @@ class TBRecurrence: NSObject {
     }
     
     // preset recurrence initialization
-    class func dailyRecurrence(startDate: NSDate) -> TBRecurrence {
-        return initDaily(1, startDate: startDate)
+    class func dailyRecurrence(occurrenceDate: NSDate) -> TBRecurrence {
+        return initDaily(1, occurrenceDate: occurrenceDate)
     }
     
-    class func weeklyRecurrence(startDate: NSDate) -> TBRecurrence {
-        return initWeekly(1, selectedWeekdays: [], startDate: startDate)
+    class func weeklyRecurrence(occurrenceDate: NSDate) -> TBRecurrence {
+        return initWeekly(1, selectedWeekdays: [], occurrenceDate: occurrenceDate)
     }
     
-    class func biWeeklyRecurrence(startDate: NSDate) -> TBRecurrence {
-        return initWeekly(2, selectedWeekdays: [], startDate: startDate)
+    class func biWeeklyRecurrence(occurrenceDate: NSDate) -> TBRecurrence {
+        return initWeekly(2, selectedWeekdays: [], occurrenceDate: occurrenceDate)
     }
     
-    class func monthlyRecurrence(startDate: NSDate) -> TBRecurrence {
-        return initMonthly(1, selectedMonthdays: [], startDate: startDate)
+    class func monthlyRecurrence(occurrenceDate: NSDate) -> TBRecurrence {
+        return initMonthly(1, selectedMonthdays: [], occurrenceDate: occurrenceDate)
     }
     
-    class func yearlyRecurrence(startDate: NSDate) -> TBRecurrence {
-        return initYearly(1, selectedMonths: [], startDate: startDate)
+    class func yearlyRecurrence(occurrenceDate: NSDate) -> TBRecurrence {
+        return initYearly(1, selectedMonths: [], occurrenceDate: occurrenceDate)
     }
     
-    class func weekdayRecurrence(startDate: NSDate) -> TBRecurrence {
-        return initWeekly(1, selectedWeekdays: [1, 2, 3, 4, 5], startDate: startDate)
+    class func weekdayRecurrence(occurrenceDate: NSDate) -> TBRecurrence {
+        return initWeekly(1, selectedWeekdays: [1, 2, 3, 4, 5], occurrenceDate: occurrenceDate)
     }
     
     // custom recurrence initialization
-    class func initDaily(interval: Int, startDate: NSDate) -> TBRecurrence {
-        let dailyRecurrence = TBRecurrence(startDate: startDate)
+    class func initDaily(interval: Int, occurrenceDate: NSDate) -> TBRecurrence {
+        let dailyRecurrence = TBRecurrence(occurrenceDate: occurrenceDate)
         dailyRecurrence.frequency = .Daily
         
         if interval < 1 {
@@ -218,8 +218,8 @@ class TBRecurrence: NSObject {
         return dailyRecurrence
     }
     
-    class func initWeekly(interval: Int, var selectedWeekdays: [Int], startDate: NSDate) -> TBRecurrence {
-        let weeklyRecurrence = TBRecurrence(startDate: startDate)
+    class func initWeekly(interval: Int, var selectedWeekdays: [Int], occurrenceDate: NSDate) -> TBRecurrence {
+        let weeklyRecurrence = TBRecurrence(occurrenceDate: occurrenceDate)
         weeklyRecurrence.frequency = .Weekly
         for day in selectedWeekdays {
             if day < 0 || day > 6 {
@@ -241,8 +241,8 @@ class TBRecurrence: NSObject {
         return weeklyRecurrence
     }
     
-    class func initMonthly(interval: Int, var selectedMonthdays: [Int], startDate: NSDate) -> TBRecurrence {
-        let monthlyRecurrence = TBRecurrence(startDate: startDate)
+    class func initMonthly(interval: Int, var selectedMonthdays: [Int], occurrenceDate: NSDate) -> TBRecurrence {
+        let monthlyRecurrence = TBRecurrence(occurrenceDate: occurrenceDate)
         monthlyRecurrence.frequency = .Monthly
         monthlyRecurrence.byWeekNumber = false
         for day in selectedMonthdays {
@@ -265,8 +265,8 @@ class TBRecurrence: NSObject {
         return monthlyRecurrence
     }
     
-    class func initMonthlyByWeekNumber(interval: Int, pickedWeekNumber: TBRPWeekPickerNumber, pickedWeekday: TBRPWeekPickerDay, startDate: NSDate) -> TBRecurrence {
-        let monthlyRecurrence = TBRecurrence(startDate: startDate)
+    class func initMonthlyByWeekNumber(interval: Int, pickedWeekNumber: TBRPWeekPickerNumber, pickedWeekday: TBRPWeekPickerDay, occurrenceDate: NSDate) -> TBRecurrence {
+        let monthlyRecurrence = TBRecurrence(occurrenceDate: occurrenceDate)
         monthlyRecurrence.frequency = .Monthly
         monthlyRecurrence.byWeekNumber = true
         
@@ -282,8 +282,8 @@ class TBRecurrence: NSObject {
         return monthlyRecurrence
     }
     
-    class func initYearly(interval: Int, var selectedMonths: [Int], startDate: NSDate) -> TBRecurrence {
-        let yearlyRecurrence = TBRecurrence(startDate: startDate)
+    class func initYearly(interval: Int, var selectedMonths: [Int], occurrenceDate: NSDate) -> TBRecurrence {
+        let yearlyRecurrence = TBRecurrence(occurrenceDate: occurrenceDate)
         yearlyRecurrence.frequency = .Yearly
         yearlyRecurrence.byWeekNumber = false
         for day in selectedMonths {
@@ -306,8 +306,8 @@ class TBRecurrence: NSObject {
         return yearlyRecurrence
     }
     
-    class func initYearlyByWeekNumber(interval: Int, pickedWeekNumber: TBRPWeekPickerNumber, pickedWeekday: TBRPWeekPickerDay, startDate: NSDate) -> TBRecurrence {
-        let yearlyRecurrence = TBRecurrence(startDate: startDate)
+    class func initYearlyByWeekNumber(interval: Int, pickedWeekNumber: TBRPWeekPickerNumber, pickedWeekday: TBRPWeekPickerDay, occurrenceDate: NSDate) -> TBRecurrence {
+        let yearlyRecurrence = TBRecurrence(occurrenceDate: occurrenceDate)
         yearlyRecurrence.frequency = .Yearly
         yearlyRecurrence.byWeekNumber = true
         
@@ -328,35 +328,35 @@ class TBRecurrence: NSObject {
         return frequency == .Daily && interval == 1
     }
     
-    func isWeeklyRecurrence(startDate: NSDate) -> Bool {
-        let startDateDayIndexInWeek = NSCalendar.dayIndexInWeek(startDate)
+    func isWeeklyRecurrence(occurrenceDate: NSDate) -> Bool {
+        let occurrenceDateDayIndexInWeek = NSCalendar.dayIndexInWeek(occurrenceDate)
         
-        return frequency == .Weekly && selectedWeekdays == [startDateDayIndexInWeek - 1] && interval == 1
+        return frequency == .Weekly && selectedWeekdays == [occurrenceDateDayIndexInWeek - 1] && interval == 1
     }
     
-    func isBiWeeklyRecurrence(startDate: NSDate) -> Bool {
-        let startDateDayIndexInWeek = NSCalendar.dayIndexInWeek(startDate)
+    func isBiWeeklyRecurrence(occurrenceDate: NSDate) -> Bool {
+        let occurrenceDateDayIndexInWeek = NSCalendar.dayIndexInWeek(occurrenceDate)
         
-        return frequency == .Weekly && selectedWeekdays == [startDateDayIndexInWeek - 1] && interval == 2
+        return frequency == .Weekly && selectedWeekdays == [occurrenceDateDayIndexInWeek - 1] && interval == 2
     }
     
-    func isMonthlyRecurrence(startDate: NSDate) -> Bool {
-        let startDateDayIndexInMonth = NSCalendar.dayIndexInMonth(startDate)
+    func isMonthlyRecurrence(occurrenceDate: NSDate) -> Bool {
+        let occurrenceDateDayIndexInMonth = NSCalendar.dayIndexInMonth(occurrenceDate)
         
-        return frequency == .Monthly && interval == 1 && byWeekNumber == false && selectedMonthdays == [startDateDayIndexInMonth]
+        return frequency == .Monthly && interval == 1 && byWeekNumber == false && selectedMonthdays == [occurrenceDateDayIndexInMonth]
     }
     
-    func isYearlyRecurrence(startDate: NSDate) -> Bool {
-        let startDateMonthIndexInYear = NSCalendar.monthIndexInYear(startDate)
+    func isYearlyRecurrence(occurrenceDate: NSDate) -> Bool {
+        let occurrenceDateMonthIndexInYear = NSCalendar.monthIndexInYear(occurrenceDate)
         
-        return frequency == .Yearly && interval == 1 && byWeekNumber == false && selectedMonths == [startDateMonthIndexInYear]
+        return frequency == .Yearly && interval == 1 && byWeekNumber == false && selectedMonths == [occurrenceDateMonthIndexInYear]
     }
     
     func isWeekdayRecurrence() -> Bool {
         return frequency == .Weekly && interval == 1 && selectedWeekdays == [1, 2, 3, 4, 5]
     }
     
-    func isCustomRecurrence(startDate: NSDate) -> Bool {
-        return !isDailyRecurrence() && !isWeeklyRecurrence(startDate) && !isBiWeeklyRecurrence(startDate) && !isMonthlyRecurrence(startDate) && !isYearlyRecurrence(startDate)
+    func isCustomRecurrence(occurrenceDate: NSDate) -> Bool {
+        return !isDailyRecurrence() && !isWeeklyRecurrence(occurrenceDate) && !isBiWeeklyRecurrence(occurrenceDate) && !isMonthlyRecurrence(occurrenceDate) && !isYearlyRecurrence(occurrenceDate)
     }
 }

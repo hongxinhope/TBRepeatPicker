@@ -12,7 +12,7 @@ let languageStrings = ["English", "SimplifiedChinese", "TraditionalChinese", "Ko
 let languages: [TBRPLanguage] = [.English, .SimplifiedChinese, .TraditionalChinese, .Korean, .Japanese]
 
 class DemoViewController: UIViewController, TBRepeatPickerDelegate, SwitchLanguageViewControllerDelegate {
-    var startDate = NSDate()
+    var occurrenceDate = NSDate()
     var recurrence: TBRecurrence?
     var language: TBRPLanguage = .English
     
@@ -23,7 +23,7 @@ class DemoViewController: UIViewController, TBRepeatPickerDelegate, SwitchLangua
         
 //        let dateFormatter = NSDateFormatter()
 //        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        startDate = dateFormatter.dateFromString("2015-09-14")! // 2015-09-14 Monday
+//        occurrenceDate = dateFormatter.dateFromString("2015-09-14")! // 2015-09-14 Monday
         
         resultTextView.userInteractionEnabled = false
         updateLanguageTitle()
@@ -52,40 +52,40 @@ class DemoViewController: UIViewController, TBRepeatPickerDelegate, SwitchLangua
     }
     
     @IBAction func startPicking(sender: UIButton) {
-        let repeatPicker = TBRepeatPicker.initPicker(startDate, language: language, tintColor: tbBlueColor())
+        let repeatPicker = TBRepeatPicker.initPicker(occurrenceDate, language: language, tintColor: tbBlueColor())
         repeatPicker.delegate = self
         
 //        recurrence = nil
 //        
-//        recurrence = TBRecurrence.initDaily(1, startDate: startDate)
+//        recurrence = TBRecurrence.initDaily(1, occurrenceDate: occurrenceDate)
 //        
-//        recurrence = TBRecurrence.initWeekly(1, selectedWeekdays: [], startDate: startDate)
-//        recurrence = TBRecurrence.initWeekly(1, selectedWeekdays: [2, 2, 6], startDate: startDate)
-//        recurrence = TBRecurrence.initWeekly(2, selectedWeekdays: [], startDate: startDate)
-//        recurrence = TBRecurrence.initWeekly(2, selectedWeekdays: [1, 3, 5, 6, 0], startDate: startDate)
+//        recurrence = TBRecurrence.initWeekly(1, selectedWeekdays: [], occurrenceDate: occurrenceDate)
+//        recurrence = TBRecurrence.initWeekly(1, selectedWeekdays: [2, 2, 6], occurrenceDate: occurrenceDate)
+//        recurrence = TBRecurrence.initWeekly(2, selectedWeekdays: [], occurrenceDate: occurrenceDate)
+//        recurrence = TBRecurrence.initWeekly(2, selectedWeekdays: [1, 3, 5, 6, 0], occurrenceDate: occurrenceDate)
 //        
-//        recurrence = TBRecurrence.initMonthly(1, selectedMonthdays: [], startDate: startDate)
-//        recurrence = TBRecurrence.initMonthly(2, selectedMonthdays: [], startDate: startDate)
-//        recurrence = TBRecurrence.initMonthly(1, selectedMonthdays: [3, 17], startDate: startDate)
-//        recurrence = TBRecurrence.initMonthly(3, selectedMonthdays: [5, 20], startDate: startDate)
+//        recurrence = TBRecurrence.initMonthly(1, selectedMonthdays: [], occurrenceDate: occurrenceDate)
+//        recurrence = TBRecurrence.initMonthly(2, selectedMonthdays: [], occurrenceDate: occurrenceDate)
+//        recurrence = TBRecurrence.initMonthly(1, selectedMonthdays: [3, 17], occurrenceDate: occurrenceDate)
+//        recurrence = TBRecurrence.initMonthly(3, selectedMonthdays: [5, 20], occurrenceDate: occurrenceDate)
 //        
-//        recurrence = TBRecurrence.initMonthlyByWeekNumber(1, pickedWeekNumber: .Second, pickedWeekday: .Day, startDate: startDate)
-//        recurrence = TBRecurrence.initMonthlyByWeekNumber(4, pickedWeekNumber: .Third, pickedWeekday: .Weekday, startDate: startDate)
+//        recurrence = TBRecurrence.initMonthlyByWeekNumber(1, pickedWeekNumber: .Second, pickedWeekday: .Day, occurrenceDate: occurrenceDate)
+//        recurrence = TBRecurrence.initMonthlyByWeekNumber(4, pickedWeekNumber: .Third, pickedWeekday: .Weekday, occurrenceDate: occurrenceDate)
 //        
-//        recurrence = TBRecurrence.initYearly(1, selectedMonths: [], startDate: startDate)
-//        recurrence = TBRecurrence.initYearly(4, selectedMonths: [], startDate: startDate)
-//        recurrence = TBRecurrence.initYearly(1, selectedMonths: [3, 8], startDate: startDate)
-//        recurrence = TBRecurrence.initYearly(3, selectedMonths: [7, 9], startDate: startDate)
+//        recurrence = TBRecurrence.initYearly(1, selectedMonths: [], occurrenceDate: occurrenceDate)
+//        recurrence = TBRecurrence.initYearly(4, selectedMonths: [], occurrenceDate: occurrenceDate)
+//        recurrence = TBRecurrence.initYearly(1, selectedMonths: [3, 8], occurrenceDate: occurrenceDate)
+//        recurrence = TBRecurrence.initYearly(3, selectedMonths: [7, 9], occurrenceDate: occurrenceDate)
 //        
-//        recurrence = TBRecurrence.initYearlyByWeekNumber(1, pickedWeekNumber: .Fifth, pickedWeekday: .Wednesday, startDate: startDate)
-//        recurrence = TBRecurrence.initYearlyByWeekNumber(3, pickedWeekNumber: .Last, pickedWeekday: .Day, startDate: startDate)
+//        recurrence = TBRecurrence.initYearlyByWeekNumber(1, pickedWeekNumber: .Fifth, pickedWeekday: .Wednesday, occurrenceDate: occurrenceDate)
+//        recurrence = TBRecurrence.initYearlyByWeekNumber(3, pickedWeekNumber: .Last, pickedWeekday: .Day, occurrenceDate: occurrenceDate)
 //        
-//        recurrence = TBRecurrence.dailyRecurrence(startDate)
-//        recurrence = TBRecurrence.weeklyRecurrence(startDate)
-//        recurrence = TBRecurrence.biWeeklyRecurrence(startDate)
-//        recurrence = TBRecurrence.monthlyRecurrence(startDate)
-//        recurrence = TBRecurrence.yearlyRecurrence(startDate)
-//        recurrence = TBRecurrence.weekdayRecurrence(startDate)
+//        recurrence = TBRecurrence.dailyRecurrence(occurrenceDate)
+//        recurrence = TBRecurrence.weeklyRecurrence(occurrenceDate)
+//        recurrence = TBRecurrence.biWeeklyRecurrence(occurrenceDate)
+//        recurrence = TBRecurrence.monthlyRecurrence(occurrenceDate)
+//        recurrence = TBRecurrence.yearlyRecurrence(occurrenceDate)
+//        recurrence = TBRecurrence.weekdayRecurrence(occurrenceDate)
         
         repeatPicker.recurrence = recurrence
         
@@ -100,7 +100,7 @@ class DemoViewController: UIViewController, TBRepeatPickerDelegate, SwitchLangua
     
     private func updateResultTextView() {
         if let _ = recurrence {
-            resultTextView.text = TBRPHelper.recurrenceString(recurrence!, startDate: startDate, language: language)
+            resultTextView.text = TBRPHelper.recurrenceString(recurrence!, occurrenceDate: occurrenceDate, language: language)
         } else {
             resultTextView.text = "Never Repeat"
         }
