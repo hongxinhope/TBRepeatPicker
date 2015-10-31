@@ -62,7 +62,7 @@ TBRepeatPicker support both Swift and Objective-C.
 * [Release Notes](https://github.com/hongxinhope/TBRepeatPicker/releases)
 
 ## License
-Mantle is released under the MIT license. See [LICENSE](https://github.com/hongxinhope/TBRepeatPicker/blob/master/LICENSE.txt) for details.
+TBRepeatPicker is released under the MIT license. See [LICENSE](https://github.com/hongxinhope/TBRepeatPicker/blob/master/LICENSE.txt) for details.
 
 ## More Info
 Have a question? Please [open an issue](https://github.com/hongxinhope/TBRepeatPicker/issues/new)!
