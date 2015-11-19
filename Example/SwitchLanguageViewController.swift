@@ -62,7 +62,7 @@ class SwitchLanguageViewController: UITableViewController {
         
         if let _ = delegate {
             dismissViewControllerAnimated(true, completion: { () -> Void in
-                delegate?.donePickingLanguage(language)
+                self.delegate?.donePickingLanguage(self.language)
             })
         }
     }
