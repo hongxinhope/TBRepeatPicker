@@ -14,7 +14,7 @@ private let TBRPPresetRepeatCellID = "TBRPPresetRepeatCell"
     func didPickRecurrence(recurrence: TBRecurrence?, repeatPicker: TBRepeatPicker)
 }
 
-class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControllerDelegate {
+public class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControllerDelegate {
     // MARK: - Public properties
     var occurrenceDate = NSDate()
     var tintColor = UIColor.blueColor()
@@ -34,7 +34,7 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
     private var internationalControl: TBRPInternationalControl?
     
     // MARK: - View life cycle
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         commonInit()
@@ -54,7 +54,7 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
         }
     }
     
-    override func didMoveToParentViewController(parent: UIViewController?) {
+    override public func didMoveToParentViewController(parent: UIViewController?) {
         if parent == nil {
             // navigation was popped
             if TBRecurrence.isEqualRecurrence(recurrence, recurrence2: recurrenceBackup) == false {
@@ -133,11 +133,11 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
     }
     
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return presetRepeats.count
         } else {
@@ -145,25 +145,25 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 44.0
     }
     
-    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    override public func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 1 && recurrence != nil {
             return footerTitle()
         }
         return nil
     }
     
-    override func tableView(tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+    override public func tableView(tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         if view.isKindOfClass(UITableViewHeaderFooterView) {
             let tableViewHeaderFooterView = view as! UITableViewHeaderFooterView
             tableViewHeaderFooterView.textLabel?.font = UIFont.systemFontOfSize(CGFloat(13.0))
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier(TBRPPresetRepeatCellID)
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: TBRPPresetRepeatCellID)
@@ -189,7 +189,7 @@ class TBRPPresetRepeatController: UITableViewController, TBRPCustomRepeatControl
     }
 
     // MARK: - Table view delegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let lastSelectedCell = tableView.cellForRowAtIndexPath(selectedIndexPath)
         let currentSelectedCell = tableView.cellForRowAtIndexPath(indexPath)
         
