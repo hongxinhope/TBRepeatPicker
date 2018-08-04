@@ -22,11 +22,11 @@ enum TBRPLanguage: String {
     To support Objective-C, we have to use integer enum.
 */
 @objc enum TBRPLanguage: Int {
-    case English = 0
-    case SimplifiedChinese = 1
-    case TraditionalChinese = 2
-    case Korean = 3
-    case Japanese = 4
+    case english = 0
+    case simplifiedChinese = 1
+    case traditionalChinese = 2
+    case korean = 3
+    case japanese = 4
 }
 
 class TBRepeatPicker: TBRPPresetRepeatController  {
@@ -44,8 +44,8 @@ class TBRepeatPicker: TBRPPresetRepeatController  {
     
     - Returns: An initialized repeat picker object.
     */
-    class func initPicker(occurrenceDate: NSDate, language: TBRPLanguage, tintColor: UIColor) -> TBRepeatPicker {
-        let repeatPicker = TBRepeatPicker.init(style: .Grouped)
+    class func initPicker(_ occurrenceDate: Date, language: TBRPLanguage, tintColor: UIColor) -> TBRepeatPicker {
+        let repeatPicker = TBRepeatPicker.init(style: .grouped)
         
         repeatPicker.occurrenceDate = occurrenceDate
         repeatPicker.language = language

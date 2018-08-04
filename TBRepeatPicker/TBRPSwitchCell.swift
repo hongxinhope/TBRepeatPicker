@@ -11,7 +11,7 @@ import UIKit
 private let SwitchTrailingSpace: CGFloat = 15.0
 
 protocol TBRPSwitchCellDelegate {
-    func didSwitch(sender: AnyObject)
+    func didSwitch(_ sender: AnyObject)
 }
 
 class TBRPSwitchCell: TBRPCustomRepeatCell {
@@ -29,7 +29,7 @@ class TBRPSwitchCell: TBRPCustomRepeatCell {
         weekSwitch = UISwitch()
         weekSwitch?.frame.origin.x = TBRPScreenWidth - (weekSwitch?.bounds.size.width)! - SwitchTrailingSpace
         weekSwitch?.frame.origin.y = contentView.bounds.size.height / 2 - (weekSwitch?.bounds.size.height)! / 2
-        weekSwitch?.addTarget(self, action: "switchAction:", forControlEvents: .ValueChanged)
+        weekSwitch?.addTarget(self, action: #selector(TBRPSwitchCell.switchAction(_:)), for: .valueChanged)
         contentView.addSubview(weekSwitch!)
     }
 
@@ -37,7 +37,7 @@ class TBRPSwitchCell: TBRPCustomRepeatCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func switchAction(sender: AnyObject) {
+    @objc func switchAction(_ sender: AnyObject) {
         if let _ = delegate {
             delegate?.didSwitch(sender)
         }
