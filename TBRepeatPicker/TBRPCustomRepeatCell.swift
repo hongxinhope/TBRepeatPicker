@@ -54,7 +54,7 @@ class TBRPCustomRepeatCell: UITableViewCell {
         }
     }
     
-    func addBottomSeparatorFromLeftX(leftX: CGFloat) {
+    func addBottomSeparatorFromLeftX(_ leftX: CGFloat) {
         for sublayer in layer.sublayers! {
             if sublayer.name == TBRPBottomSeparatorIdentifier {
                 sublayer.removeFromSuperlayer()
@@ -64,13 +64,13 @@ class TBRPCustomRepeatCell: UITableViewCell {
         let bottomSeparator = CALayer()
         bottomSeparator.name = TBRPBottomSeparatorIdentifier
         
-        bottomSeparator.frame = CGRectMake(leftX, bounds.size.height - TBRPSeparatorLineWidth, TBRPScreenWidth - leftX, TBRPSeparatorLineWidth)
+        bottomSeparator.frame = CGRect(x: leftX, y: bounds.size.height - TBRPSeparatorLineWidth, width: TBRPScreenWidth - leftX, height: TBRPSeparatorLineWidth)
         bottomSeparator.backgroundColor = TBRPHelper.separatorColor()
         
         layer.addSublayer(bottomSeparator)
     }
     
-    func addTopSeparatorFromLeftX(leftX: CGFloat) {
+    func addTopSeparatorFromLeftX(_ leftX: CGFloat) {
         for sublayer in layer.sublayers! {
             if sublayer.name == TBRPTopSeparatorIdentifier {
                 sublayer.removeFromSuperlayer()
@@ -80,7 +80,7 @@ class TBRPCustomRepeatCell: UITableViewCell {
         let topSeparator = CALayer()
         topSeparator.name = TBRPTopSeparatorIdentifier
         
-        topSeparator.frame = CGRectMake(leftX, 0,TBRPScreenWidth - leftX, TBRPSeparatorLineWidth)
+        topSeparator.frame = CGRect(x: leftX, y: 0,width: TBRPScreenWidth - leftX, height: TBRPSeparatorLineWidth)
         topSeparator.backgroundColor = TBRPHelper.separatorColor()
         
         layer.addSublayer(topSeparator)
@@ -98,12 +98,12 @@ class TBRPCustomRepeatCell: UITableViewCell {
         addBottomSeparatorFromLeftX(0)
     }
     
-    func updateBottomSeparatorWithLeftX(leftX: CGFloat) {
+    func updateBottomSeparatorWithLeftX(_ leftX: CGFloat) {
         removeBottomSeparators()
         addBottomSeparatorFromLeftX(leftX)
     }
     
-    func resetSeparatorWithLeftX(leftX: CGFloat) {
+    func resetSeparatorWithLeftX(_ leftX: CGFloat) {
         removeAllSeparators()
         addBottomSeparatorFromLeftX(leftX)
     }

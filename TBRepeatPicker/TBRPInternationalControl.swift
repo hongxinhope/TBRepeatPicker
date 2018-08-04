@@ -9,7 +9,7 @@
 import Foundation
 
 class TBRPInternationalControl: NSObject {
-    var language: TBRPLanguage = .English
+    var language: TBRPLanguage = .english
     
     convenience init(language: TBRPLanguage!) {
         self.init()
@@ -17,17 +17,17 @@ class TBRPInternationalControl: NSObject {
         self.language = language
     }
     
-    private func localizedForKey(key: String!) -> String? {
-        let path = NSBundle.mainBundle().pathForResource(TBRPInternationalControl.languageKey(language), ofType: "lproj")
+    fileprivate func localizedForKey(_ key: String!) -> String? {
+        let path = Bundle.main.path(forResource: TBRPInternationalControl.languageKey(language), ofType: "lproj")
         if let _ = path {
-            let bundle = NSBundle(path: path!)
-            return bundle!.localizedStringForKey(key, value: nil, table: "TBRPLocalizable")
+            let bundle = Bundle(path: path!)
+            return bundle!.localizedString(forKey: key, value: nil, table: "TBRPLocalizable")
         } else {
             return nil
         }
     }
     
-    func localized(key: String!, comment: String!) -> String {
+    func localized(_ key: String!, comment: String!) -> String {
         if let localizedString = localizedForKey(key) as String? {
             if localizedString == key {
                 return comment
@@ -37,7 +37,7 @@ class TBRPInternationalControl: NSObject {
         return comment
     }
     
-    class func languageKey(language: TBRPLanguage) -> String {
+    class func languageKey(_ language: TBRPLanguage) -> String {
         let languageKeys = ["en", "zh-Hans", "zh-Hant", "ko", "ja"]
         
         return languageKeys[language.rawValue]

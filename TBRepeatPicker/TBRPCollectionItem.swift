@@ -19,30 +19,30 @@ class TBRPCollectionItem: UICollectionViewCell {
     var showRightLine = true
     
     // MARK: - Private properties
-    private let topLine  = CALayer()
-    private let bottomLine  = CALayer()
-    private let leftLine  = CALayer()
-    private let rightLine  = CALayer()
+    fileprivate let topLine  = CALayer()
+    fileprivate let bottomLine  = CALayer()
+    fileprivate let leftLine  = CALayer()
+    fileprivate let rightLine  = CALayer()
     
     // MARK: - View life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        textLabel = UILabel(frame: CGRectMake(lineWidth, lineWidth, bounds.size.width - 2 * lineWidth, bounds.size.height - 2 * lineWidth))
-        textLabel?.textAlignment = .Center
+        textLabel = UILabel(frame: CGRect(x: lineWidth, y: lineWidth, width: bounds.size.width - 2 * lineWidth, height: bounds.size.height - 2 * lineWidth))
+        textLabel?.textAlignment = .center
         backgroundView = textLabel
         
         // add separator line
-        topLine.frame = CGRectMake(0, 0, bounds.size.width, lineWidth)
+        topLine.frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: lineWidth)
         topLine.backgroundColor = separatorColor()
         
-        bottomLine.frame = CGRectMake(0, bounds.size.height - lineWidth, bounds.size.width, lineWidth)
+        bottomLine.frame = CGRect(x: 0, y: bounds.size.height - lineWidth, width: bounds.size.width, height: lineWidth)
         bottomLine.backgroundColor = separatorColor()
         
-        leftLine.frame = CGRectMake(0, 0, lineWidth, bounds.size.height)
+        leftLine.frame = CGRect(x: 0, y: 0, width: lineWidth, height: bounds.size.height)
         leftLine.backgroundColor = separatorColor()
         
-        rightLine.frame = CGRectMake(bounds.size.width - lineWidth, 0, lineWidth, bounds.size.height)
+        rightLine.frame = CGRect(x: bounds.size.width - lineWidth, y: 0, width: lineWidth, height: bounds.size.height)
         rightLine.backgroundColor = separatorColor()
         
         layer.addSublayer(topLine)
@@ -58,24 +58,24 @@ class TBRPCollectionItem: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        topLine.hidden = !showTopLine
-        bottomLine.hidden = !showBottomLine
-        leftLine.hidden = !showLeftLine
-        rightLine.hidden = !showRightLine
+        topLine.isHidden = !showTopLine
+        bottomLine.isHidden = !showBottomLine
+        leftLine.isHidden = !showLeftLine
+        rightLine.isHidden = !showRightLine
     }
     
     // MARK: - Helper
-    private func separatorColor() -> CGColorRef {
-        return UIColor.init(white: 187.0 / 255.0, alpha: 1.0).CGColor
+    fileprivate func separatorColor() -> CGColor {
+        return UIColor.init(white: 187.0 / 255.0, alpha: 1.0).cgColor
     }
     
-    func setItemSelected(selected: Bool) {
+    func setItemSelected(_ selected: Bool) {
         if selected == true {
             textLabel?.backgroundColor = tintColor
-            textLabel?.textColor = UIColor.whiteColor()
+            textLabel?.textColor = UIColor.white
         } else {
-            textLabel?.backgroundColor = UIColor.whiteColor()
-            textLabel?.textColor = UIColor.blackColor()
+            textLabel?.backgroundColor = UIColor.white
+            textLabel?.textColor = UIColor.black
         }
     }
 }

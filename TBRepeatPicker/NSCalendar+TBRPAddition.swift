@@ -8,23 +8,23 @@
 
 import Foundation
 
-extension NSCalendar {
-    class func dayIndexInWeek(date: NSDate) -> Int {
-        return components(date).weekday
+extension Calendar {
+    static func dayIndexInWeek(_ date: Date) -> Int {
+        return components(date).weekday!
     }
     
-    class func dayIndexInMonth(date: NSDate) -> Int {
-        return components(date).day
+    static func dayIndexInMonth(_ date: Date) -> Int {
+        return components(date).day!
     }
     
-    class func monthIndexInYear(date: NSDate) -> Int {
-        return components(date).month
+    static func monthIndexInYear(_ date: Date) -> Int {
+        return components(date).month!
     }
     
-    private class func components(date: NSDate) -> NSDateComponents {
-        let calendar = NSCalendar.currentCalendar()
-        calendar.locale = NSLocale.currentLocale()
-        let components = calendar.components([.Month, .Weekday, .Day], fromDate: date)
+    fileprivate static func components(_ date: Date) -> DateComponents {
+        var calendar = Calendar.current
+        calendar.locale = Locale.current
+        let components = (calendar as NSCalendar).components([.month, .weekday, .day], from: date)
         
         return components
     }

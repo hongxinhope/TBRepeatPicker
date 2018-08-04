@@ -11,57 +11,57 @@ import UIKit
 private let SwitchLanguageViewControllerCellID = "SwitchLanguageViewControllerCell"
 
 protocol SwitchLanguageViewControllerDelegate {
-    func donePickingLanguage(language: TBRPLanguage)
+    func donePickingLanguage(_ language: TBRPLanguage)
 }
 
 class SwitchLanguageViewController: UITableViewController {
-    var language: TBRPLanguage = .English
+    var language: TBRPLanguage = .english
     var delegate: SwitchLanguageViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelPressed")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(SwitchLanguageViewController.cancelPressed))
     }
     
-    func cancelPressed() {
-        dismissViewControllerAnimated(true, completion: nil)
+    @objc func cancelPressed() {
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(SwitchLanguageViewControllerCellID)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: SwitchLanguageViewControllerCellID)
         if cell == nil {
-            cell = UITableViewCell.init(style: .Default, reuseIdentifier: SwitchLanguageViewControllerCellID)
+            cell = UITableViewCell.init(style: .default, reuseIdentifier: SwitchLanguageViewControllerCellID)
         }
 
         cell?.textLabel?.text = languageStrings[indexPath.row]
         
         if language == languages[indexPath.row] {
-            cell?.accessoryType = .Checkmark
+            cell?.accessoryType = .checkmark
         } else {
-            cell?.accessoryType = .None
+            cell?.accessoryType = .none
         }
         
         return cell!
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         language = languages[indexPath.row]
         tableView.reloadData()
         
         if let _ = delegate {
-            dismissViewControllerAnimated(true, completion: { () -> Void in
+            dismiss(animated: true, completion: { () -> Void in
                 self.delegate?.donePickingLanguage(self.language)
             })
         }
